@@ -8,6 +8,13 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }}" data-item="admin">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Gear-2"></i>
+                    <span class="nav-text">Administración</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
             <li class="nav-item {{ request()->is('uikits/*') ? 'active' : '' }}" data-item="uikits">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Library"></i>
@@ -116,6 +123,17 @@
                 </a>
             </li>
         </ul>
+
+        <ul class="childNav" data-parent="admin">
+            <li class="nav-item ">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{route('usuarios')}}">
+                    <i class="nav-icon i-Administrator"></i>
+                    <span class="item-name">Usuarios</span>
+                </a>
+            </li>
+            
+        </ul>
+        
         <ul class="childNav" data-parent="forms">
 
             <li class="nav-item">

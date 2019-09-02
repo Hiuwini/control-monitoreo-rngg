@@ -39,6 +39,11 @@ Route::view('dashboard/dashboard2', 'dashboard.dashboardv2')->name('dashboard_ve
 Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_version_3');
 Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
 
+//1 Administracion
+Route::view('admin/usuarios','users.index')->name('usuarios');
+//1.1 Usuarios
+
+
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
 Route::view('uikits/accordion', 'uiKits.accordion')->name('accordion');

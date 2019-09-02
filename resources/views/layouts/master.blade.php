@@ -7,11 +7,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Gull - Laravel + Bootstrap 4 admin template</title>
+        <title>SCM - RNGG</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
         @yield('before-css')
         {{-- theme css --}}
-        <link id="gull-theme" rel="stylesheet" href="{{  asset('assets/styles/css/themes/lite-purple.min.css')}}">
+        <link id="gull-theme" rel="stylesheet" href="{{  asset('assets/styles/css/themes/lite-blue.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/styles/vendor/perfect-scrollbar.css')}}">
         {{-- page specific css --}}
         @yield('page-css')
