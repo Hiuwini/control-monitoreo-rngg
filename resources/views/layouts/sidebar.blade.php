@@ -130,8 +130,7 @@
                     <i class="nav-icon i-Administrator"></i>
                     <span class="item-name">Usuarios</span>
                 </a>
-            </li>
-            
+            </li> 
         </ul>
         
         <ul class="childNav" data-parent="forms">

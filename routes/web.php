@@ -40,7 +40,8 @@ Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_ve
 Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
 
 //1 Administracion
-Route::view('admin/usuarios','users.index')->name('usuarios');
+Route::view('admin/usuarios','users.create')->name('usuarios');
+Route::view('admin/permisos','users.index')->name('permisos');
 //1.1 Usuarios
 
 
