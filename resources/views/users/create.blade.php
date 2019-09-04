@@ -8,7 +8,7 @@
 
 @section('main-content')
 
-<h1>HOLA MUNDO</h1>
+<h1>MUNDO</h1>
 
 @endsection
 
