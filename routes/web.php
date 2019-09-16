@@ -40,10 +40,14 @@ Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_ve
 Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
 
 //1 Administracion
-Route::view('admin/usuarios','users.create')->name('usuarios');
-Route::view('admin/permisos','users.index')->name('permisos');
-//1.1 Usuarios
 
+//1.1 Usuarios
+Route::get('/admin/users','UserController@index')->name('users.index');
+Route::get('/admin/users/create','UserController@create')->name('users.create');
+Route::post('/admin/users/store','UserController@store');
+Route::get('/admin/users/{id}/edit','UserController@edit')->name('users.edit');
+Route::put('/admin/users/{id}','UserController@update');
+Route::delete('/admin/users/{id}','UserController@destroy');
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

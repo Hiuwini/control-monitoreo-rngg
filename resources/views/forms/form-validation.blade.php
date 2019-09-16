@@ -45,6 +45,9 @@
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                             </div>
                                             <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
                                             <div class="invalid-feedback">
                                                 Please choose a username.
                                             </div>
