@@ -1,5 +1,5 @@
 <!-- ============ Customizer ============= -->
-<div class="customizer open">
+{{--<div class="customizer open">
     <div class="handle" (click)="isOpen = !isOpen">
         <i class="i-Gear spin"></i>
     </div>
@@ -62,5 +62,5 @@
 
         </div>
     </div>
-</div>
+</div>--}} 
 <!-- ============ End Customizer ============= -->

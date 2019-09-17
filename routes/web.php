@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +43,16 @@ Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_ve
 Route::view('admin/usuarios','users.create')->name('usuarios');
 Route::view('admin/permisos','users.index')->name('permisos');
 //1.1 Usuarios
+
+Route::view('roles','roles.index')->name('roles');//si
+Route::view('roles/create','roles.create')->name('create');//si
+Route::view('roles/edit','roles.edit')->name('edit');//si
+Route::resource('roles','RolesController'); //si
+
+Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
+Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
+Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
+Route::resource('beneficiarios','BeneficiariosController');
 
 
 // uiKits

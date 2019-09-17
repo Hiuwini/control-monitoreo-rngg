@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="card">
+            <div class="card">
                     <div class="card-header" id="headingThree">
                         <p class="mb-0">
                             Bootstrap Colors
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div> 
 
         </div>
     </div>

@@ -128,9 +128,28 @@
             <li class="nav-item ">
                 <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{route('usuarios')}}">
                     <i class="nav-icon i-Administrator"></i>
-                    <span class="item-name">Usuarios</span>
+                    <span class="item-name">usuarios</span>
                 </a>
-            </li> 
+            </li>
+            
+        </ul>
+
+        <ul class="childNav" data-parent="admin">
+          <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('roles')}}">
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">roles</span>
+                </a>
+            </li>
+        </ul>
+
+         <ul class="childNav" data-parent="admin">
+          <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('beneficiarios')}}">
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">beneficiarios</span>
+                </a>
+            </li>
         </ul>
         
         <ul class="childNav" data-parent="forms">
