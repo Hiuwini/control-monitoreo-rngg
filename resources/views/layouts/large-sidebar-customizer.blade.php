@@ -1,5 +1,9 @@
 <!-- ============ Customizer ============= -->
+<<<<<<< HEAD
 {{--<div class="customizer open">
+=======
+<!--<div class="customizer open">
+>>>>>>> 42fc4483a47850fa077c26898a77ddb5811da5a1
     <div class="handle" (click)="isOpen = !isOpen">
         <i class="i-Gear spin"></i>
     </div>
@@ -62,5 +66,9 @@
 
         </div>
     </div>
+<<<<<<< HEAD
 </div>--}} 
+=======
+</div>-->
+>>>>>>> 42fc4483a47850fa077c26898a77ddb5811da5a1
 <!-- ============ End Customizer ============= -->

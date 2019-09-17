@@ -126,7 +126,7 @@
 
         <ul class="childNav" data-parent="admin">
             <li class="nav-item ">
-                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{route('usuarios')}}">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{route('users.index')}}">
                     <i class="nav-icon i-Administrator"></i>
                     <span class="item-name">usuarios</span>
                 </a>
