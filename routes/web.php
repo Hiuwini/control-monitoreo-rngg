@@ -41,7 +41,7 @@ Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_ve
 
 //1 Administracion
 
-<<<<<<< HEAD
+
 Route::view('roles','roles.index')->name('roles');//si
 Route::view('roles/create','roles.create')->name('create');//si
 Route::view('roles/edit','roles.edit')->name('edit');//si
