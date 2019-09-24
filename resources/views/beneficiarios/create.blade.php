@@ -55,35 +55,35 @@
 
                             <br>
 
-                            <div class="col-md-8">
-                                <label>Género</label>
-                                <input type="text" name="genero" class="form-control input-lg" value="{{ old('genero') }}"/>
-                            </div>
-
-                               <div class="col-md-8">
-                                <label>Tipo Beneficiario</label>
-                                <input type="text" name="tipobeneficiario" class="form-control input-lg" value="{{ old('tipobeneficiario') }}"/>
-                            </div>
-
                            {{-- <div class="col-md-8">
                                 <label>Género</label>
-                                <select name="id" id="inputId" class="form-control" >
-                                    <option value="">-- Escoja el género --</option>
-                                    @foreach ($generos as $genero)
-                                    <option value="{{ $genero['id'] }}" >{{ $genero['genero']}}</option>
-                                    @endforeach                                    
-                                </select>
+                                <input type="text" name="genero" class="form-control input-lg" value="{{ old('genero') }}"/>
                             </div>--}}
 
-                            {{--<div class="col-md-8">
+                               {{--<div class="col-md-8">
                                 <label>Tipo Beneficiario</label>
-                                <select name="id" id="inputId" class="form-control" >
-                                    <option value="">-- Escoja el tipo de beneficiario --</option>
-                                    @foreach ($tipobeneficiarios as $tipobeneficiario)
-                                    <option value="{{ $tipobeneficiario['id'] }}" >{{ $tipobeneficiario['nombrebeneficiario']}}</option>
+                                <input type="text" name="tipobeneficiario" class="form-control input-lg" value="{{ old('tipobeneficiario') }}"/>
+                            </div>--}}
+
+                            <div class="col-md-8">
+                                <label>Género</label>
+                                <select name="genero" id="generoId" class="form-control" >
+                                    <option value="">-- Escoja el género --</option>
+                                    @foreach ($generos as $genero)
+                                    <option value="{{ $genero['genero'] }}" >{{ $genero['genero']}}</option>
                                     @endforeach                                    
                                 </select>
-                            </div>--}}
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Tipo Beneficiario</label>
+                                <select name="nombrebeneficiario" id="tipobeneficiarioId" class="form-control" >
+                                    <option value="">-- Escoja el tipo de beneficiario --</option>
+                                    @foreach ($tipobeneficiarios as $tipobeneficiario)
+                                    <option value="{{ $tipobeneficiario['nombrebeneficiario'] }}" >{{ $tipobeneficiario['nombrebeneficiario']}}</option>
+                                    @endforeach                                    
+                                </select>
+                            </div>
 
 
                              <div class="form-group text-left">

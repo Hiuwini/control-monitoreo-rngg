@@ -53,7 +53,7 @@ class BeneficiariosController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [ 'nombrebeneficiario' => 'required', 'apellidobeneficiario' => 'required','telefono' => 'required|numeric','genero' => 'required','tipobeneficiario' => 'required']);
+        $this->validate($request, [ 'nombrebeneficiario' => 'required', 'apellidobeneficiario' => 'required','telefono' => 'required|numeric','genero'=> 'required','tipobeneficiario'=> 'required']);
         
         $beneficiarios = new Beneficiarios();
  
@@ -61,7 +61,7 @@ class BeneficiariosController extends Controller
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->tipobeneficiario = request('tipobeneficiario');
+        $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
         
         $beneficiarios->save();
  
