@@ -41,7 +41,7 @@ Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_ve
 
 //1 Administracion
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 Route::view('roles','roles.index')->name('roles');//si
 Route::view('roles/create','roles.create')->name('create');//si
 Route::view('roles/edit','roles.edit')->name('edit');//si
@@ -52,7 +52,7 @@ Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 
-=======
+//=======
 //1.1 Usuarios
 Route::get('/admin/users','UserController@index')->name('users.index');
 Route::get('/admin/users/create','UserController@create')->name('users.create');
@@ -60,7 +60,7 @@ Route::post('/admin/users/store','UserController@store');
 Route::get('/admin/users/{id}/edit','UserController@edit')->name('users.edit');
 Route::put('/admin/users/{id}','UserController@update');
 Route::delete('/admin/users/{id}','UserController@destroy');
->>>>>>> 42fc4483a47850fa077c26898a77ddb5811da5a1
+//>>>>>>> 42fc4483a47850fa077c26898a77ddb5811da5a1
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
