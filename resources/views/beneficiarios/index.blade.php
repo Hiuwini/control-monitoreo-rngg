@@ -11,7 +11,7 @@
                 <h1>Beneficiarios</h1>
                 <ul>
                     
-                    <li><a href="">Administración</a></li>
+                    <li><a href="">GESTION</a></li>
                     
                 </ul>
             </div>
