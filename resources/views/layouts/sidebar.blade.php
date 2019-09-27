@@ -151,6 +151,15 @@
                 </a>
             </li>
         </ul>
+
+        <ul class="childNav" data-parent="admin">
+          <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('producto')}}">
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">Productos</span>
+                </a>
+            </li>
+        </ul>
         
         <ul class="childNav" data-parent="forms">
 

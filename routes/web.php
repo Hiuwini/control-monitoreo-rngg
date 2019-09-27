@@ -65,7 +65,9 @@ Route::delete('/admin/users/{id}','UserController@destroy');
 //Productos
 
 Route::view('producto','producto.index')->name('producto');//si
-Route::resource('productos', 'ProductoController');
+Route::view('producto/create','producto.create')->name('create');//si
+Route::resource('producto', 'ProductoController');
+Route::view('producto/edit','producto.edit')->name('edit');//si
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

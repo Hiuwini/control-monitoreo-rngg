@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -16,7 +16,7 @@ class ProductoController extends Controller
         //
         $producto = Producto::orderBy('id','ASC')->paginate(10);
         //$roles = Roles::latest()->paginate(5);
-        return view('producto.index', compact('productos'))->with('i',(request()->input('page', 1) - 1) *10);
+        return view('producto.index', compact('producto'))->with('i',(request()->input('page', 1) - 1) *10);
     }
 
     /**
@@ -40,13 +40,12 @@ class ProductoController extends Controller
     {
         //
         $this->validate($request, ['componente' => 'required']);
-
-        $producto = new Producto();
- 
-        $producto->componente = request('componente');
-        
-        $roles->save();
- 
+        $producto = new Producto(); 
+        $producto->componente = request('componente');        
+        $producto->id_categoria= request('id_categoria');
+        $producto->id_proyecto= request('id_proyecto');
+        $producto->status = ( $request->status == 'on') ? true:false;
+        $producto->save(); 
         return redirect('/producto');
     }
 
@@ -70,6 +69,9 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
+        $producto = Producto::findOrFail($id);
+         return view('producto.edit',compact('producto'));
+     
     }
 
     /**
@@ -82,6 +84,18 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'componente' => 'required']);
+             
+             $form_data = array('componente' => $request->componente,
+                                'id_categoria'=> $request->id_categoria,
+                                'id_proyecto' => $request->id_proyecto,
+                                'status' => (( $request->status == 'on') ? true:false )
+                            );
+                            Producto::whereId($id)->update($form_data);
+
+             return redirect('producto')->with('success','Rol actualizado correctamente!');
+      
     }
 
     /**
@@ -93,5 +107,8 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         //
+        $producto = Producto::find($id);
+        $producto->delete();
+        return redirect('/producto');
     }
 }
