@@ -154,9 +154,15 @@
 
         <ul class="childNav" data-parent="admin">
           <li class="nav-item">
+<<<<<<< HEAD
                 <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('colaboradores')}}">
                     <i class="nav-icon i-Clock-4"></i>
                     <span class="item-name">colaboradores</span>
+=======
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('producto')}}">
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">Productos</span>
+>>>>>>> e1ec966c8ed4139d3f9c0cfb5124263c92784cff
                 </a>
             </li>
         </ul>

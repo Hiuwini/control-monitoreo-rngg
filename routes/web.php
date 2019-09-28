@@ -66,6 +66,13 @@ Route::put('/admin/users/{id}','UserController@update');
 Route::delete('/admin/users/{id}','UserController@destroy');
 //>>>>>>> 42fc4483a47850fa077c26898a77ddb5811da5a1
 
+//Productos
+
+Route::view('producto','producto.index')->name('producto');//si
+Route::view('producto/create','producto.create')->name('create');//si
+Route::resource('producto', 'ProductoController');
+Route::view('producto/edit','producto.edit')->name('edit');//si
+
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
 Route::view('uikits/accordion', 'uiKits.accordion')->name('accordion');
