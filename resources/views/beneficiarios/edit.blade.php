@@ -38,10 +38,45 @@
                                     </div>
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Apellido</label>
                                     <div class="col-md-8">
                                         <input type="text" name="apellidobeneficiario" value="{{ $beneficiarios->apellidobeneficiario }}" class="form-control input-lg" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Género</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="genero" value="{{ $beneficiarios->genero }}" class="form-control input-lg" />
+                                    </div>
+                                </div>
+
+                                 <div class="form-group">
+                                    <label>Etnia</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="etnia" value="{{ $beneficiarios->etnia }}" class="form-control input-lg" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Rango de Edad</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="rangoedad" value="{{ $beneficiarios->rangoedad }}" class="form-control input-lg" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ubicación</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="ubicacion" value="{{ $beneficiarios->ubicacion }}" class="form-control input-lg" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>DPI / CUI</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="dpicui" value="{{ $beneficiarios->dpicui }}" class="form-control input-lg" />
                                     </div>
                                 </div>
 
@@ -52,10 +87,17 @@
                                     </div>
                                 </div>
 
-                                  <div class="form-group">
-                                    <label>Género</label>
+                                <div class="form-group">
+                                    <label>Correo Electrónico</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="genero" value="{{ $beneficiarios->genero }}" class="form-control input-lg" />
+                                        <input type="text" name="emailbeneficiario" value="{{ $beneficiarios->emailbeneficiario }}" class="form-control input-lg" />
+                                    </div>
+                                </div>  
+
+                                <div class="form-group">
+                                    <label>Indicador</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="indicador" value="{{ $beneficiarios->indicador }}" class="form-control input-lg" />
                                     </div>
                                 </div>
 

@@ -47,24 +47,7 @@
                                 <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>
                             </div>
-
-                            <div class="col-md-8">
-                                <label>Teléfono</label>
-                                <input type="text" name="telefono" class="form-control input-lg" value="{{ old('telefono') }}"/>
-                            </div>
-
-                            <br>
-
-                           {{-- <div class="col-md-8">
-                                <label>Género</label>
-                                <input type="text" name="genero" class="form-control input-lg" value="{{ old('genero') }}"/>
-                            </div>--}}
-
-                               {{--<div class="col-md-8">
-                                <label>Tipo Beneficiario</label>
-                                <input type="text" name="tipobeneficiario" class="form-control input-lg" value="{{ old('tipobeneficiario') }}"/>
-                            </div>--}}
-
+                          
                             <div class="col-md-8">
                                 <label>Género</label>
                                 <select name="genero" id="generoId" class="form-control" >
@@ -76,14 +59,46 @@
                             </div>
 
                             <div class="col-md-8">
-                                <label>Tipo Beneficiario</label>
-                                <select name="nombrebeneficiario" id="tipobeneficiarioId" class="form-control" >
-                                    <option value="">-- Escoja el tipo de beneficiario --</option>
-                                    @foreach ($tipobeneficiarios as $tipobeneficiario)
-                                    <option value="{{ $tipobeneficiario['nombrebeneficiario'] }}" >{{ $tipobeneficiario['nombrebeneficiario']}}</option>
-                                    @endforeach                                    
-                                </select>
+                                <label>Etnia</label>
+                                <input type="text" name="etnia" class="form-control input-lg" value="{{ old('etnia') }}"/>
                             </div>
+
+                            <div class="col-md-8">
+                                <label>Rango de Edad</label>
+                                <input type="text" name="rangoedad" class="form-control input-lg" value="{{ old('rangoedad') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Ubicación</label>
+                                <input type="text" name="ubicacion" class="form-control input-lg" value="{{ old('ubicacion') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>DPI / CUI</label>
+                                <input type="text" name="dpicui" class="form-control input-lg" value="{{ old('dpicui') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Teléfono</label>
+                                <input type="text" name="telefono" class="form-control input-lg" value="{{ old('telefono') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Correo electrónico</label>
+                                <input type="text" name="emailbeneficiario" class="form-control input-lg" value="{{ old('emailbeneficiario') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Indicador</label>
+                                <input type="text" name="indicador" class="form-control input-lg" value="{{ old('indicador') }}"/>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>Tipo Beneficiario</label>
+                                <input type="text" name="tipobeneficiario" class="form-control input-lg" value="{{ old('tipobeneficiario') }}"/>
+                            </div>
+
+                            
 
 
                              <div class="form-group text-left">
