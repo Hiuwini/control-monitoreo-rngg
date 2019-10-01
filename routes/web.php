@@ -73,6 +73,10 @@ Route::view('producto/create','producto.create')->name('create');//si
 Route::resource('producto', 'ProductoController');
 Route::view('producto/edit','producto.edit')->name('edit');//si
 
+//Metas
+Route::view('metas','metas.index')->name('metas');
+Route::resource('metas', 'MetaController');
+
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
 Route::view('uikits/accordion', 'uiKits.accordion')->name('accordion');
