@@ -35,6 +35,8 @@
                                     <label>Nombre</label>
                                     <div class="col-md-8">
                                         <input type="text" name="nombrebeneficiario" value="{{ $beneficiarios->nombrebeneficiario }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el nombre del beneficiario.</small>
                                     </div>
                                 </div>
 
@@ -42,6 +44,8 @@
                                     <label>Apellido</label>
                                     <div class="col-md-8">
                                         <input type="text" name="apellidobeneficiario" value="{{ $beneficiarios->apellidobeneficiario }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el apellido del beneficiario.</small>
                                     </div>
                                 </div>
 
@@ -77,13 +81,17 @@
                                     <label>DPI / CUI</label>
                                     <div class="col-md-8">
                                         <input type="text" name="dpicui" value="{{ $beneficiarios->dpicui }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el DPI/CUI del beneficiario.</small>
                                     </div>
                                 </div>
 
                                   <div class="form-group">
                                     <label>Teléfono</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="telefono" value="{{ $beneficiarios->telefono }}" class="form-control input-lg" />
+                                        <input type="text" name="telefono" value="{{ $beneficiarios->telefono }}" class="form-control input-lg" />}
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el telefono del beneficiario.</small>
                                     </div>
                                 </div>
 
@@ -91,6 +99,8 @@
                                     <label>Correo Electrónico</label>
                                     <div class="col-md-8">
                                         <input type="text" name="emailbeneficiario" value="{{ $beneficiarios->emailbeneficiario }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el correo electrónico del beneficiario.</small>
                                     </div>
                                 </div>  
 
@@ -98,6 +108,8 @@
                                     <label>Indicador</label>
                                     <div class="col-md-8">
                                         <input type="text" name="indicador" value="{{ $beneficiarios->indicador }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el indicador del beneficiario.</small>
                                     </div>
                                 </div>
 
@@ -105,6 +117,8 @@
                                     <label>Tipo Beneficiario</label>
                                     <div class="col-md-8">
                                         <input type="text" name="tipobeneficiario" value="{{ $beneficiarios->tipobeneficiario }}" class="form-control input-lg" />
+                                        <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el tipo del beneficiario.</small>
                                     </div>
                                 </div>
 

@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Beneficiarios;
 use App\Generos;
 use App\Tipobeneficiarios;
-use App\Etnias;
-use App\Rangoedades;
-use App\Ubicacion;
 use Illuminate\Http\Request;
 
 class BeneficiariosController extends Controller
@@ -45,10 +42,9 @@ class BeneficiariosController extends Controller
     {
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
-        $ubicaciones=Ubicacion::all();
-        $etnias=Etnias::all();
       
-       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'), compact('etnias'));
+      
+       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'));
        
 
     }
@@ -68,7 +64,7 @@ class BeneficiariosController extends Controller
         'genero'=> 'required',
         'etnia'=> 'required',
         'rangoedad'=> 'required',
-        'ubicacion'=> 'required',
+        'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
         'telefono' => 'required|numeric',
         'emailbeneficiario'=> 'required',
@@ -82,7 +78,7 @@ class BeneficiariosController extends Controller
         $beneficiarios->genero = request('genero');
         $beneficiarios->etnia = request('etnia');
         $beneficiarios->rangoedad = request('rangoedad');
-        $beneficiarios->ubicacion = request('ubicacion');
+        $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
@@ -137,7 +133,7 @@ class BeneficiariosController extends Controller
                             'genero' => $request->genero,
                             'etnia' => $request->etnia,
                             'rangoedad' => $request->rangoedad,
-                            'ubicacion' => $request->ubicacion,
+                            'nombreubicacion' => $request->nombreubicacion,
                             'dpicui' => $request->dpicui,
                             'telefono' => $request->telefono,
                             'emailbeneficiario' => $request->emailbeneficiario,

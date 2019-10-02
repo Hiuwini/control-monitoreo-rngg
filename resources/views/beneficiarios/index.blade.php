@@ -55,7 +55,7 @@
                                                  <td>{{ $beneficario->genero}}</td>
                                                  <td>{{ $beneficario->etnia}}</td>
                                                  <td>{{ $beneficario->rangoedad}}</td>
-                                                 <td>{{ $beneficario->ubicacion}}</td>
+                                                 <td>{{ $beneficario->nombreubicacion}}</td>
                                                  <td>{{ $beneficario->dpicui}}</td>
                                                  <td>{{ $beneficario->telefono}}</td>
                                                  <td>{{ $beneficario->emailbeneficiario}}</td>
