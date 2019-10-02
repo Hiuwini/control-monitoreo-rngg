@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipobeneficiarios;
+use App\Rangoedades;
 use App\Beneficiarios;
 use Illuminate\Http\Request;
 
-class TipobeneficiariosController extends Controller
+class RangoedadesController extends Controller
 {
 	    public function create()
     {
-        $tipobeneficiarios = Tipobeneficiarios::all();
+        $rangoedades = Rangoedades::all();
         $beneficiarios = Beneficiarios::all();
         //return view('beneficiarios/index', compact('beneficiarios'));
 

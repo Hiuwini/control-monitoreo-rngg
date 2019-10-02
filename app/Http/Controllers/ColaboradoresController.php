@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Colaboradores;
 use App\Generos;
+use App\Ubicacion;
 
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class ColaboradoresController extends Controller
     public function create()
     {
         $generos = Generos::all();
-        
+       
        return view('colaboradores.create', compact('generos'));
 
     }

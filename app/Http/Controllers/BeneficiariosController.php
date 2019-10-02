@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Beneficiarios;
 use App\Generos;
 use App\Tipobeneficiarios;
-use APP\Etnias;
-use App\Rango;
+use App\Etnias;
+use App\Rangoedades;
 use App\Ubicacion;
 use Illuminate\Http\Request;
 
@@ -23,6 +23,8 @@ class BeneficiariosController extends Controller
         $beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(10);
         return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);
 
+        
+       
         //$generos = Generos::all();
 
 
@@ -43,8 +45,11 @@ class BeneficiariosController extends Controller
     {
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
+        $ubicaciones=Ubicacion::all();
+        $etnias=Etnias::all();
+      
+       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'), compact('etnias'));
        
-       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'));
 
     }
 
