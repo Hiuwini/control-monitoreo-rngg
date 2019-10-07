@@ -57,7 +57,7 @@
                                                 Seleccione el proyecto al que va a pertenecer el producto
                                             </small>
                                             </div>
-
+ 
                                         </div>
                                         <div class="custom-separator"></div>
                                         <div class="card-title">Estado del producto:</div>

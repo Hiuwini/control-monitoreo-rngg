@@ -52,6 +52,7 @@ Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 
+
 Route::view('colaboradores','colaboradores.index')->name('colaboradores');
 Route::view('colaboradores/create','colaboradores.create')->name('create');//si
 Route::view('colaboradores/edit','colaboradores.edit')->name('edit');

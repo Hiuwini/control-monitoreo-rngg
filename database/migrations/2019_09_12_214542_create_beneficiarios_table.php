@@ -17,8 +17,14 @@ class CreateBeneficiariosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombrebeneficiario');
             $table->string('apellidobeneficiario');
-            $table->bigInteger('telefono');
             $table->string('genero');
+            $table->string('etnia');
+            $table->string('rangoedad');
+            $table->string('nombreubicacion');
+            $table->string('dpicui');
+            $table->bigInteger('telefono');
+            $table->string('emailbeneficiario');
+            $table->string('indicador');
             $table->string('tipobeneficiario');
 
             $table->timestamps();

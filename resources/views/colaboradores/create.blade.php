@@ -41,57 +41,75 @@
                             <div class="col-md-8">
                                 <label>Nombre</label>
                                 <input type="text" name="nombrecolaborador" class="form-control input-lg" value="{{ old('nombrecolaborador') }}" />
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el nombre del colaborador.</small>
                             </div>
 
                              <div class="col-md-8">
                                 <label>Apellido</label>
                                 <input type="text" name="apellidocolaborador" class="form-control input-lg" value="{{ old('apellidocolaborador') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el apellido del colaborador.</small>
                             </div>
 
                             <div class="col-md-8">
                                 <label>Dirección</label>
                                 <input type="text" name="direccioncolaborador" class="form-control input-lg" value="{{ old('direccioncolaborador') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese la direccion del colaborador.</small>
                             </div>
                             
                             <div class="col-md-8">
                                 <label>Teléfono</label>
                                 <input type="text" name="telefonocolaborador" class="form-control input-lg" value="{{ old('telefonocolaborador') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el telefono del colaborador.</small>
                             </div>
 
                             <br>
                             <div class="col-md-8">
                                 <label>Email</label>
                                 <input type="text" name="emailcolaborador" class="form-control input-lg" value="{{ old('emailcolaborador') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el correo electrónico del colaborador.</small>
                             </div>
-                           {{-- <div class="col-md-8">
-                                <label>Género</label>
-                                <input type="text" name="genero" class="form-control input-lg" value="{{ old('genero') }}"/>
-                            </div>--}}
-
-
-                            <div class="col-md-8">
+                           <div class="col-md-8">
                                 <label>Género</label>
                                 <select name="genero" id="generoId" class="form-control" >
-                                    <option value="">-- Escoja el género --</option>
-                                    @foreach ($generos as $genero)
-                                    <option value="{{ $genero['genero'] }}" >{{ $genero['genero']}}</option>
-                                    @endforeach                                    
+                                    <option value="">-- Seleccione el género --</option>
+                                    <option value="Femenino">Femenino</option>     
+                                    <option value="Masculino">Masculino</option>                              
                                 </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione el género del colaborador.</small>
                             </div>
 
                             <div class="col-md-8">
                                 <label>Fecha de Nacimiento</label>
                                 <input type="text" name="fechanacimiento" class="form-control input-lg" value="{{ old('fechanacimiento') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese la fecha de nacimiento del colaborador.</small>
                             </div>
 
                             <div class="col-md-8">
-                                <label>Nivel acdémico</label>
-                                <input type="text" name="nivelacademico" class="form-control input-lg" value="{{ old('nivelacademico') }}"/>
+                                <label>Nivel académico</label>
+                                <select name="nivelacademico" id="nivelacademicoId" class="form-control" >
+                                    <option value="">-- Escoja el nivel académico del colaborador --</option>
+                                    <option value="Primaria">Primaria</option>     
+                                    <option value="Básico">Básico</option>                              
+                                    <option value="Diversificado">Diversificado</option> 
+                                    <option value="Técnico">Técnico</option> 
+                                    <option value="Universitario">Universitario</option> 
+                                </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione el nivel académico del colaborador.</small>
                             </div>
 
                             <div class="col-md-8">
                                 <label>Titulo Obtenido</label>
                                 <input type="text" name="titulo" class="form-control input-lg" value="{{ old('titulo') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el nombre del Titulo del colaborador.</small>
                             </div>
 
                              <div class="form-group text-left">
@@ -103,220 +121,6 @@
                                         <a style="margin: 19px;" href="{{ url('colaboradores')}}" class="btn btn-primary">Regresar</a>
                                     </div> 
                                     </form>   
- 
-
-                            <div class="card-title">Switch</div>
-
-                            <label class="switch switch-primary mr-3">
-                                <span>Primary</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-secondary mr-3">
-                                <span>Secondary</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-success mr-3">
-                                <span>Success</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-warning mr-3">
-                                <span>Warning</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-danger mr-3">
-                                <span>Danger</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-light mr-3">
-                                <span>Light</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-dark mr-3">
-                                <span>Dark</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Checkbox Default</div>
-                            <label class="checkbox checkbox-primary">
-                                <input type="checkbox" checked>
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-secondary">
-                                <input type="checkbox" checked>
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-success">
-                                <input type="checkbox" checked>
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-warning">
-                                <input type="checkbox" checked>
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-danger">
-                                <input type="checkbox" checked>
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-info">
-                                <input type="checkbox" checked>
-                                <span>Info</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-dark">
-                                <input type="checkbox" checked>
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Checkbox Outline</div>
-                            <label class="checkbox checkbox-outline-primary">
-                                <input type="checkbox" checked>
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-secondary">
-                                <input type="checkbox" checked>
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-success">
-                                <input type="checkbox" checked>
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-warning">
-                                <input type="checkbox" checked>
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-danger">
-                                <input type="checkbox" checked>
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-info">
-                                <input type="checkbox" checked>
-                                <span>Info</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-dark">
-                                <input type="checkbox" checked>
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body" [formGroup]="radioGroup">
-                            <div class="card-title">Radio Button</div>
-                            <label class="radio radio-primary">
-                                <input type="radio" name="radio" [value]="1" formControlName="radio">
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-secondary">
-                                <input type="radio" name="radio" [value]="2" formControlName="radio">
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-success">
-                                <input type="radio" name="radio" [value]="3" formControlName="radio">
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-warning">
-                                <input type="radio" name="radio" [value]="4" formControlName="radio">
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-danger">
-                                <input type="radio" name="radio" [value]="5" formControlName="radio">
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-light">
-                                <input type="radio" name="radio" [value]="6" formControlName="radio">
-                                <span>Light</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-dark">
-                                <input type="radio" name="radio" [value]="7" formControlName="radio">
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body" [formGroup]="radioGroup">
-                            <div class="card-title">Radio Button Outline</div>
-                            <label class="radio radio-outline-primary">
-                                <input type="radio" name="radio" [value]="1" formControlName="radio">
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-secondary">
-                                <input type="radio" name="radio" [value]="2" formControlName="radio">
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-success">
-                                <input type="radio" name="radio" [value]="3" formControlName="radio">
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-warning">
-                                <input type="radio" name="radio" [value]="4" formControlName="radio">
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-danger">
-                                <input type="radio" name="radio" [value]="5" formControlName="radio">
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-light">
-                                <input type="radio" name="radio" [value]="6" formControlName="radio">
-                                <span>Light</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-dark">
-                                <input type="radio" name="radio" [value]="7" formControlName="radio">
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Generos;
 use App\Beneficiarios;
+
 use Illuminate\Http\Request;
 
 class GenerosController extends Controller
@@ -12,6 +13,7 @@ class GenerosController extends Controller
     {
         $generos = Generos::all();
         $beneficiarios = Beneficiarios::all();
+       
         //return view('beneficiarios/index', compact('beneficiarios'));
 
     }
