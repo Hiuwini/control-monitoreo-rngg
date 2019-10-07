@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Meta;
+use Carbon\Carbon;
+use App\Producto;
 
 class MetaController extends Controller
 {
@@ -28,7 +31,9 @@ class MetaController extends Controller
     public function create()
     {
         //
-        return view('metas.create');
+        $productos = Producto::all();
+        return view('metas.create', compact('productos'));
+        
     }
 
     /**
@@ -41,8 +46,17 @@ class MetaController extends Controller
     {
         //
         $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_producto'=>'required']);
-        Meta::create($request->all());
-        return redirect()->route('meta.index')->with('success','Meta agregada satisfactoriamente');
+        //Meta::create($request->all());
+
+       
+        $meta = new Meta(); 
+        $meta->nombre = request('nombre');        
+        $meta->fecha_limite= Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString();
+        $meta->id_producto= request('id_producto');
+        $meta->estado = ( $request->estado == 'on') ? true:false;
+        $meta->save();      
+
+        return redirect()->route('metas.index')->with('success','Meta agregada satisfactoriamente');
     }
 
     /**
@@ -65,6 +79,10 @@ class MetaController extends Controller
     public function edit($id)
     {
         //
+        $metas = Meta::findOrFail($id);
+
+        $productos = Producto::all();       
+         return view('metas.edit',compact('metas','productos'));
     }
 
     /**
@@ -77,6 +95,16 @@ class MetaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_producto'=>'required']);
+             
+             $form_data = array('nombre' => $request->nombre,
+                                'fecha_limite'=> Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString(),
+                                'id_producto' => $request->id_producto,
+                                'estado' => (( $request->estado == 'on') ? true:false )
+                            );
+                            Meta::whereId($id)->update($form_data);
+
+             return redirect('metas')->with('success','Meta Actualizada correctamente!');
     }
 
     /**
@@ -88,5 +116,8 @@ class MetaController extends Controller
     public function destroy($id)
     {
         //
+        $metas = Meta::find($id);
+        $metas->delete();
+        return redirect('/metas');
     }
 }

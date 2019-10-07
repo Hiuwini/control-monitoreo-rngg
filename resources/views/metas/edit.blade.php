@@ -17,11 +17,12 @@
                         <div class="col-lg-6 mb-3">
                             <div class="card">
                                 <div class="card-header bg-transparent">
-                                    <h3 class="card-title"> Ingreso Nueva Meta</h3>
+                                    <h3 class="card-title"> Editando Meta</h3>
                                 </div>
                                 <!--begin::form-->
-                                <form action="/metas" method="POST">
+                                <form action="{{ route( 'metas.update', $metas->id) }}" enctype="multipart/form-data" method="POST">
                                 {{ csrf_field() }}
+                                @method('PATCH')  
                                 @if (count($errors) > 0)
                                 <div class="alert alert-danger">
                                     <ul>
@@ -37,14 +38,14 @@
                                         <div class="form-row ">
                                             <div class="form-group col-md-12">
                                                 <label for="inputEmail4" class="ul-form__label">Nombre:</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre de la meta" />
+                                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre de la meta"  value="{{ $metas->nombre }} "/>
                                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                                 Por favor ingrese el nombre de la meta.
                                             </small>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="inputEmail4" class="ul-form__label">Fecha: </label>
-                                                <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" placeholder="Escriba la fecha limite" />
+                                                <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" placeholder="Escriba la fecha limite" value="{{ $metas->fecha_limite }}"/>
                                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">
                                                 Ingrese la fecha en que debe cumplirse la meta.
                                             </small>
@@ -68,7 +69,7 @@
                                         <div class="custom-separator"></div>
                                         <div class="card-title">Estado de la meta:</div>
                                         <label class="checkbox checkbox-primary">
-                                        <input type="checkbox" checked="" name="estado" />
+                                        <input type="checkbox" checked="{{ $metas->estado }}" name="estado" />
                                         <span>Habilitar</span>
                                         <span class="checkmark"></span>
                                     </label>
@@ -78,7 +79,7 @@
                                         <div class="mc-footer">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <button type="submit" class="btn btn-success m-1">Agregar</button>
+                                                    <button type="submit" class="btn btn-success m-1">Guardar Cambios</button>
                                                     <a href="{{ url('metas')}}"> <button type="button" class="btn btn-danger m-1">Cancelar</button> </a>
                                                 </div>
                                             </div>

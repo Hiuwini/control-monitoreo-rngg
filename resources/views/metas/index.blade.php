@@ -41,19 +41,23 @@
                             <th scope="row"> {{ $loop->iteration }} </th>
                             <td>{{ $meta->nombre }}</td>
                             <td> {{ $meta->fecha_limite}} </td>
-                            <td> {{$meta->id_producto}} </td>
+                            
+                            <td> {{$meta->id_producto}} </td>                          
+                                
+                            
+
                             <td>
-                            @if ($meta->status == true)
+                            @if ($meta->estado == true)
                             <span class="badge badge-success">Activo</span></td>
                             @else
                             <span class="badge badge-warning">Inactivo</span></td>
                             @endif
-                            <form action="{{ route('metas.destroy', $p->id) }}" method="POST">                                                    
+                            <form action="{{ route('metas.destroy', $meta->id) }}" method="POST">                                                    
                             @csrf
                             @method('DELETE')
                             
                             <td>
-                                <a href="{{ route('metas.edit', $p->id)}}"> <button type="button" class="btn btn-success "> 
+                                <a href="{{ route('metas.edit', $meta->id)}}"> <button type="button" class="btn btn-success "> 
                                 <i class="nav-icon i-Pen-2 "></i>
                             </button> </a>
 

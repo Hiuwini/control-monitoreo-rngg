@@ -75,6 +75,7 @@ Route::view('producto/edit','producto.edit')->name('edit');//si
 
 //Metas
 Route::view('metas','metas.index')->name('metas');
+Route::view('metas/edit','metas.edit')->name('edit');//si
 Route::resource('metas', 'MetaController');
 
 // uiKits
