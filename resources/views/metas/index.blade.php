@@ -42,10 +42,10 @@
                             <td>{{ $meta->nombre }}</td>
                             <td> {{ $meta->fecha_limite}} </td>
                             
-                            @foreach($productos as $producto)
-                            <td> {{$producto->componente}} </td>
+                            
+                            <td> {{$meta->id_producto}} </td>
                                 
-                            @endforeach
+                            
 
                             <td>
                             @if ($meta->estado == true)
@@ -67,8 +67,9 @@
                             </button>
                             </form>
                             </td>
-                        </tr>                        
-                        @endforeach
+                        </tr>
+                        @endforeach                        
+                        
                     </tbody>
                 </table>
             </div>
