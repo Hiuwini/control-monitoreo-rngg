@@ -42,9 +42,10 @@
                             <td>{{ $meta->nombre }}</td>
                             <td> {{ $meta->fecha_limite}} </td>
                             
-                            <td> {{$meta->id_producto}} </td>                          
+                            @foreach($productos as $producto)
+                            <td> {{$producto->componente}} </td>
                                 
-                            
+                            @endforeach
 
                             <td>
                             @if ($meta->estado == true)

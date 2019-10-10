@@ -19,8 +19,11 @@ class MetaController extends Controller
     {
         //
         $metas = Meta::orderBy('id','ASC')->paginate(10);
+        $productos = Producto::orderBy('id','ASC')->paginate(10);
         //$roles = Roles::latest()->paginate(5);
-        return view('metas.index', compact('metas'))->with('i',(request()->input('page', 1) - 1) *10);
+        return view('metas.index', compact('metas'),compact('productos'))->with('i',(request()->input('page', 1) - 1) *10);
+        
+        
     }
 
     /**
