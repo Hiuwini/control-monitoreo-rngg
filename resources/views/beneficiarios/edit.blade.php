@@ -30,8 +30,8 @@
                                 
                                 @csrf
                                 @method('PATCH')
-                                
-                                   <div class="form-group">
+                                <div class="row">
+                                   <div class="col-md-6 form-group mb-3">
                                     <label>Nombre</label>
                                     <div class="col-md-8">
                                         <input type="text" name="nombrebeneficiario" value="{{ $beneficiarios->nombrebeneficiario }}" class="form-control input-lg" />
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Apellido</label>
                                     <div class="col-md-8">
                                         <input type="text" name="apellidobeneficiario" value="{{ $beneficiarios->apellidobeneficiario }}" class="form-control input-lg" />
@@ -49,35 +49,40 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Género</label>
                                     <div class="col-md-8">
                                         <input type="text" name="genero" value="{{ $beneficiarios->genero }}" class="form-control input-lg" />
+                                    <select name="genero" id="generoId" value="{{$beneficiarios->genero}}" class="form-control" >
+                                    <option value="">-- Seleccione el género --</option>
+                                    <option value="Femenino">Femenino</option>    
+                                    <option value="Masculino">Masculino</option>                                
+                                </select>
                                     </div>
                                 </div>
 
-                                 <div class="form-group">
+                                 <div class="col-md-6 form-group mb-3">
                                     <label>Etnia</label>
                                     <div class="col-md-8">
                                         <input type="text" name="etnia" value="{{ $beneficiarios->etnia }}" class="form-control input-lg" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Rango de Edad</label>
                                     <div class="col-md-8">
                                         <input type="text" name="rangoedad" value="{{ $beneficiarios->rangoedad }}" class="form-control input-lg" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Ubicación</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="ubicacion" value="{{ $beneficiarios->ubicacion }}" class="form-control input-lg" />
+                                        <input type="text" name="nombreubicacion" value="{{ $beneficiarios->nombreubicacion }}" class="form-control input-lg" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>DPI / CUI</label>
                                     <div class="col-md-8">
                                         <input type="text" name="dpicui" value="{{ $beneficiarios->dpicui }}" class="form-control input-lg" />
@@ -86,16 +91,16 @@
                                     </div>
                                 </div>
 
-                                  <div class="form-group">
+                                  <div class="col-md-6 form-group mb-3">
                                     <label>Teléfono</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="telefono" value="{{ $beneficiarios->telefono }}" class="form-control input-lg" />}
+                                        <input type="bigint" name="telefono" value="{{ $beneficiarios->telefono }}" class="form-control input-lg" />}
                                         <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el telefono del beneficiario.</small>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Correo Electrónico</label>
                                     <div class="col-md-8">
                                         <input type="text" name="emailbeneficiario" value="{{ $beneficiarios->emailbeneficiario }}" class="form-control input-lg" />
@@ -104,7 +109,7 @@
                                     </div>
                                 </div>  
 
-                                <div class="form-group">
+                                <div class="col-md-6 form-group mb-3">
                                     <label>Indicador</label>
                                     <div class="col-md-8">
                                         <input type="text" name="indicador" value="{{ $beneficiarios->indicador }}" class="form-control input-lg" />
@@ -113,7 +118,7 @@
                                     </div>
                                 </div>
 
-                                  <div class="form-group">
+                                  <div class="col-md-6 form-group mb-3">
                                     <label>Tipo Beneficiario</label>
                                     <div class="col-md-8">
                                         <input type="text" name="tipobeneficiario" value="{{ $beneficiarios->tipobeneficiario }}" class="form-control input-lg" />
@@ -122,10 +127,12 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group text-left">
-                                    <input type="submit" name="edit" class="btn btn-primary input-lg" value="Actualizar" />
+                                </div>
 
-                                    <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-primary">Regresar</a>
+                                <div class="form-group text-left">
+                                    <input type="submit" name="edit" class="btn btn-success m-1" value="Actualizar" />
+
+                                    <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-danger m-1">Cancelar</a>
                                     
                                 </div>
 

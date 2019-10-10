@@ -25,6 +25,7 @@
                         <div class="card-body">
                             <div class="card-title mb-3">Listado Beneficiario
                                 <a style="margin: 19px;" href="{{ url('/beneficiarios/create')}}" class="btn btn-primary">Nuevo Beneficiario</a>
+                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Beneficiario</a>
                             </div>
                             
                                 <div class="row">
@@ -39,11 +40,7 @@
                                                  <th>Etnia</th>
                                                  <th>Rango de Edad</th>
                                                  <th>Ubicación</th>
-                                                 <th>DPI / CUI</th>
-                                                 <th>Teléfono</th>
-                                                 <th>Correo Electrónico</th>
-                                                 <th>Indicador</th>
-                                                 <th>Beneficiario</th>
+                                                 
                                              </tr>
                                          </thead>
                                          <tbody>
@@ -56,11 +53,7 @@
                                                  <td>{{ $beneficario->etnia}}</td>
                                                  <td>{{ $beneficario->rangoedad}}</td>
                                                  <td>{{ $beneficario->nombreubicacion}}</td>
-                                                 <td>{{ $beneficario->dpicui}}</td>
-                                                 <td>{{ $beneficario->telefono}}</td>
-                                                 <td>{{ $beneficario->emailbeneficiario}}</td>
-                                                 <td>{{ $beneficario->indicador}}</td>
-                                                 <td>{{ $beneficario->tipobeneficiario}}</td>
+                                                 
                                                  <td>
 
                                                     <a href="{{ route('beneficiarios.edit', $beneficario->id)}}" class="btn btn-warning">Editar</a>

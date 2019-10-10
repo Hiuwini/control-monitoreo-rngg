@@ -25,6 +25,7 @@
                         <div class="card-body">
                             <div class="card-title mb-3">Listado de Colaboradores
                                 <a style="margin: 19px;" href="{{ url('/colaboradores/create')}}" class="btn btn-primary">Nuevo Colaborador</a>
+                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Colaborador</a>
                             </div>
                             
                                 <div class="row">
@@ -35,13 +36,10 @@
                                                  <th>Id</th>
                                                  <th>Nombre</th>
                                                  <th>Apellido</th>
-                                                 <th>Dirección</th>
+                                                
                                                  <th>Teléfono</th>
                                                  <th>Email</th>
-                                                 <th>Género</th>
-                                                 <th>Fecha de Nacimiento</th>
-                                                 <th>Nivel Académico</th>
-                                                 <th>Título</th>
+                                                 
                                                 
                                              </tr>
                                          </thead>
@@ -51,13 +49,10 @@
                                                  <td>{{$loop->iteration}}</td>
                                                  <td>{{ $colaboradores->nombrecolaborador}}</td>
                                                  <td>{{ $colaboradores->apellidocolaborador}}</td>
-                                                 <td>{{ $colaboradores->direccioncolaborador}}</td>
+                                                 
                                                  <td>{{ $colaboradores->telefonocolaborador}}</td>
                                                  <td>{{ $colaboradores->emailcolaborador}}</td>
-                                                 <td>{{ $colaboradores->genero}}</td>
-                                                 <td>{{ $colaboradores->fechanacimiento}}</td>
-                                                 <td>{{ $colaboradores->nivelacademico}}</td>
-                                                 <td>{{ $colaboradores->titulo}}</td>
+                                                
                                                  
                                                  <td>
 

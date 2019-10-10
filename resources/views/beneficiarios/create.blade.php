@@ -38,21 +38,25 @@
                                 </div> 
                                 @endif
 
-                            <div class="col-md-8">
+                        <div class="row">
+
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Nombre</label>
                                 <input type="text" name="nombrebeneficiario" class="form-control input-lg" value="{{ old('nombrebeneficiario') }}" />
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el nombre del beneficiario.</small>
+
+                                
                             </div>
 
-                             <div class="col-md-8">
-                                <label>Apellido</label>
+                             <div class="col-md-6 form-group mb-3">
+                             <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el apellido del beneficiario.</small>
                             </div>
                           
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Género</label>
                                 <select name="genero" id="generoId" class="form-control" >
                                     <option value="">-- Seleccione el género --</option>
@@ -63,7 +67,7 @@
                                 Seleccione el género del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Etnia</label>
                                 <select name="etnia" id="etniaId" class="form-control" >
                                     <option value="">-- Seleccione la etnia --</option>
@@ -85,7 +89,7 @@
                                 Seleccione la etnia del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Rango de Edad</label>
                                 <select name="rangoedad" id="rangoedadId" class="form-control" >
                                     <option value="">-- Seleccione el rango de edad--</option>
@@ -99,7 +103,7 @@
                                 Seleccinoe el rango de edad del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Ubicación</label>
                                 <select name="nombreubicacion" id="nombreubicacionId" class="form-control" >
                                     <option value="">-- Seleccione la ubicación --</option>
@@ -110,35 +114,35 @@
                                 Seleccione la ubicación del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>DPI / CUI</label>
                                 <input type="text" name="dpicui" class="form-control input-lg" value="{{ old('dpicui') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el DPI / CUI del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Teléfono</label>
                                 <input type="text" name="telefono" class="form-control input-lg" value="{{ old('telefono') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el telefono del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Correo electrónico</label>
                                 <input type="text" name="emailbeneficiario" class="form-control input-lg" value="{{ old('emailbeneficiario') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                  Ingrese el correo electrónico del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Indicador</label>
                                 <input type="text" name="indicador" class="form-control input-lg" value="{{ old('indicador') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el indicador del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Tipo de Beneficiario</label>
                                 <select name="tipobeneficiario" id="tipobeneficiarioId" class="form-control" >
                                     <option value="">-- Seleccione el tipo de beneficiario --</option>
@@ -150,11 +154,13 @@
                                 Seleccione el tipo del beneficiario.</small>
                             </div>
 
+                            </div>     
+
                              <div class="form-group text-left">
 
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <button type="submit" class="btn btn-success m-1">Crear</button>
  
-                                        <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-primary">Regresar</a>
+                                        <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-danger m-1">Cancelar</a>
                                     </div> 
                                     </form>   
              </div>

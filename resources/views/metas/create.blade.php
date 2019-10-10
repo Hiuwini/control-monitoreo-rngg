@@ -44,7 +44,7 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="inputEmail4" class="ul-form__label">Fecha: </label>
-                                                <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" placeholder="Escriba la fecha limite" />
+                                                 <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" placeholder="Escriba la fecha limite" />
                                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">
                                                 Ingrese la fecha en que debe cumplirse la meta.
                                             </small>

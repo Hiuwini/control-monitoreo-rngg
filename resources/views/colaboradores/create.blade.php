@@ -37,29 +37,29 @@
                                     </ul>                                  
                                 </div> 
                                 @endif
-
-                            <div class="col-md-8">
+                                <div class="row">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Nombre</label>
                                 <input type="text" name="nombrecolaborador" class="form-control input-lg" value="{{ old('nombrecolaborador') }}" />
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el nombre del colaborador.</small>
                             </div>
 
-                             <div class="col-md-8">
+                             <div class="col-md-6 form-group mb-3">
                                 <label>Apellido</label>
                                 <input type="text" name="apellidocolaborador" class="form-control input-lg" value="{{ old('apellidocolaborador') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el apellido del colaborador.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Dirección</label>
                                 <input type="text" name="direccioncolaborador" class="form-control input-lg" value="{{ old('direccioncolaborador') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese la direccion del colaborador.</small>
                             </div>
                             
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Teléfono</label>
                                 <input type="text" name="telefonocolaborador" class="form-control input-lg" value="{{ old('telefonocolaborador') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
@@ -67,13 +67,13 @@
                             </div>
 
                             <br>
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Email</label>
                                 <input type="text" name="emailcolaborador" class="form-control input-lg" value="{{ old('emailcolaborador') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el correo electrónico del colaborador.</small>
                             </div>
-                           <div class="col-md-8">
+                           <div class="col-md-6 form-group mb-3">
                                 <label>Género</label>
                                 <select name="genero" id="generoId" class="form-control" >
                                     <option value="">-- Seleccione el género --</option>
@@ -84,14 +84,14 @@
                                 Seleccione el género del colaborador.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Fecha de Nacimiento</label>
-                                <input type="text" name="fechanacimiento" class="form-control input-lg" value="{{ old('fechanacimiento') }}"/>
+                                <input type="date" name="fechanacimiento" class="form-control input-lg" value="{{ old('fechanacimiento') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese la fecha de nacimiento del colaborador.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Nivel académico</label>
                                 <select name="nivelacademico" id="nivelacademicoId" class="form-control" >
                                     <option value="">-- Escoja el nivel académico del colaborador --</option>
@@ -105,20 +105,22 @@
                                 Seleccione el nivel académico del colaborador.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Titulo Obtenido</label>
                                 <input type="text" name="titulo" class="form-control input-lg" value="{{ old('titulo') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el nombre del Titulo del colaborador.</small>
                             </div>
 
+                            </div>
+
                              <div class="form-group text-left">
 
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <button type="submit" class="btn btn-success m-1">Crear</button>
  
                                         
 
-                                        <a style="margin: 19px;" href="{{ url('colaboradores')}}" class="btn btn-primary">Regresar</a>
+                                        <a style="margin: 19px;" href="{{ url('colaboradores')}}" class="btn btn-danger m-1">Cancelar</a>
                                     </div> 
                                     </form>   
 
