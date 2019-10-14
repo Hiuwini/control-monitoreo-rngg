@@ -8,6 +8,13 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            <li class="nav-item {{ request()->is('projects/*') ? 'active' : '' }}" data-item="projects">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Library"></i>
+                    <span class="nav-text">Gestión de Proyectos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
             <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }}" data-item="admin">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Gear-2"></i>
@@ -123,7 +130,21 @@
                 </a>
             </li>
         </ul>
-
+        <ul class="childNav" data-parent="projects">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Proyectos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='accordion' ? 'open' : '' }}" href="{{route('accordion')}}">
+                    <i class="nav-icon i-Split-Horizontal-2-Window"></i>
+                    <span class="item-name">Accordion</span>
+                </a>
+            </li>
+           
+        </ul>
         <ul class="childNav" data-parent="admin">
             <li class="nav-item ">
                 <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{route('users.index')}}">

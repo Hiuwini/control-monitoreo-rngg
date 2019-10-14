@@ -53,7 +53,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return view('users.create');
+        return view('users.index');
     }
 
     /**
