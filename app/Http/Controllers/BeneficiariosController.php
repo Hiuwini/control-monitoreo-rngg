@@ -20,6 +20,8 @@ class BeneficiariosController extends Controller
         $beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(10);
         return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);
 
+        
+       
         //$generos = Generos::all();
 
 
@@ -40,7 +42,10 @@ class BeneficiariosController extends Controller
     {
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
+      
+      
        return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'));
+       
 
     }
 
@@ -53,15 +58,32 @@ class BeneficiariosController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [ 'nombrebeneficiario' => 'required', 'apellidobeneficiario' => 'required','telefono' => 'required|numeric','genero' => 'required','tipobeneficiario' => 'required']);
+        $this->validate($request, 
+        ['nombrebeneficiario' => 'required', 
+        'apellidobeneficiario' => 'required',
+        'genero'=> 'required',
+        'etnia'=> 'required',
+        'rangoedad'=> 'required',
+        'nombreubicacion'=> 'required',
+        'dpicui'=> 'required',
+        'telefono' => 'required|numeric',
+        'emailbeneficiario'=> 'required',
+        'indicador'=> 'required',
+        'tipobeneficiario'=> 'required']);
         
         $beneficiarios = new Beneficiarios();
  
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
-        $beneficiarios->telefono = request('telefono');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->tipobeneficiario = request('tipobeneficiario');
+        $beneficiarios->etnia = request('etnia');
+        $beneficiarios->rangoedad = request('rangoedad');
+        $beneficiarios->nombreubicacion = request('nombreubicacion');
+        $beneficiarios->dpicui = request('dpicui');
+        $beneficiarios->telefono = request('telefono');
+        $beneficiarios->emailbeneficiario = request('emailbeneficiario');
+        $beneficiarios->indicador = request('indicador');
+        $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
         
         $beneficiarios->save();
  
@@ -108,8 +130,14 @@ class BeneficiariosController extends Controller
         
         $form_data = array('nombrebeneficiario' => $request->nombrebeneficiario,
                             'apellidobeneficiario' => $request->apellidobeneficiario,
-                            'telefono' => $request->telefono,
                             'genero' => $request->genero,
+                            'etnia' => $request->etnia,
+                            'rangoedad' => $request->rangoedad,
+                            'nombreubicacion' => $request->nombreubicacion,
+                            'dpicui' => $request->dpicui,
+                            'telefono' => $request->telefono,
+                            'emailbeneficiario' => $request->emailbeneficiario,
+                            'indicador' => $request->indicador,
                             'tipobeneficiario' => $request->tipobeneficiario);
 
 

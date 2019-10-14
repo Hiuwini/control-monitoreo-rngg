@@ -8,6 +8,6 @@ class Generos extends Model
 {
     //
    //public $table = "admin/roles";
-   protected $table = "generos";
+   protected $table = "genero";
 	//protected $fillable = ['descripcion']; //si funciona
 }

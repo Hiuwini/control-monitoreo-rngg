@@ -8,10 +8,10 @@
 
 @section('main-content')
    <div class="breadcrumb">
-                <h1>Roles</h1>
+                <h1>Colaboradores</h1>
                 <ul>
                     
-                    <li><a href="">Administración</a></li>
+                    <li><a href="">GESTION</a></li>
                     
                 </ul>
             </div>
@@ -23,8 +23,9 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Listado Rol
-                                <a style="margin: 19px;" href="{{ url('/roles/create')}}" class="btn btn-primary">Nuevo Rol</a>
+                            <div class="card-title mb-3">Listado de Colaboradores
+                                <a style="margin: 19px;" href="{{ url('/colaboradores/create')}}" class="btn btn-primary">Nuevo Colaborador</a>
+                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Colaborador</a>
                             </div>
                             
                                 <div class="row">
@@ -32,25 +33,38 @@
                                      <table class="table table-light">
                                          <thead class="thead-light">
                                              <tr>
-                                                 <th>#</th>
-                                                 <th>Descripcion</th>
-                                                 <th>Editar</th>
-                                                 <th>Eliminar</th>
+                                                 <th>Id</th>
+                                                 <th>Nombre</th>
+                                                 <th>Apellido</th>
+                                                
+                                                 <th>Teléfono</th>
+                                                 <th>Email</th>
+                                                 
+                                                
                                              </tr>
                                          </thead>
                                          <tbody>
-                                             @foreach($roles as $rol)
+                                             @foreach($colaboradores as $colaboradores)
                                              <tr>
                                                  <td>{{$loop->iteration}}</td>
-                                                 <td>{{ $rol->descripcion}}</td>
+                                                 <td>{{ $colaboradores->nombrecolaborador}}</td>
+                                                 <td>{{ $colaboradores->apellidocolaborador}}</td>
+                                                 
+                                                 <td>{{ $colaboradores->telefonocolaborador}}</td>
+                                                 <td>{{ $colaboradores->emailcolaborador}}</td>
+                                                
+                                                 
                                                  <td>
-                                                     <a href="{{ route('roles.edit', $rol->id)}}" class="btn btn-warning">Editar</a>
+
+                                                    <a href="{{ route('colaboradores.edit', $colaboradores->id)}}" class="btn btn-warning">Editar</a>
 
                                                      <td>
-                                                     <form action="{{ route('roles.destroy', $rol->id) }}" method="POST">
+                                                     <form action="{{ route('colaboradores.destroy', $colaboradores->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </td>
+                                                     
                                                     </td>
                                                     </form>
                                                  </td>
@@ -62,13 +76,12 @@
                                          </tbody>
                                         
                                      </table>  
-                                     {!! $roles->links() !!}
+
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
 
             </div>
 

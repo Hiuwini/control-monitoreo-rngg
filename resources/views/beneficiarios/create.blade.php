@@ -38,279 +38,132 @@
                                 </div> 
                                 @endif
 
-                            <div class="col-md-8">
+                        <div class="row">
+
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Nombre</label>
                                 <input type="text" name="nombrebeneficiario" class="form-control input-lg" value="{{ old('nombrebeneficiario') }}" />
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el nombre del beneficiario.</small>
+
+                                
                             </div>
 
-                             <div class="col-md-8">
-                                <label>Apellido</label>
+                             <div class="col-md-6 form-group mb-3">
+                             <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el apellido del beneficiario.</small>
+                            </div>
+                          
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Género</label>
+                                <select name="genero" id="generoId" class="form-control" >
+                                    <option value="">-- Seleccione el género --</option>
+                                    <option value="Femenino">Femenino</option>    
+                                    <option value="Masculino">Masculino</option>                                
+                                </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione el género del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Etnia</label>
+                                <select name="etnia" id="etniaId" class="form-control" >
+                                    <option value="">-- Seleccione la etnia --</option>
+                                    <option value="Ladina">Ladina</option>  
+                                    <option value="Xinca">Xinca</option>  
+                                    <option value="Garífuna">Garífuna</option>
+                                    <option value="K’iche’">K’iche’</option>
+                                    <option value="Kaqchikel">Kaqchikel</option>   
+                                    <option value="Mam">Mam</option>                             
+                                    <option value="Q'eqchi'">Q'eqchi'</option>
+                                    <option value="Poqomam">Poqomam</option>
+                                    <option value="Tz'utujil">Tz'utujil</option>
+                                    <option value="Popti'">Popti'</option>
+                                    <option value="Akateko">Akateko</option>
+                                    <option value="Achi">Achi</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione la etnia del beneficiario.</small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Rango de Edad</label>
+                                <select name="rangoedad" id="rangoedadId" class="form-control" >
+                                    <option value="">-- Seleccione el rango de edad--</option>
+                                    <option value="Menor de 18">Menor de 18</option>    
+                                    <option value="18 - 30">18 - 30</option>  
+                                    <option value="31 - 49">31 - 49</option>
+                                    <option value="50 - 60">50 - 60</option>                              
+                                    <option value="Mayor de 60">Mayor de 60</option>
+                                </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccinoe el rango de edad del beneficiario.</small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Ubicación</label>
+                                <select name="nombreubicacion" id="nombreubicacionId" class="form-control" >
+                                    <option value="">-- Seleccione la ubicación --</option>
+                                    <option value="Urbana">Urbana</option>    
+                                    <option value="Rural">Rural</option>                                
+                                </select>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione la ubicación del beneficiario.</small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>DPI / CUI</label>
+                                <input type="text" name="dpicui" class="form-control input-lg" value="{{ old('dpicui') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el DPI / CUI del beneficiario.</small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
                                 <label>Teléfono</label>
                                 <input type="text" name="telefono" class="form-control input-lg" value="{{ old('telefono') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el telefono del beneficiario.</small>
                             </div>
 
-                            <br>
-
-                            <div class="col-md-8">
-                                <label>Género</label>
-                                <input type="text" name="genero" class="form-control input-lg" value="{{ old('genero') }}"/>
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Correo electrónico</label>
+                                <input type="text" name="emailbeneficiario" class="form-control input-lg" value="{{ old('emailbeneficiario') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                 Ingrese el correo electrónico del beneficiario.</small>
                             </div>
 
-                               <div class="col-md-8">
-                                <label>Tipo Beneficiario</label>
-                                <input type="text" name="tipobeneficiario" class="form-control input-lg" value="{{ old('tipobeneficiario') }}"/>
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Indicador</label>
+                                <input type="text" name="indicador" class="form-control input-lg" value="{{ old('indicador') }}"/>
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Ingrese el indicador del beneficiario.</small>
                             </div>
 
-                           {{-- <div class="col-md-8">
-                                <label>Género</label>
-                                <select name="id" id="inputId" class="form-control" >
-                                    <option value="">-- Escoja el género --</option>
-                                    @foreach ($generos as $genero)
-                                    <option value="{{ $genero['id'] }}" >{{ $genero['genero']}}</option>
-                                    @endforeach                                    
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Tipo de Beneficiario</label>
+                                <select name="tipobeneficiario" id="tipobeneficiarioId" class="form-control" >
+                                    <option value="">-- Seleccione el tipo de beneficiario --</option>
+                                    <option value="Emprendedor">Emprendedor</option>
+                                    <option value="Publico">Publico</option>
+                                    <option value="Privado">Privado</option>                               
                                 </select>
-                            </div>--}}
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                Seleccione el tipo del beneficiario.</small>
+                            </div>
 
-                            {{--<div class="col-md-8">
-                                <label>Tipo Beneficiario</label>
-                                <select name="id" id="inputId" class="form-control" >
-                                    <option value="">-- Escoja el tipo de beneficiario --</option>
-                                    @foreach ($tipobeneficiarios as $tipobeneficiario)
-                                    <option value="{{ $tipobeneficiario['id'] }}" >{{ $tipobeneficiario['nombrebeneficiario']}}</option>
-                                    @endforeach                                    
-                                </select>
-                            </div>--}}
-
+                            </div>     
 
                              <div class="form-group text-left">
 
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <button type="submit" class="btn btn-success m-1">Crear</button>
  
-                                        
-
-                                        <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-primary">Regresar</a>
+                                        <a style="margin: 19px;" href="{{ url('beneficiarios')}}" class="btn btn-danger m-1">Cancelar</a>
                                     </div> 
                                     </form>   
- 
-
-                            <div class="card-title">Switch</div>
-
-                            <label class="switch switch-primary mr-3">
-                                <span>Primary</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-secondary mr-3">
-                                <span>Secondary</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-success mr-3">
-                                <span>Success</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-warning mr-3">
-                                <span>Warning</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-danger mr-3">
-                                <span>Danger</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-light mr-3">
-                                <span>Light</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                            <label class="switch switch-dark mr-3">
-                                <span>Dark</span>
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Checkbox Default</div>
-                            <label class="checkbox checkbox-primary">
-                                <input type="checkbox" checked>
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-secondary">
-                                <input type="checkbox" checked>
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-success">
-                                <input type="checkbox" checked>
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-warning">
-                                <input type="checkbox" checked>
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-danger">
-                                <input type="checkbox" checked>
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-info">
-                                <input type="checkbox" checked>
-                                <span>Info</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-dark">
-                                <input type="checkbox" checked>
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Checkbox Outline</div>
-                            <label class="checkbox checkbox-outline-primary">
-                                <input type="checkbox" checked>
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-secondary">
-                                <input type="checkbox" checked>
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-success">
-                                <input type="checkbox" checked>
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-warning">
-                                <input type="checkbox" checked>
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-danger">
-                                <input type="checkbox" checked>
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-info">
-                                <input type="checkbox" checked>
-                                <span>Info</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkbox checkbox-outline-dark">
-                                <input type="checkbox" checked>
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body" [formGroup]="radioGroup">
-                            <div class="card-title">Radio Button</div>
-                            <label class="radio radio-primary">
-                                <input type="radio" name="radio" [value]="1" formControlName="radio">
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-secondary">
-                                <input type="radio" name="radio" [value]="2" formControlName="radio">
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-success">
-                                <input type="radio" name="radio" [value]="3" formControlName="radio">
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-warning">
-                                <input type="radio" name="radio" [value]="4" formControlName="radio">
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-danger">
-                                <input type="radio" name="radio" [value]="5" formControlName="radio">
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-light">
-                                <input type="radio" name="radio" [value]="6" formControlName="radio">
-                                <span>Light</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-dark">
-                                <input type="radio" name="radio" [value]="7" formControlName="radio">
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-body" [formGroup]="radioGroup">
-                            <div class="card-title">Radio Button Outline</div>
-                            <label class="radio radio-outline-primary">
-                                <input type="radio" name="radio" [value]="1" formControlName="radio">
-                                <span>Primary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-secondary">
-                                <input type="radio" name="radio" [value]="2" formControlName="radio">
-                                <span>Secondary</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-success">
-                                <input type="radio" name="radio" [value]="3" formControlName="radio">
-                                <span>Success</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-warning">
-                                <input type="radio" name="radio" [value]="4" formControlName="radio">
-                                <span>Warning</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-danger">
-                                <input type="radio" name="radio" [value]="5" formControlName="radio">
-                                <span>Danger</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-light">
-                                <input type="radio" name="radio" [value]="6" formControlName="radio">
-                                <span>Light</span>
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio radio-outline-dark">
-                                <input type="radio" name="radio" [value]="7" formControlName="radio">
-                                <span>Dark</span>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+             </div>
 
 
 @endsection

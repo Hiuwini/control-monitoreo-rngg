@@ -72,6 +72,33 @@ Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 
+
+Route::view('colaboradores','colaboradores.index')->name('colaboradores');
+Route::view('colaboradores/create','colaboradores.create')->name('create');//si
+Route::view('colaboradores/edit','colaboradores.edit')->name('edit');
+Route::resource('colaboradores','ColaboradoresController');
+//=======
+//1.1 Usuarios
+Route::get('/admin/users','UserController@index')->name('users.index');
+Route::get('/admin/users/create','UserController@create')->name('users.create');
+Route::post('/admin/users/store','UserController@store');
+Route::get('/admin/users/{id}/edit','UserController@edit')->name('users.edit');
+Route::put('/admin/users/{id}','UserController@update');
+Route::delete('/admin/users/{id}','UserController@destroy');
+
+
+//Productos
+
+Route::view('producto','producto.index')->name('producto');//si
+Route::view('producto/create','producto.create')->name('create');//si
+Route::resource('producto', 'ProductoController');
+Route::view('producto/edit','producto.edit')->name('edit');//si
+
+//Metas
+Route::view('metas','metas.index')->name('metas');
+Route::view('metas/edit','metas.edit')->name('edit');//si
+Route::resource('metas', 'MetaController');
+
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
 Route::view('uikits/accordion', 'uiKits.accordion')->name('accordion');
