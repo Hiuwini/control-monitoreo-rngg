@@ -99,6 +99,12 @@ Route::view('metas','metas.index')->name('metas');
 Route::view('metas/edit','metas.edit')->name('edit');//si
 Route::resource('metas', 'MetaController');
 
+//Actividades
+Route::view('actividades','actividades.index')->name('actividades');
+Route::view('actividades/create','actividades.create')->name('create');//si
+Route::view('actividades/edit','actividades.edit')->name('edit');
+Route::resource('actividades','ActividadesController');
+
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');
 Route::view('uikits/accordion', 'uiKits.accordion')->name('accordion');

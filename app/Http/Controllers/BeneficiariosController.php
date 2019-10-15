@@ -6,7 +6,7 @@ use App\Beneficiarios;
 use App\Generos;
 use App\Tipobeneficiarios;
 use Illuminate\Http\Request;
-
+ 
 class BeneficiariosController extends Controller
 {
     /**
