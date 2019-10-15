@@ -18,8 +18,8 @@ class CreateMetasTable extends Migration
             $table->string('nombre');
             $table->date('fecha_limite');
             $table->boolean('estado');
-            $table->unsignedBigInteger('id_producto');
-            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
+            $table->unsignedBigInteger('id_proyecto');
+            $table->foreign('id_proyecto')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });
     }
