@@ -39,6 +39,7 @@
                                                 
                                                  <th>Teléfono</th>
                                                  <th>Email</th>
+                                                
                                                  
                                                 
                                              </tr>
@@ -53,7 +54,9 @@
                                                  <td>{{ $colaboradores->telefonocolaborador}}</td>
                                                  <td>{{ $colaboradores->emailcolaborador}}</td>
                                                 
-                                                 
+                                                
+                                                 <td>
+                           
                                                  <td>
 
                                                     <a href="{{ route('colaboradores.edit', $colaboradores->id)}}" class="btn btn-warning">Editar</a>
