@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryInstitutionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,6 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('users.index')->with('users',$users);
     }
 
     /**
@@ -28,7 +24,6 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
     }
 
     /**
@@ -40,20 +35,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $user = new User;
-
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->username = $request->username;
-        $user->email = $request->email;        
-        $user->phone = $request->phone1;
-        $user->status = ( $request->status == 'on') ? true:false;
-        $user->job = $request->job;
-        $user->password = bcrypt($request->password);
-
-        $user->save();
-
-        return view('users.index');
     }
 
     /**
@@ -76,8 +57,6 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        return view('users.update')->with('u',$user);
     }
 
     /**
@@ -90,20 +69,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::find($request->id);
-
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->username = $request->username;
-        $user->email = $request->email;        
-        $user->phone = $request->phone1;
-        $user->status = ( $request->status == 'on') ? true:false;
-        $user->job = $request->job;
-        $user->password = bcrypt($request->password);
-
-        $user->update();
-
-        return redirect('/admin/users');
     }
 
     /**
@@ -115,8 +80,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        $user = User::find($id);
-        $user->delete();
-        return redirect('/admin/users');
     }
 }
