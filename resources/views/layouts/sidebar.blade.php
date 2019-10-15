@@ -1,20 +1,57 @@
 <div class="side-content-wrap">
     <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
         <ul class="navigation-left">
-            <li class="nav-item {{ request()->is('dashboard/*') ? 'active' : '' }}" data-item="dashboard">
-                <a class="nav-item-hold" href="#">
+           
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{{route('dashboard_version_1')}}">
                     <i class="nav-icon i-Bar-Chart"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 <div class="triangle"></div>
             </li>
-            <li class="nav-item {{ request()->is('projects/*') ? 'active' : '' }}" data-item="projects">
+
+            <li class="nav-item {{ request()->is('component1/*') ? 'active' : '' }}" data-item="component1">
                 <a class="nav-item-hold" href="#">
-                    <i class="nav-icon i-Library"></i>
-                    <span class="nav-text">Gestión de Proyectos</span>
+                    <i class="nav-icon i-Building"></i>
+                    <span class="nav-text">Desarrollo Productivo</span>
                 </a>
                 <div class="triangle"></div>
             </li>
+
+            <li class="nav-item {{ request()->is('component2/*') ? 'active' : '' }}" data-item="component2">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Cloud-Sun"></i>
+                    <span class="nav-text">Clima de negocios</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+
+            <li class="nav-item {{ request()->is('component3/*') ? 'active' : '' }}" data-item="component3">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Network"></i>
+                    <span class="nav-text">Desarrollo Social</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+
+            <li class="nav-item {{ request()->is('component4/*') ? 'active' : '' }}" data-item="component4">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Column"></i>
+                    <span class="nav-text">Ecosistema Interno</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+
+            <li class="nav-item {{ request()->is('institucional/*') ? 'active' : '' }}" data-item="institucional">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Engineering"></i>
+                    <span class="nav-text">Desarrollo Institucional</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+
+           
+
             <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }}" data-item="admin">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Gear-2"></i>
@@ -22,6 +59,15 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            <!--
+            <li class="nav-item {{ request()->is('projects/*') ? 'active' : '' }}" data-item="projects">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Library"></i>
+                    <span class="nav-text">Gestión de Proyectos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            
             <li class="nav-item {{ request()->is('uikits/*') ? 'active' : '' }}" data-item="uikits">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Library"></i>
@@ -94,12 +140,12 @@
                     <span class="nav-text">Doc</span>
                 </a>
                 <div class="triangle"></div>
-            </li>
+            </li>-->
         </ul>
     </div>
 
     <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
-        <!-- Submenu Dashboards -->
+        <!-- Submenu Dashboards
         <ul class="childNav" data-parent="dashboard">
             <li class="nav-item ">
                 <a class="{{ Route::currentRouteName()=='dashboard_version_1' ? 'open' : '' }}"
@@ -127,6 +173,46 @@
                     href="{{route('dashboard_version_4')}}">
                     <i class="nav-icon i-Clock"></i>
                     <span class="item-name">Version 4</span>
+                </a>
+            </li>
+        </ul> -->
+        <ul class="childNav" data-parent="component1">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Gestión de proyectos</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="childNav" data-parent="component2">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Gestión de proyectos</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="childNav" data-parent="component3">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Gestión de proyectos</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="childNav" data-parent="component4">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Gestión de proyectos</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="childNav" data-parent="institucional">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Gestión de proyectos</span>
                 </a>
             </li>
         </ul>
@@ -168,7 +254,15 @@
           <li class="nav-item">
                 <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('beneficiarios')}}">
                     <i class="nav-icon i-Clock-4"></i>
-                    <span class="item-name">beneficiarios</span>
+                    <span class="item-name">Beneficiarios</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="childNav" data-parent="admin">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+                    <i class="nav-icon i-Bell1"></i>
+                    <span class="item-name">Proyectos</span>
                 </a>
             </li>
         </ul>
@@ -193,7 +287,7 @@
                 </a>
             </li>
         </ul>
-        
+        <!--
         <ul class="childNav" data-parent="forms">
 
             <li class="nav-item">
@@ -307,7 +401,7 @@
             </li>
 
         </ul>
-
+        
         <ul class="childNav" data-parent="charts">
             <li class="nav-item">
                 <a class="{{ Route::currentRouteName()=='echarts' ? 'open' : '' }}" href="{{route('echarts')}}">
@@ -732,7 +826,7 @@
                     <span class="item-name">Blank Page</span>
                 </a>
             </li>
-        </ul>
+        </ul>-->
     </div>
     <div class="sidebar-overlay"></div>
 </div>

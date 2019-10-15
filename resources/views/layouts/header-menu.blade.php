@@ -1,6 +1,6 @@
     <div class="main-header">
             <div class="logo">
-                <img src="{{asset('assets/images/logo.png')}}" alt="">
+                <img src="{{asset('assets/images/logo.jpg')}}" alt="">
             </div>
 
             <div class="menu-toggle">
@@ -10,7 +10,7 @@
             </div>
 
             <div class="d-flex align-items-center">
-                <!-- Mega menu -->
+                <!-- Mega menu 
                 <div class="dropdown mega-menu d-none d-md-block">
                     <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mega Menu</a>
                     <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
@@ -22,6 +22,7 @@
                                 <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem odio amet eos dolore suscipit placeat.</p>
                                 <button class="btn btn-lg btn-rounded btn-outline-warning">Learn More</button>
                             </div>
+                            
                             <div class="col-md-4 p-4">
                                 <p class="text-primary text--cap border-bottom-primary d-inline-block">Features</p>
                                 <div class="menu-icon-grid w-auto p-0">
@@ -52,12 +53,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- / Mega menu -->
+                </div>-->
+                <!-- / Mega menu 
                 <div class="search-bar">
                     <input type="text" placeholder="Search">
                     <i class="search-icon text-muted i-Magnifi-Glass1"></i>
-                </div>
+                </div>-->
             </div>
 
             <div style="margin: auto"></div>
@@ -65,7 +66,7 @@
             <div class="header-part-right">
                 <!-- Full screen toggle -->
                 <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
-                <!-- Grid menu Dropdown -->
+                <!-- Grid menu Dropdown
                 <div class="dropdown widget_dropdown">
                     <i class="i-Safe-Box text-muted header-icon" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -78,7 +79,7 @@
                             <a href="#"><i class="i-Ambulance"></i> Support</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Notificaiton -->
                 <div class="dropdown">
                     <div class="badge-top-container" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
