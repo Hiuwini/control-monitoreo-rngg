@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use App\CInstitutional;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -30,8 +31,9 @@ class ProjectController extends Controller
     public function create()
     {
         //
-        $user = User::all();
-        return view('projects.create')->with('u',$user);
+        $ci = CInstitutional::where('status','=',1)->get();
+        $user = User::where('status','=',1)->get();
+        return view('projects.create')->with('u',$user)->with('ci',$ci);
     }
 
     /**
@@ -50,10 +52,10 @@ class ProjectController extends Controller
         $project->date_begin = date("Y-m-d", strtotime( $request->date_begin ) );
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;
-        
+        $project->c_institutional_id = $request->ci;
         $project->save();
 
-        return redirect('/project');
+        return redirect('/projects');
     }
 
     /**
@@ -62,9 +64,24 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Project $project, $id)
     {
         //
+        $projects = Project::join('users','users.id','=','projects.user_id')
+            ->where('c_institutional_id','=',$id)
+            ->select('projects.*','users.firstname','users.lastname')
+            ->get();
+        return view('projects.index')->with('p',$projects);
+    }
+
+    public function admin(Project $project, $id)
+    {
+        //
+        $projects = Project::join('users','users.id','=','projects.user_id')
+            ->where('projects.id','=',$id)
+            ->select('projects.*','users.firstname','users.lastname')
+            ->get();
+        return view('projects.admin')->with('p',$projects);
     }
 
     /**
@@ -76,9 +93,10 @@ class ProjectController extends Controller
     public function edit($id)
     {
         //
-        $users = User::all();
+        $users = User::where('status','=',1)->get();
+        $ci = CInstitutional::where('status','=',1)->get();
         $project = Project::find($id);
-        return view('projects.update')->with('p',$project)->with('u',$users);
+        return view('projects.update')->with('p',$project)->with('u',$users)->with('ci',$ci);
     }
 
     /**
@@ -99,7 +117,7 @@ class ProjectController extends Controller
         $project->date_begin = date("Y-m-d", strtotime( $request->date_begin ) );
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;  
-
+        $project->c_institutional_id = $request->ci;        
         $project->update();
 
         return redirect('/projects');

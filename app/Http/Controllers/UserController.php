@@ -47,13 +47,14 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;        
         $user->phone = $request->phone1;
-        $user->status = ( $request->status == 'on') ? true:false;
+        $user->status = ( $request->status == 'on' ) ? true:false;
         $user->job = $request->job;
         $user->password = bcrypt($request->password);
 
         $user->save();
 
-        return view('users.index');
+        $users = User::all();
+        return view('users.index')->with('users',$users);
     }
 
     /**

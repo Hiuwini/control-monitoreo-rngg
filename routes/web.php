@@ -55,16 +55,26 @@ Route::view('roles/create','roles.create')->name('create');//si
 Route::view('roles/edit','roles.edit')->name('edit');//si
 Route::resource('roles','RolesController'); //si
 
+//1.3 Categoría Institucional
+Route::get('/ci','CategoryInstitutionalController@index')->name('ci.index');
+Route::get('/ci/create','CategoryInstitutionalController@create')->name('ci.create');
+Route::post('/ci/store','CategoryInstitutionalController@store');
+Route::get('/ci/{id}/edit','CategoryInstitutionalController@edit')->name('ci.edit');
+Route::put('/ci/{id}','CategoryInstitutionalController@update');
+Route::delete('/ci/{id}','CategoryInstitutionalController@destroy');
+
 
 //2 Gestión de Proyectos
 
 //2.1 Proyectos
 Route::get('/projects','ProjectController@index')->name('projects.index');
+Route::get('/projects/ci/{id}','ProjectController@show');
 Route::get('/projects/create','ProjectController@create')->name('projects.create');
 Route::post('/projects/store','ProjectController@store');
 Route::get('/projects/{id}/edit','ProjectController@edit')->name('projects.edit');
 Route::put('/projects/{id}','ProjectController@update');
 Route::delete('/projects/{id}','ProjectController@destroy');
+Route::get('/project/{id}','ProjectController@admin');
 
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');

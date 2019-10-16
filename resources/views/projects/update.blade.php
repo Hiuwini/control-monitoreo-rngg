@@ -79,8 +79,8 @@
                                     <div class="col-md-6 form-group mb-3">                                    
                                         <label for="users">Encargado / Coordinador  </label>
                                         <select class="form-control form-control-rounded" id="user_id" name="user_id">
+                                            <option selected disabled>-- Elegir usuario --</option>
                                             @foreach ($u as $user)
-                                                <option selected disabled>-- Elegir usuario --</option>
                                                 <option value="{{ $user->id }}" {{ ($user->id == $p->user_id) ? 'selected':''  }}>
                                                     {{ $user->firstname }} {{ $user->lastname }}
                                                 </option>
@@ -88,6 +88,18 @@
                                         </select>
                                     </div>
                                     
+                                    <div class="col-md-6 form-group mb-3">                                    
+                                        <label for="users"> Categoría Institucional </label>
+                                        <select class="form-control form-control-rounded" id="ci" name="ci">
+                                                <option selected disabled>-- Elegir categoria --</option>
+                                            @foreach ($ci as $c)
+                                                <option value="{{ $c->id }}" {{ ($c->id == $p->c_institutional_id) ? 'selected':''  }}>
+                                                    {{ $c->name }} 
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="col-md-12">
                                          <button class="btn btn-success" type="submit">Actualizar proyecto</button>
                                     <a href="{{ route('projects.index') }}"><button class="btn btn-danger">Cancelar</button></a>

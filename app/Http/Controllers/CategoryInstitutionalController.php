@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CInstitutional;
 
 class CategoryInstitutionalController extends Controller
 {
@@ -14,6 +15,8 @@ class CategoryInstitutionalController extends Controller
     public function index()
     {
         //
+        $ci = CInstitutional::all();
+        return view('c_institutional.index')->with('ci',$ci);
     }
 
     /**
@@ -24,6 +27,7 @@ class CategoryInstitutionalController extends Controller
     public function create()
     {
         //
+        return view('c_institutional.create');
     }
 
     /**
@@ -35,6 +39,15 @@ class CategoryInstitutionalController extends Controller
     public function store(Request $request)
     {
         //
+        $ci = new CInstitutional;
+
+        $ci->name = $request->name;
+        $ci->status = ( $request->status == 'on' ) ? true:false;
+        
+        $ci->save();
+
+        $all = CInstitutional::all();
+        return view('c_institutional.index')->with('ci',$all);
     }
 
     /**
@@ -57,6 +70,8 @@ class CategoryInstitutionalController extends Controller
     public function edit($id)
     {
         //
+        $ci = CInstitutional::find($id);
+        return view('c_institutional.update')->with('ci',$ci);
     }
 
     /**
@@ -69,6 +84,15 @@ class CategoryInstitutionalController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $ci = CInstitutional::find($request->id);
+
+        $ci->name = $request->name;
+        $ci->status = ( $request->status == 'on') ? true:false;
+       
+
+        $ci->update();
+
+        return redirect('/ci');
     }
 
     /**
@@ -80,5 +104,8 @@ class CategoryInstitutionalController extends Controller
     public function destroy($id)
     {
         //
+        $ci = CInstitutional::find($id);
+        $ci->delete();
+        return redirect('/ci');
     }
 }

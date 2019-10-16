@@ -176,46 +176,106 @@
                 </a>
             </li>
         </ul> -->
+
         <ul class="childNav" data-parent="component1">
-            <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+            <li class="nav-item" style="background: #eee">
+            <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/1">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Gestión de proyectos</span>
                 </a>
             </li>
         </ul>
+        
+        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',1)->get()) as $projects)
+        <ul class="childNav" data-parent="component1">
+            <li class="nav-item" >
+            <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
+                    <span class="item-name">{{ $projects->name }}</span>
+                </a>
+            </li>
+        </ul>
+        @endforeach
+    
         <ul class="childNav" data-parent="component2">
-            <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+            <li class="nav-item" style="background: #eee">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/2">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Gestión de proyectos</span>
+                    
                 </a>
             </li>
         </ul>
+
+        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',2)->get()) as $projects)
+        <ul class="childNav" data-parent="component2">
+            <li class="nav-item" >
+                <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
+                    <span class="item-name">{{ $projects->name }}</span>
+                </a>
+            </li>
+        </ul>
+        @endforeach
+
         <ul class="childNav" data-parent="component3">
-            <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+            <li class="nav-item" style="background: #eee">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/3">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Gestión de proyectos</span>
+                    
                 </a>
             </li>
         </ul>
+
+        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',3)->get()) as $projects)
+        <ul class="childNav" data-parent="component3">
+            <li class="nav-item" >
+                <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
+                    <span class="item-name">{{ $projects->name }}</span>
+                </a>
+            </li>
+        </ul>
+        @endforeach
+
         <ul class="childNav" data-parent="component4">
-            <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+            <li class="nav-item" style="background: #eee">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/4">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Gestión de proyectos</span>
+                    
                 </a>
             </li>
         </ul>
+
+        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',4)->get()) as $projects)
+        <ul class="childNav" data-parent="component4">
+            <li class="nav-item" >
+                <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
+                    <span class="item-name">{{ $projects->name }}</span>
+                </a>
+            </li>
+        </ul>
+        @endforeach
+
         <ul class="childNav" data-parent="institucional">
-            <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
+            <li class="nav-item" style="background: #eee">
+                <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/5">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Gestión de proyectos</span>
+                    
                 </a>
             </li>
         </ul>
+
+        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',5)->get()) as $projects)
+        <ul class="childNav" data-parent="institucional">
+            <li class="nav-item" >
+                <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
+                    <span class="item-name">{{ $projects->name }}</span>
+                </a>
+            </li>
+        </ul>
+        @endforeach
+        
         <ul class="childNav" data-parent="projects">
             <li class="nav-item">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
@@ -263,6 +323,15 @@
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
                     <i class="nav-icon i-Bell1"></i>
                     <span class="item-name">Proyectos</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="childNav" data-parent="admin">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='ci' ? 'open' : '' }}" href="{{route('ci.index')}}">
+                    <i class="nav-icon i-Book"></i>
+                    <span class="item-name">Categorias Institucionales</span>
                 </a>
             </li>
         </ul>

@@ -8,9 +8,9 @@
 
 @section('main-content')
    <div class="breadcrumb">
-                <h1>Proyectos</h1>
+                <h1>Categoría Institucional</h1>
                 <ul>
-                    <li>Proyectos</li>
+                    <li> </li>
                     <li><a href="">Home</a></li>
                     
                 </ul>
@@ -20,8 +20,8 @@
             
             <div class="col-md-12">
                 <div class="col-md-4">
-                <a href="{{ route('projects.create') }}"><button type="button" class="btn btn-primary btn-block m-1 mb-3" >
-                        <i class="nav-icon i-Administrator"></i> Nuevo Proyecto
+                <a href="{{ route('ci.create') }}"><button type="button" class="btn btn-primary btn-block m-1 mb-3" >
+                        <i class="nav-icon i-Administrator"></i> Nuevo Categoría
                     </button></a>
                 </div>
                 <div class="card mb-4">
@@ -33,21 +33,15 @@
                                         <th>No.</th>
                                         <th>Nombre</th>
                                         <th>Estatus</th>
-                                        <th>Fecha de inicio</th>
-                                        <th>Fecha final</th>
-                                        <th>Coordinador</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>    
                                 <tbody>
-                                    @foreach ($p as $key=>$project)
+                                    @foreach ($ci as $key=>$c)
                                     <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{ $project->name}}</td>
-                                        <td>{{ $project->status}}</td>
-                                        <td>{{ $project->date_begin}}</td>
-                                        <td>{{ $project->date_end}}</td>
-                                        <td>{{ $project->firstname}} {{ $project->lastname}}</td>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $c->name}}</td>
+                                        <td>{!! ($c->status != 0 ) ? '<span class="badge badge-pill badge-success p-2 m-1">Activo</span>': '<span class="badge badge-pill badge-danger p-2 m-1">Inactivo</span>' !!}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,11 +50,10 @@
                                                     <span class="_dot _inline-dot bg-primary"></span>
                                                 </button>
                                                 <div class="dropdown-menu" x-placement="bottom-start">
-                                                    <a class="dropdown-item" href="{{ url("/projects/$project->id/edit") }}">Actualizar</a>
-                                                    <a class="dropdown-item" href="#">Administrar</a>
+                                                    <a class="dropdown-item" href="{{ url("/ci/$c->id/edit") }}">Actualizar</a>
                                                     <div class="dropdown-divider"></div>
                                                     
-                                                    <form action="{{ url("/projects/$project->id") }}" method="post">
+                                                    <form action="{{ url("/ci/$c->id") }}" method="post">
                                                         <input class="dropdown-item" type="submit" value="Eliminar" />
                                                         <input type="hidden" name="_method" value="delete" />
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

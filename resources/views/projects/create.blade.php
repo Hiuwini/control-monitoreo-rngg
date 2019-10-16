@@ -78,9 +78,19 @@
                                     <div class="col-md-6 form-group mb-3">                                    
                                         <label for="users">Encargado / Coordinador  </label>
                                         <select class="form-control form-control-rounded" id="user_id" name="user_id">
-                                            @foreach ($u as $user)
                                                 <option selected disabled>-- Elegir usuario --</option>
+                                            @foreach ($u as $user)
                                                 <option value="{{ $user->id }}">{{ $user->firstname }} {{ $user->lastname }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">                                    
+                                        <label for="users"> Categoría Institucional </label>
+                                        <select class="form-control form-control-rounded" id="ci" name="ci">
+                                                <option selected disabled>-- Elegir categoria --</option>
+                                            @foreach ($ci as $c)
+                                                <option value="{{ $c->id }}">{{ $c->name }} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -106,6 +116,7 @@
 <script>
 $(document).ready(function() {
     $('#user_id').select2();
+    $('#ci').select2();
 });
 </script>
 
