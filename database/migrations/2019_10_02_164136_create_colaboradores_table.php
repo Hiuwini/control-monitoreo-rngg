@@ -24,6 +24,7 @@ class CreateColaboradoresTable extends Migration
             $table->date('fechanacimiento');
             $table->string('nivelacademico');
             $table->string('titulo');
+           
 
             $table->timestamps();
         });

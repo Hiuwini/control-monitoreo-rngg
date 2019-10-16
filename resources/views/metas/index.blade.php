@@ -30,7 +30,7 @@
                             <th scope="col">Meta</th>
                             <th scope="col">Fecha Limite</th>
 
-                            <th scope="col">Producto Asociado</th>
+                            <th scope="col">Proyecto Asociado</th>
                             <th scope="col">Status</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <td> {{ $meta->fecha_limite}} </td>
                             
                             
-                            <td> {{$meta->id_producto}} </td>
+                            <td> {{$meta->id_proyecto}} </td>
                                 
                             
 

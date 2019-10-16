@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Meta;
 use Carbon\Carbon;
-use App\Producto;
+use App\Project;
 
 class MetaController extends Controller
 {
@@ -19,9 +19,11 @@ class MetaController extends Controller
     {
         //
         $metas = Meta::orderBy('id','ASC')->paginate(10);
-        $productos = Producto::orderBy('id','ASC')->paginate(10);
+        $projects = Project::join('users','users.id','=','projects.user_id')
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();
         //$roles = Roles::latest()->paginate(5);
-        return view('metas.index', compact('metas'),compact('productos'))->with('i',(request()->input('page', 1) - 1) *10);
+        return view('metas.index', compact('metas'),compact('projects'))->with('i',(request()->input('page', 1) - 1) *10);
         
         
     }
@@ -33,9 +35,12 @@ class MetaController extends Controller
      */
     public function create()
     {
-        //
-        $productos = Producto::all();
-        return view('metas.create', compact('productos'));
+        //$productos = Producto::all();
+        //implementando proyectos
+        $projects = Project::join('users','users.id','=','projects.user_id')
+            ->select('projects.*','users.firstname','users.lastname')
+            ->get();
+        return view('metas.create', compact('projects'));
         
     }
 
@@ -48,14 +53,14 @@ class MetaController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_producto'=>'required']);
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_proyecto'=>'required']);
         //Meta::create($request->all());
 
        
         $meta = new Meta(); 
         $meta->nombre = request('nombre');        
         $meta->fecha_limite= Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString();
-        $meta->id_producto= request('id_producto');
+        $meta->id_proyecto= request('id_proyecto');
         $meta->estado = ( $request->estado == 'on') ? true:false;
         $meta->save();      
 
@@ -83,9 +88,11 @@ class MetaController extends Controller
     {
         //
         $metas = Meta::findOrFail($id);
-
-        $productos = Producto::all();       
-         return view('metas.edit',compact('metas','productos'));
+        //$productos = Producto::all();  Incorporando metas a proyectos.
+        $projects = Project::join('users','users.id','=','projects.user_id')
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();     
+         return view('metas.edit',compact('metas','projects'));
     }
 
     /**
@@ -98,11 +105,11 @@ class MetaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_producto'=>'required']);
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_proyecto'=>'required']);
              
              $form_data = array('nombre' => $request->nombre,
                                 'fecha_limite'=> Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString(),
-                                'id_producto' => $request->id_producto,
+                                'id_proyecto' => $request->id_proyecto,
                                 'estado' => (( $request->estado == 'on') ? true:false )
                             );
                             Meta::whereId($id)->update($form_data);

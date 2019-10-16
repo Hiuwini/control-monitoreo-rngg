@@ -8,7 +8,7 @@
 
 @section('main-content')
    <div class="breadcrumb">
-                <h1>Colaboradores</h1>
+                <h1>Actividades</h1>
                 <ul>
                     
                     <li><a href="">GESTION</a></li>
@@ -23,9 +23,9 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Listado de Colaboradores
-                                <a style="margin: 19px;" href="{{ url('/colaboradores/create')}}" class="btn btn-primary">Nuevo Colaborador</a>
-                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Colaborador</a>
+                            <div class="card-title mb-3">Listado Actividades
+                                <a style="margin: 19px;" href="{{ url('/actividades/create')}}" class="btn btn-primary">Nuevo Actividad</a>
+                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Actividades</a>
                             </div>
                             
                                 <div class="row">
@@ -35,34 +35,27 @@
                                              <tr>
                                                  <th>Id</th>
                                                  <th>Nombre</th>
-                                                 <th>Apellido</th>
-                                                
-                                                 <th>Teléfono</th>
-                                                 <th>Email</th>
-                                                
-                                                 
-                                                
+                                                 <th>Descripción</th>
+                                                 <th>Fecha</th>
+                                                 <th>Cantidad proyectada</th>
+                                                 <th>Duración en horas</th>
                                              </tr>
                                          </thead>
                                          <tbody>
-                                             @foreach($colaboradores as $colaboradores)
+                                             @foreach($actividades as $actividad)
                                              <tr>
                                                  <td>{{$loop->iteration}}</td>
-                                                 <td>{{ $colaboradores->nombrecolaborador}}</td>
-                                                 <td>{{ $colaboradores->apellidocolaborador}}</td>
-                                                 
-                                                 <td>{{ $colaboradores->telefonocolaborador}}</td>
-                                                 <td>{{ $colaboradores->emailcolaborador}}</td>
-                                                
-                                                
-                                                 <td>
-                           
+                                                 <td>{{ $actividad->nombre}}</td>
+                                                 <td>{{ $actividad->descripcion}}</td>
+                                                 <td>{{ $actividad->fecha}}</td>
+                                                 <td>{{ $actividad->cantidadProyectada}}</td>
+                                                 <td>{{ $actividad->duracion}}</td>
                                                  <td>
 
-                                                    <a href="{{ route('colaboradores.edit', $colaboradores->id)}}" class="btn btn-warning">Editar</a>
+                                                    <a href="{{ route('actividades.edit', $actividad->id)}}" class="btn btn-warning">Editar</a>
 
                                                      <td>
-                                                     <form action="{{ route('colaboradores.destroy', $colaboradores->id) }}" method="POST">
+                                                     <form action="{{ route('actividades.destroy', $actividad->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -79,12 +72,13 @@
                                          </tbody>
                                         
                                      </table>  
-
+                                     
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
 
             </div>
 

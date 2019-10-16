@@ -111,8 +111,7 @@
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el nombre del Titulo del colaborador.</small>
                             </div>
-
-                            </div>
+                            
 
                              <div class="form-group text-left">
 

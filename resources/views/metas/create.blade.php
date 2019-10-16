@@ -53,10 +53,10 @@
                                             <div class="form-group col-md-12">
                                                 <label for="inputEmail4" class="ul-form__label">Producto: </label>
                                                 
-                                                <select name="id_producto" id="id_producto" class="form-control" >
-                                                    <option value="">-- Escoja el producto --</option>
-                                                    @foreach ($productos as $p)
-                                                    <option value="{{ $p['id'] }}" >{{ $p['componente']}}</option>
+                                                <select name="id_proyecto" id="id_proyecto`" class="form-control" >
+                                                    <option value="">-- Escoja el proyecto --</option>
+                                                    @foreach ($projects as $project)
+                                                    <option value="{{ $project['id'] }}" >{{ $project['name']}}</option>
                                                     @endforeach                                                                    
                                                 </select>
                                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">
