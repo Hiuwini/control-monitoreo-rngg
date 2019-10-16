@@ -38,8 +38,8 @@ class MetaController extends Controller
         //$productos = Producto::all();
         //implementando proyectos
         $projects = Project::join('users','users.id','=','projects.user_id')
-            ->select('projects.*','users.firstname','users.lastname')
-            ->get();
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();
         return view('metas.create', compact('projects'));
         
     }
@@ -53,7 +53,7 @@ class MetaController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_proyecto'=>'required']);
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required',  'id_proyecto'=>'required']);
         //Meta::create($request->all());
 
        
@@ -105,7 +105,7 @@ class MetaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'estado'=>'required', 'id_proyecto'=>'required']);
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'id_proyecto'=>'required']);
              
              $form_data = array('nombre' => $request->nombre,
                                 'fecha_limite'=> Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString(),

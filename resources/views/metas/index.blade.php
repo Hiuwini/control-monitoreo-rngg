@@ -20,7 +20,7 @@
         <div class="card-body">
             <h4 class="card-title mb-3">Metas actualmente registradas</h4>
             <p>Se muestra todas las metas actualmente registradas en el sistema.</p>
-                <a style="margin: 19px;" href="{{ url('/metas/create')}}" class="btn btn-primary">Nuevo Meta</a>
+                <a style="margin: 19px;" href="{{ url('/metas/create')}}" class="btn btn-primary">Nueva Meta</a>
 
             <div class="table-responsive">
                 <table class="table table-bordered">
