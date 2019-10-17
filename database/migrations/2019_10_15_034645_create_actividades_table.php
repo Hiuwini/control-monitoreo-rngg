@@ -18,8 +18,8 @@ class CreateActividadesTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->date('fecha');
-            $table->bigint('cantidadProyectada');
-            $table->bigint('duracion');
+            $table->bigInteger('cantidadProyectada');
+            $table->bigInteger('duracion');
             $table->timestamps();
         });
     }

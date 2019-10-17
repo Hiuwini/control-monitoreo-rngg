@@ -35,7 +35,7 @@
                                         <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Actividades</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#goals" role="tab" aria-controls="goals" aria-selected="false">Metasdades</a>
+                                        <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#goals" role="tab" aria-controls="goals" aria-selected="false">Metas</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
