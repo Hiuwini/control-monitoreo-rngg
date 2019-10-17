@@ -74,7 +74,19 @@
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese la duracion de la actividad en horas</small>
                             </div>
-                          
+                          <div class="form-group col-md-12">
+                                                <label for="inputEmail4" class="ul-form__label">Producto: </label>
+                                                
+                                                <select name="id_proyecto" id="id_proyecto`" class="form-control" >
+                                                    <option value="">-- Escoja el proyecto --</option>
+                                                    @foreach ($projects as $project)
+                                                    <option value="{{ $project['id'] }}" >{{ $project['name']}}</option>
+                                                    @endforeach                                                                    
+                                                </select>
+                                                <small id="passwordHelpBlock" class="ul-form__text form-text ">
+                                                Seleccione el producto al que se asignara la meta.
+                                            </small>
+                                            </div>
                             </div>     
 
                              <div class="form-group text-left">

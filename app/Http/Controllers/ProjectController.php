@@ -6,6 +6,7 @@ use App\Project;
 use App\User;
 use App\CInstitutional;
 use App\Meta;
+use App\Actividades;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -86,8 +87,12 @@ class ProjectController extends Controller
             ->where('metas.id_proyecto','=',$id)
             ->select('metas.*')
             ->get();
+        $actividades = Actividades::join('projects','projects.id','=','actividades.id_proyecto')
+            ->where('actividades.id_proyecto','=',$id)
+            ->select('actividades.*')
+            ->get();
         //return view('projects.admin')->with('p',$projects,'metas',$metas);
-        return view('projects.admin',compact('p','metas'));
+        return view('projects.admin',compact('p','metas','actividades'));
     }
 
     /**
