@@ -65,9 +65,102 @@
                                     </div>
                                     <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="contact-basic-tab">
                                         <!-- Aqui van el codigo de las actividades -->    
+                                        <a style="margin: 19px;" href="{{ route('actividades.create', $p[0]->id)}}" class="btn btn-primary">Nueva Actividad</a>
+                                        <div class="row">
+
+                                     <table class="table table-light">
+                                         <thead class="thead-light">
+                                             <tr>
+                                                 <th>Id</th>
+                                                 <th>Nombre</th>
+                                                 <th>Descripción</th>
+                                                 <th>Fecha</th>
+                                                 <th>Cantidad proyectada</th>
+                                                 <th>Duración en horas</th>
+                                                 <th>Proyecto</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                            
+                        @foreach($actividades as $actividad)
+                        <tr>
+                            <th scope="row"> {{ $loop->iteration }} </th>
+                            <td>{{ $actividad->nombre }}</td>
+                            <td>{{ $actividad->descripcion}} </td>
+                            <td>{{ $actividad->fecha }}</td>
+                            <td>{{ $actividad->cantidadProyectada }}</td>
+                            <td>{{ $actividad->duracion }}</td>
+                            
+                            
+                            <td>
+                                <a href="{{ route('actividades.edit', $actividad->id)}}"> <button type="button" class="btn btn-success "> 
+                                <i class="nav-icon i-Pen-2 "></i>
+                            </button> </a>
+
+                            <button type="submit" class="btn btn-danger ">
+                                <i class="nav-icon i-Close-Window "></i>
+                            </button>
+                            </form>
+                            </td>
+                        </tr>
+                        @endforeach                    
+                                         </tbody>
+                                        
+                                     </table>  
+                                     
+                                </div>
                                     </div>
                                     <div class="tab-pane fade" id="goals" role="tabpanel" aria-labelledby="contact-basic-tab">
                                         <!-- Aqui van el codigo de las metas -->    
+                                        <a style="margin: 19px;" href="{{ route('metas.create', $p[0]->id)}}" class="btn btn-primary">Nueva Meta</a>
+                                        <!-- Metas atadas al proyecto -->
+                                        <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Meta</th>
+                            <th scope="col">Fecha Limite</th>
+
+                            <th scope="col">Proyecto Asociado</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($metas as $meta)
+                        <tr>
+                            <th scope="row"> {{ $loop->iteration }} </th>
+                            <td>{{ $meta->nombre }}</td>
+                            <td> {{ $meta->fecha_limite}} </td>
+                            <td> {{$meta->id_proyecto}} </td>
+                            <td>
+                            @if ($meta->estado == true)
+                            <span class="badge badge-success">Activo</span></td>
+                            @else
+                            <span class="badge badge-warning">Inactivo</span></td>
+                            @endif
+                            <form action="{{ route('metas.destroy', $meta->id) }}" method="POST">                                                    
+                            @csrf
+                            @method('DELETE')
+                            
+                            <td>
+                                <a href="{{ route('metas.edit', $meta->id)}}"> <button type="button" class="btn btn-success "> 
+                                <i class="nav-icon i-Pen-2 "></i>
+                            </button> </a>
+
+                            <button type="submit" class="btn btn-danger ">
+                                <i class="nav-icon i-Close-Window "></i>
+                            </button>
+                            </form>
+                            </td>
+                        </tr>
+                        @endforeach                        
+                        
+                    </tbody>
+                </table>
+            </div>
+
                                     </div>
                                 </div>
                         </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\User;
 use App\CInstitutional;
+use App\Meta;
+use App\Actividades;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -77,11 +79,20 @@ class ProjectController extends Controller
     public function admin(Project $project, $id)
     {
         //
-        $projects = Project::join('users','users.id','=','projects.user_id')
+        $p = Project::join('users','users.id','=','projects.user_id')
             ->where('projects.id','=',$id)
             ->select('projects.*','users.firstname','users.lastname')
             ->get();
-        return view('projects.admin')->with('p',$projects);
+        $metas = Meta::join('projects','projects.id','=','metas.id_proyecto')
+            ->where('metas.id_proyecto','=',$id)
+            ->select('metas.*')
+            ->get();
+        $actividades = Actividades::join('projects','projects.id','=','actividades.id_proyecto')
+            ->where('actividades.id_proyecto','=',$id)
+            ->select('actividades.*')
+            ->get();
+        //return view('projects.admin')->with('p',$projects,'metas',$metas);
+        return view('projects.admin',compact('p','metas','actividades'));
     }
 
     /**

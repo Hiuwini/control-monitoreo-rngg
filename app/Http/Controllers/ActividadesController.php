@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actividades;
 use Illuminate\Http\Request;
+use App\Project;
 
 class ActividadesController extends Controller
 {
@@ -15,7 +16,10 @@ class ActividadesController extends Controller
     public function index()
     {
         $actividades = Actividades::orderBy('id','ASC')->paginate(10);
-        return view('actividades/index', compact('actividades'))->with('i',(request()->input('page', 1) - 1) *10);
+        $projects = Project::join('users','users.id','=','projects.user_id')
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();
+        return view('actividades/index', compact('actividades'),compact('projects'))->with('i',(request()->input('page', 1) - 1) *10);
 
         //
     }
@@ -27,7 +31,11 @@ class ActividadesController extends Controller
      */
     public function create()
     {
-        return view('actividades.create');
+        $projects = Project::join('users','users.id','=','projects.user_id')
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();
+        return view('actividades.create', compact('projects'));
+        
         //
     }
 
@@ -44,7 +52,8 @@ class ActividadesController extends Controller
         'descripcion' => 'required',
         'fecha'=> 'required',
         'cantidadProyectada'=> 'required',
-        'duracion'=> 'required']);
+        'duracion'=> 'required',
+        'id_proyecto'=> 'required']);
         
         $actividades = new Actividades();
  
@@ -53,7 +62,7 @@ class ActividadesController extends Controller
         $actividades->fecha = request('fecha');
         $actividades->cantidadProyectada = request('cantidadProyectada');
         $actividades->duracion = request('duracion');
-        
+        $actividades->id_proyecto = request('id_proyecto');
         $actividades->save();
  
         return redirect('/actividades');
@@ -80,7 +89,10 @@ class ActividadesController extends Controller
     public function edit($id)
     {
         $actividades = Actividades::findOrFail($id);
-        return view('actividades.edit',compact('actividades'));
+        $projects = Project::join('users','users.id','=','projects.user_id')
+        ->select('projects.*','users.firstname','users.lastname')
+        ->get();     
+        return view('actividades.edit',compact('actividades','projects'));
         //
     }
 
@@ -94,13 +106,21 @@ class ActividadesController extends Controller
     public function update(Request $request, $id)
     {
          
+        $this->validate($request,[ 'nombre'=>'required', 'fecha_limite'=>'required', 'id_proyecto'=>'required']);
+             
         $form_data = array('nombre' => $request->nombre,
-                            'descripcion' => $request->descripcion,
-                            'fecha' => $request->fecha,
-                            'cantidadProyectada' => $request->cantidadProyectada,
-                            'duracion' => $request->duracion);
-
-        Actividades::whereId($id)->update($form_data);
+                           'fecha_limite'=> Carbon::createFromFormat('Y-m-d', $request->fecha_limite)->toDateString(),
+                           'id_proyecto' => $request->id_proyecto,
+                           'estado' => (( $request->estado == 'on') ? true:false )
+                       );
+                       Actividades::whereId($id)->update($form_data);
+       // $form_data = array('nombre' => $request->nombre,
+         //                   'descripcion' => $request->descripcion,
+           //                 'fecha' => $request->fecha,
+             //               'cantidadProyectada' => $request->cantidadProyectada,
+               //             'duracion' => $request->duracion);
+        
+        
         return redirect('actividades')->with('success','Actividad actualizada correctamente!');
           
     

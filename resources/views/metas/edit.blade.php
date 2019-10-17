@@ -55,10 +55,10 @@
                                                 <label for="inputEmail4" class="ul-form__label">Producto: </label>
                                                 
                                                 <select name="id_proyecto" id="id_proyecto" class="form-control" >
-                                                    <option value="">-- Escoja el proyecto --</option>
-                                                    @foreach ($projects as $project)
-                                                    <option value="{{ $project['id'] }}" >{{ $project['name']}}</option>
-                                                    @endforeach                                                                    
+                                                    <option value="">-- Escoja el proyecto --</option>                                                    
+                                                    @foreach ($projects as $p)
+                                                    <option value="{{ $p['id'] }}" {{ ( $p['id'] == $metas->id_proyecto ) ? 'selected': '' }}>{{ $p['name']}}</option>
+                                                    @endforeach           
                                                 </select>
                                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">
                                                 Seleccione el producto al que se asignara la meta.
@@ -69,7 +69,7 @@
                                         <div class="custom-separator"></div>
                                         <div class="card-title">Estado de la meta:</div>
                                         <label class="checkbox checkbox-primary">
-                                        <input type="checkbox" checked="{{ $metas->estado }}" name="estado" />
+                                        <input type="checkbox" {{ ( $metas->estado == true) ? 'checked':' ' }} name="estado" id="estado" />
                                         <span>Habilitar</span>
                                         <span class="checkmark"></span>
                                     </label>

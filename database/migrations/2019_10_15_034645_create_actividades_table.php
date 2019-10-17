@@ -20,6 +20,8 @@ class CreateActividadesTable extends Migration
             $table->date('fecha');
             $table->bigInteger('cantidadProyectada');
             $table->bigInteger('duracion');
+            $table->unsignedBigInteger('id_proyecto');
+            $table->foreign('id_proyecto')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });
     }
