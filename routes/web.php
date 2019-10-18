@@ -82,6 +82,13 @@ Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 
+//2.3 Indicadores
+Route::get('/indicators/create/{id}','IndicatorController@create');
+Route::post('/indicators/store','IndicatorController@store');
+Route::get('/indicators/{id}/edit','IndicatorController@edit')->name('indicator.edit');
+Route::put('/indicators/{id}','IndicatorController@update');
+Route::delete('/indicators/{id}','IndicatorController@destroy');
+
 
 Route::view('colaboradores','colaboradores.index')->name('colaboradores');
 Route::view('colaboradores/create','colaboradores.create')->name('create');//si

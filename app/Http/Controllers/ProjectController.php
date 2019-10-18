@@ -7,6 +7,7 @@ use App\User;
 use App\CInstitutional;
 use App\Meta;
 use App\Actividades;
+use App\Indicator;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -91,8 +92,12 @@ class ProjectController extends Controller
             ->where('actividades.id_proyecto','=',$id)
             ->select('actividades.*')
             ->get();
+        $indicators = Indicator::join('projects','projects.id','=','indicators.id_proyecto')
+        ->where('indicators.id_proyecto','=',$id)
+        ->select('indicators.*')
+        ->get();
         //return view('projects.admin')->with('p',$projects,'metas',$metas);
-        return view('projects.admin',compact('p','metas','actividades'));
+        return view('projects.admin',compact('p','metas','actividades','indicators'));
     }
 
     /**

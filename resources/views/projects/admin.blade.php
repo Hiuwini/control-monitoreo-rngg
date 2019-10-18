@@ -62,6 +62,73 @@
                                     </div>
                                     <div class="tab-pane fade" id="indicators" role="tabpanel" aria-labelledby="profile-basic-tab">
                                         <!-- Aqui van el codigo de los indicadores -->    
+                                        <a style="margin: 19px;" href="/indicators/create/{{ $p[0]->id }}" class="btn btn-primary">
+                                            Nuevo Indicador
+                                        </a>
+                                        <div class="row">
+                                        <table id="zero_configuration_table" class="display table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Indicador</th>
+                                                        <th>Tipo</th>
+                                                        <th>Avance</th>
+                                                        <th>Meta</th>
+                                                        <th>% de Avance</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($indicators as $i)
+                                                    <tr>
+                                                        <th scope="row"> {{ $loop->iteration }} </th>
+                                                        <td>{{ $i->name }}</td>
+                                                        @if ($i->type == 1)
+                                                            <td> Beneficiarios </td>
+                                                        @elseif($i->type == 2)
+                                                            <td> Actividades </td>
+                                                        @else 
+                                                            <td> Manual </td>
+                                                        @endif
+                                                        <td>{{ number_format((int)$i->accumulated , 0, '.', '') }}</td>
+                                                        <td>{{ number_format((int)$i->goal , 0, '.', '') }}</td>
+                                                        <td>{{ number_format((int)$i->percentage , 0, '.', '') }} %</td>
+                                                        
+                                                       <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start">
+                                                                    @if ($i->type == 3)                                                        
+                                                                        <a class="dropdown-item" href="#">Administrar</a>
+                                                                    @elseif($i->type == 2)
+                                                                        <a class="dropdown-item" href="#">Ver Actividades</a>
+                                                                    @else
+                                                                        <a class="dropdown-item" href="#">Ver Beneficiarios</a>
+                                                                    @endif
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                                        @csrf
+                                                                        @method('DELETE')   
+                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                                        
+                                                                    </form>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach                    
+                                                </tbody>
+                                               
+                                            </table>  
+                                            
+                                       </div>
                                     </div>
                                     <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="contact-basic-tab">
                                         <!-- Aqui van el codigo de las actividades -->    
