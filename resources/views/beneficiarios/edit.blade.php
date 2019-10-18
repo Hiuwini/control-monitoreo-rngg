@@ -61,12 +61,9 @@
                                     </div>
                                 </div>
 
-                                 <div class="col-md-6 form-group mb-3">
-                                    <label>Etnia</label>
-                                    <div class="col-md-8">
-                                        <input type="text" name="etnia" value="{{ $beneficiarios->etnia }}" class="form-control input-lg" />
-                                    </div>
-                                </div>
+                                
+                                        
+                                   
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label>Rango de Edad</label>
@@ -127,7 +124,13 @@
                                     </div>
                                 </div>
 
-                                </div>
+                                </div><div class="custom-separator"></div>
+                                        <div class="card-title">Miembro grupo gestores</div>
+                                        <label class="checkbox checkbox-primary">
+                                        <input type="checkbox" {{ ( $beneficiarios->estado == true) ? 'checked':' ' }} name="estado" id="estado" />
+                                        <span>Habilitar</span>
+                                        <span class="checkmark"></span>
+                                    </label>
 
                                 <div class="form-group text-left">
                                     <input type="submit" name="edit" class="btn btn-success m-1" value="Actualizar" />

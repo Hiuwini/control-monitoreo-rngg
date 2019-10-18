@@ -62,7 +62,7 @@ class BeneficiariosController extends Controller
         ['nombrebeneficiario' => 'required', 
         'apellidobeneficiario' => 'required',
         'genero'=> 'required',
-        'etnia'=> 'required',
+        'estado'=> 'required',
         'rangoedad'=> 'required',
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
@@ -76,7 +76,7 @@ class BeneficiariosController extends Controller
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->etnia = request('etnia');
+        $beneficiarios->estado = ( $request->estado == 'on') ? true:false;
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
@@ -131,7 +131,7 @@ class BeneficiariosController extends Controller
         $form_data = array('nombrebeneficiario' => $request->nombrebeneficiario,
                             'apellidobeneficiario' => $request->apellidobeneficiario,
                             'genero' => $request->genero,
-                            'etnia' => $request->etnia,
+                            'estado' => (( $request->estado == 'on') ? true:false ),
                             'rangoedad' => $request->rangoedad,
                             'nombreubicacion' => $request->nombreubicacion,
                             'dpicui' => $request->dpicui,

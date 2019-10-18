@@ -67,27 +67,7 @@
                                 Seleccione el género del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Etnia</label>
-                                <select name="etnia" id="etniaId" class="form-control" >
-                                    <option value="">-- Seleccione la etnia --</option>
-                                    <option value="Ladina">Ladina</option>  
-                                    <option value="Xinca">Xinca</option>  
-                                    <option value="Garífuna">Garífuna</option>
-                                    <option value="K’iche’">K’iche’</option>
-                                    <option value="Kaqchikel">Kaqchikel</option>   
-                                    <option value="Mam">Mam</option>                             
-                                    <option value="Q'eqchi'">Q'eqchi'</option>
-                                    <option value="Poqomam">Poqomam</option>
-                                    <option value="Tz'utujil">Tz'utujil</option>
-                                    <option value="Popti'">Popti'</option>
-                                    <option value="Akateko">Akateko</option>
-                                    <option value="Achi">Achi</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Seleccione la etnia del beneficiario.</small>
-                            </div>
+                           
 
                             <div class="col-md-6 form-group mb-3">
                                 <label>Rango de Edad</label>
@@ -153,7 +133,16 @@
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Seleccione el tipo del beneficiario.</small>
                             </div>
-
+                            
+                            <div class="custom-separator"></div>
+                                        <div class="card-title">Miembro de grupo gestores</div>
+                                        <label class="checkbox checkbox-primary">
+                                        <input type="checkbox" checked="" name="estado" />
+                                        <span>Habilitar</span>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                        
+                                    </div>
                             </div>     
 
                              <div class="form-group text-left">
