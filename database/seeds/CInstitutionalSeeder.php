@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CInstitutionalSeeder extends Seeder
 {
@@ -12,25 +14,17 @@ class CInstitutionalSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('c_institutionals')->insert([
-            'name' => 'Desarrollo Productivo',
-            'status' => 1,
-        ]);
-        DB::table('c_institutionals')->insert([
-            'name' => 'Clima de Negocios',
-            'status' => 1,
-        ]);
-        DB::table('c_institutionals')->insert([
-            'name' => 'Desarrollo Social',
-            'status' => 1,
-        ]);
-        DB::table('c_institutionals')->insert([
-            'name' => 'Ecosistema Interno',
-            'status' => 1,
-        ]);
-        DB::table('c_institutionals')->insert([
-            'name' => 'Desarrollo Institucional',
-            'status' => 1,
-        ]);
+        DB::table('c_institutionals')->delete();
+
+        $ci = [
+            ['id' => 1, 'name' => 'Desarrollo Productivo', 'status' => '1'],
+            ['id' => 2, 'name' => 'Clima de Negocios', 'status' => '1'],
+            ['id' => 3, 'name' => 'Desarrollo Social', 'status' => '1'],
+            ['id' => 4, 'name' => 'Ecosistema Interno', 'status' => '1'],
+            ['id' => 5, 'name' => 'Desarrollo Institucional', 'status' => '1'],
+        ];
+
+        DB::table('c_institutionals')->insert($ci);
+        
     }
 }
