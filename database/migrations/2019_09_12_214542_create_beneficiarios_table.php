@@ -18,7 +18,7 @@ class CreateBeneficiariosTable extends Migration
             $table->string('nombrebeneficiario');
             $table->string('apellidobeneficiario');
             $table->string('genero');
-            $table->string('etnia');
+            $table->boolean('estado');
             $table->string('rangoedad');
             $table->string('nombreubicacion');
             $table->string('dpicui');

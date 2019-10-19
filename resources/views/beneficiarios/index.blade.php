@@ -37,7 +37,7 @@
                                                  <th>Nombre</th>
                                                  <th>Apellido</th>
                                                  <th>Género</th>
-                                                 <th>Etnia</th>
+                                                 <th>Miembro de grupo gestor</th>
                                                  <th>Rango de Edad</th>
                                                  <th>Ubicación</th>
                                                  
@@ -50,7 +50,12 @@
                                                  <td>{{ $beneficario->nombrebeneficiario}}</td>
                                                  <td>{{ $beneficario->apellidobeneficiario}}</td>
                                                  <td>{{ $beneficario->genero}}</td>
-                                                 <td>{{ $beneficario->etnia}}</td>
+                                                 <td>
+                            @if ($beneficario->estado == true)
+                            <span class="badge badge-success">Activo</span></td>
+                            @else
+                            <span class="badge badge-warning">Inactivo</span></td>
+                            @endif
                                                  <td>{{ $beneficario->rangoedad}}</td>
                                                  <td>{{ $beneficario->nombreubicacion}}</td>
                                                  
