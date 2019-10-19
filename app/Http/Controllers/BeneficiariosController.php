@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiarios;
+use App\Beneficio;
 use App\Generos;
 use App\Tipobeneficiarios;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class BeneficiariosController extends Controller
         $tipobeneficiarios = Tipobeneficiarios::all();
       
       
-       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios'));
+       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios') );
        
 
     }
@@ -62,13 +63,13 @@ class BeneficiariosController extends Controller
         ['nombrebeneficiario' => 'required', 
         'apellidobeneficiario' => 'required',
         'genero'=> 'required',
-        'etnia'=> 'required',
+        
         'rangoedad'=> 'required',
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
         'telefono' => 'required|numeric',
         'emailbeneficiario'=> 'required',
-        'indicador'=> 'required',
+        
         'tipobeneficiario'=> 'required']);
         
         $beneficiarios = new Beneficiarios();
@@ -76,18 +77,26 @@ class BeneficiariosController extends Controller
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->etnia = request('etnia');
+        //Arreglar
+        $beneficiarios->etnia = 'Otro';
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
-        $beneficiarios->indicador = request('indicador');
+        $beneficiarios->indicador ='nada';
         $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
+       
         
         $beneficiarios->save();
  
-        return redirect('/beneficiarios');
+        $beneficio = new Beneficio;
+        
+        $beneficio->indicator_id = request('indicator_id');
+        $beneficio->beneficiario_id = $beneficiarios->id;
+        $beneficio->save();
+        $indicator_id = request('indicator_id');
+        return redirect("/beneficios/$indicator_id");
 
     }
 

@@ -34,9 +34,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Actividades</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!--<li class="nav-item">
                                         <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#goals" role="tab" aria-controls="goals" aria-selected="false">Metas</a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="home-basic-tab">
@@ -50,10 +50,15 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
-                                                    <div class="progress mb-3">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                                    </div>
-                                                    <h5><b>Descripción</b></h5>
+                                                    @foreach($indicators as $i)
+                                                        <h6>{{$i->name}}</h6>
+                                                        <div class="progress mb-3">
+                                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)$i->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$i->percentage , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)$i->percentage , 0, '.', '') }}%</div>
+                                                        </div>
+                                                        @endforeach<h5><b>Descripción</b></h5>
+                                                    
                                                     <p>{{$p[0]->description}}</p>                                                    
                                                     
                                                 </div>  
@@ -84,11 +89,11 @@
                                                         <th scope="row"> {{ $loop->iteration }} </th>
                                                         <td>{{ $i->name }}</td>
                                                         @if ($i->type == 1)
-                                                            <td> Beneficiarios </td>
+                                                            <td> Asesorías individuales </td>
                                                         @elseif($i->type == 2)
-                                                            <td> Actividades </td>
+                                                            <td> Eventos </td>
                                                         @else 
-                                                            <td> Manual </td>
+                                                            <td> Personalizado </td>
                                                         @endif
                                                         <td>{{ number_format((int)$i->accumulated , 0, '.', '') }}</td>
                                                         <td>{{ number_format((int)$i->goal , 0, '.', '') }}</td>
@@ -103,11 +108,11 @@
                                                                 </button>
                                                                 <div class="dropdown-menu" x-placement="bottom-start">
                                                                     @if ($i->type == 3)                                                        
-                                                                        <a class="dropdown-item" href="#">Administrar</a>
+                                                                        <a class="dropdown-item" href="/indicator/{{$i->id}}">Administrar</a>
                                                                     @elseif($i->type == 2)
-                                                                        <a class="dropdown-item" href="#">Ver Actividades</a>
+                                                                        <a class="dropdown-item" href="#">Ver Eventos</a>
                                                                     @else
-                                                                        <a class="dropdown-item" href="#">Ver Beneficiarios</a>
+                                                                        <a class="dropdown-item" href="/beneficios/{{$i->id}}">Administrar</a>
                                                                     @endif
                                                                     <div class="dropdown-divider"></div>
                                                                     <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>

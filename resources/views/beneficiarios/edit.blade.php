@@ -61,12 +61,12 @@
                                     </div>
                                 </div>
 
-                                 <div class="col-md-6 form-group mb-3">
+                                 <!--<div class="col-md-6 form-group mb-3">
                                     <label>Etnia</label>
                                     <div class="col-md-8">
                                         <input type="text" name="etnia" value="{{ $beneficiarios->etnia }}" class="form-control input-lg" />
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label>Rango de Edad</label>

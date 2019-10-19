@@ -41,6 +41,7 @@
                         <div class="row">
 
                             <div class="col-md-6 form-group mb-3">
+                                
                                 <label>Nombre</label>
                                 <input type="text" name="nombrebeneficiario" class="form-control input-lg" value="{{ old('nombrebeneficiario') }}" />
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
@@ -48,7 +49,8 @@
 
                                 
                             </div>
-
+                            
+                        <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
                              <div class="col-md-6 form-group mb-3">
                              <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>
@@ -67,7 +69,7 @@
                                 Seleccione el género del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-6 form-group mb-3">
+                            <!--<div class="col-md-6 form-group mb-3">
                                 <label>Etnia</label>
                                 <select name="etnia" id="etniaId" class="form-control" >
                                     <option value="">-- Seleccione la etnia --</option>
@@ -87,7 +89,7 @@
                                 </select>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Seleccione la etnia del beneficiario.</small>
-                            </div>
+                            </div>-->
 
                             <div class="col-md-6 form-group mb-3">
                                 <label>Rango de Edad</label>
@@ -115,6 +117,15 @@
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
+                                <label for="status">Miembro de Grupo Gestor</label><br>
+                                <label class="switch switch-primary mr-3">
+                                        <span>Si / No</span>
+                                        <input type="checkbox" name="status" id="status" checked>
+                                        <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
                                 <label>DPI / CUI</label>
                                 <input type="text" name="dpicui" class="form-control input-lg" value="{{ old('dpicui') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
@@ -135,13 +146,7 @@
                                  Ingrese el correo electrónico del beneficiario.</small>
                             </div>
 
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Indicador</label>
-                                <input type="text" name="indicador" class="form-control input-lg" value="{{ old('indicador') }}"/>
-                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese el indicador del beneficiario.</small>
-                            </div>
-
+                            
                             <div class="col-md-6 form-group mb-3">
                                 <label>Tipo de Beneficiario</label>
                                 <select name="tipobeneficiario" id="tipobeneficiarioId" class="form-control" >

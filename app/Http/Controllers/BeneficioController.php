@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Beneficio;
+use App\Indicator;
+use App\Project;
+use App\Beneficiarios;
+
 use Illuminate\Http\Request;
 
 class BeneficioController extends Controller
@@ -12,9 +16,17 @@ class BeneficioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        $i = Indicator::find($id);
+        $project = Project::find($i->id_proyecto);
+        $beneficiarios = Beneficio::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
+            ->where('indicator_id','=',$id)
+            ->get();
+        
+        return view('beneficios.index')->with('i',$i)->with('project',$project)
+        ->with('beneficiarios',$beneficiarios);
     }
 
     /**

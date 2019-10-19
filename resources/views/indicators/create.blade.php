@@ -48,9 +48,9 @@
                                         <label for="type">Tipo de indicador</label>
                                         <select name="type" id="type" class="form-control form-control-rounded" required>
                                             <option selected disabled>-- Elegir tipo --</option>
-                                            <option value="1">Beneficiarios</option>
-                                            <option value="2">Actividades</option>
-                                            <option value="3">Manual</option>
+                                            <option value="1">Asesorías individuales</option>
+                                            <option value="2">Eventos</option>
+                                            <option value="3">Personalizado</option>
                                         </select>
                                     </div>
 
