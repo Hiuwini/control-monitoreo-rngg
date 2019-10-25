@@ -6,6 +6,9 @@ use App\Beneficiarios;
 use App\Beneficio;
 use App\Generos;
 use App\Tipobeneficiarios;
+
+use App\Participantes;
+use App\Actividades;
 use Illuminate\Http\Request;
  
 class BeneficiariosController extends Controller
@@ -43,7 +46,7 @@ class BeneficiariosController extends Controller
     {
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
-      
+         
       
        return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios') );
        
@@ -88,13 +91,31 @@ class BeneficiariosController extends Controller
        
         
         $beneficiarios->save();
- 
+
+        if(request('type')=='indicador')
+        {
+
         $beneficio = new Beneficio;
         
         $beneficio->indicator_id = request('indicator_id');
         $beneficio->beneficiario_id = $beneficiarios->id;
         $beneficio->save();
-        $indicator_id = request('indicator_id');
+        $indicator_id = request('indicator_id');    
+    }else{
+        
+
+        //para los participantes
+      
+
+        $participante= new Participantes;
+
+        $participante->actividad_id=request('actividad_id');
+        $participante->beneficiario_id = $beneficiarios->id;
+        
+        $participante->save();
+        $indicator_id = request('actividad_id');
+        }
+        
         return redirect("/beneficios/$indicator_id");
 
     }

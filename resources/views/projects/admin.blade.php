@@ -165,15 +165,29 @@
                             
                             
                             <td>
-                                <a href="{{ route('actividades.edit', $actividad->id)}}"> <button type="button" class="btn btn-success "> 
-                                <i class="nav-icon i-Pen-2 "></i>
-                            </button> </a>
-
-                            <button type="submit" class="btn btn-danger ">
-                                <i class="nav-icon i-Close-Window "></i>
-                            </button>
-                            </form>
-                            </td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start">
+                                                                    
+                                                                        <a class="dropdown-item" href="/beneficios/{{$actividad->id}}">Administrar</a>
+                                                                    
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                                        @csrf
+                                                                        @method('DELETE')   
+                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                                        
+                                                                    </form>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </td>
                         </tr>
                         @endforeach                    
                                          </tbody>

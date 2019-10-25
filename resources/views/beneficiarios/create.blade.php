@@ -49,7 +49,15 @@
 
                                 
                             </div>
-                            
+                        
+                        @if($_GET['type'] == 'actividad')
+                            <input type="hidden" name="actividad_id" value="{{ $_GET['id'] }}">
+                            <input type="hidden" name="type" value="actividad">
+                        @else
+                            <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
+                            <input type="hidden" name="type" value="indicador">
+                        @endif
+
                         <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
                              <div class="col-md-6 form-group mb-3">
                              <label>Apellido</label>
