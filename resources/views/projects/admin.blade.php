@@ -48,18 +48,22 @@
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
-                                                
-                                               
-                                                
-                                                
 
                                                 <div class="col-md-6">
                                                 <h5><b>Progreso por fecha</b></h5>
                                                         <div class="progress mb-3">
                                                         
-                                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                        @if ($p[0]->percentage > 100)
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)100 , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)100 , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)100 , 0, '.', '') }}%</div>
+                                                        
+                                                        @else 
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
                                                                 style="width: {{ number_format((int)$p[0]->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$p[0]->percentage , 0, '.', '') }}" aria-valuemin="0" 
                                                                     aria-valuemax="100">{{ number_format((int)$p[0]->percentage , 0, '.', '') }}%</div>
+                                                        @endif
+                                                            
                                                         </div>
 
                                                     <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    

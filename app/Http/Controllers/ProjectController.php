@@ -63,11 +63,15 @@ class ProjectController extends Controller
         //$indicator->percentage = ($request->accumulated / $request->goal) * 100;
         $fechaEmision = Carbon::parse($request->date_begin);
         $fechaExpiracion = Carbon::parse($request->date_end);
-       
+        
+    
         $fechaActual = Carbon::now(); 
         $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
         $Diferenciadias = $fechaActual->diffInDays($fechaEmision);
         $project->percentage=($Diferenciadias / $diasDiferencia)*100;
+
+
+
         //$project->percentage=(12 / 30) * 100;
         
         $project->save();
@@ -147,7 +151,16 @@ class ProjectController extends Controller
         $project->date_begin = date("Y-m-d", strtotime( $request->date_begin ) );
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;  
-        $project->c_institutional_id = $request->ci;        
+        $project->c_institutional_id = $request->ci;   
+        
+        $fechaEmision = Carbon::parse($request->date_begin);
+        $fechaExpiracion = Carbon::parse($request->date_end);
+        
+    
+        $fechaActual = Carbon::now(); 
+        $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+        $Diferenciadias = $fechaActual->diffInDays($fechaEmision);
+        $project->percentage=($Diferenciadias / $diasDiferencia)*100;
         $project->update();
 
         return redirect('/projects');
