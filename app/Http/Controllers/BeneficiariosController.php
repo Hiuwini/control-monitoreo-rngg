@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiarios;
 use App\Beneficio;
-use App\Generos;
-use App\Tipobeneficiarios;
+use App\TipoGestor;
 use Illuminate\Http\Request;
  
 class BeneficiariosController extends Controller
@@ -19,18 +18,8 @@ class BeneficiariosController extends Controller
     {
         //$beneficiarios = Beneficiarios::all();
         $beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(10);
-        return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);
-
-        
-       
-        //$generos = Generos::all();
-
-
-        //$beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(100);
-        //return view('beneficiarios.index', compact('beneficiarios'))->with('i',(request()->input('page',1) - 1) *100);
-
-        //$roles = Roles::all();
-        //return view('roles.index')->with('roles', $roles);
+        return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);       
+           
 
     }
 
@@ -41,11 +30,10 @@ class BeneficiariosController extends Controller
      */
     public function create()
     {
-        $generos = Generos::all();
-        $tipobeneficiarios = Tipobeneficiarios::all();
+
+        $tiposgestores= TipoGestor::all();     
       
-      
-       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios') );
+       return view('beneficiarios.create',compact('tiposgestores') );
        
 
     }
@@ -63,30 +51,27 @@ class BeneficiariosController extends Controller
         ['nombrebeneficiario' => 'required', 
         'apellidobeneficiario' => 'required',
         'genero'=> 'required',
-        'estado'=> 'required',
+        'status'=> 'required',
         'rangoedad'=> 'required',
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
         'telefono' => 'required|numeric',
-        'emailbeneficiario'=> 'required',
-        
-        'tipobeneficiario'=> 'required']);
+        'emailbeneficiario'=> 'required'
+        ]);
         
         $beneficiarios = new Beneficiarios();
  
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->estado = ( $request->estado == 'on') ? true:false;
+        $beneficiarios->estado = request('status') == 'checked' ? true:false;  
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
-        $beneficiarios->indicador ='nada';
-        $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
-       
-        
+        $beneficiarios->indicador = request('indicator_id');
+        $beneficiarios->id_tipogestor=request('gestor');
         $beneficiarios->save();
  
         $beneficio = new Beneficio;
