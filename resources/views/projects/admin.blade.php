@@ -53,7 +53,24 @@
 
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
+
                                                 <div class="col-md-6">
+                                                <h5><b>Progreso por fecha</b></h5>
+                                                        <div class="progress mb-3">
+                                                        
+                                                        @if ($p[0]->percentage > 100)
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)100 , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)100 , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)100 , 0, '.', '') }}%</div>
+                                                        
+                                                        @else 
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)$p[0]->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$p[0]->percentage , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)$p[0]->percentage , 0, '.', '') }}%</div>
+                                                        @endif
+                                                            
+                                                        </div>
+
                                                     <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
                                                     @foreach($indicators as $i)
                                                         <h6>{{$i->name}}</h6>
@@ -62,7 +79,11 @@
                                                                 style="width: {{ number_format((int)$i->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$i->percentage , 0, '.', '') }}" aria-valuemin="0" 
                                                                     aria-valuemax="100">{{ number_format((int)$i->percentage , 0, '.', '') }}%</div>
                                                         </div>
-                                                        @endforeach<h5><b>Descripción</b></h5>
+                                                        @endforeach
+                                                        
+                                                        
+
+                                                        <h5><b>Descripción</b></h5>
                                                     
                                                     <p>{{$p[0]->description}}</p>                                                    
                                                     
@@ -170,15 +191,29 @@
                             
                             
                             <td>
-                                <a href="{{ route('actividades.edit', $actividad->id)}}"> <button type="button" class="btn btn-success "> 
-                                <i class="nav-icon i-Pen-2 "></i>
-                            </button> </a>
-
-                            <button type="submit" class="btn btn-danger ">
-                                <i class="nav-icon i-Close-Window "></i>
-                            </button>
-                            </form>
-                            </td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start">
+                                                                    
+                                                                        <a class="dropdown-item" href="/beneficios/{{$actividad->id}}">Administrar</a>
+                                                                    
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                                        @csrf
+                                                                        @method('DELETE')   
+                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                                        
+                                                                    </form>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </td>
                         </tr>
                         @endforeach                    
                                          </tbody>
