@@ -8,6 +8,7 @@ use App\CInstitutional;
 use App\Meta;
 use App\Actividades;
 use App\Indicator;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -47,6 +48,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        
         //
         $project = new Project;
         $project->name = $request->name;
@@ -56,6 +58,18 @@ class ProjectController extends Controller
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;
         $project->c_institutional_id = $request->ci;
+        //operacion de avance por fecha
+        //ejemplo
+        //$indicator->percentage = ($request->accumulated / $request->goal) * 100;
+        $fechaEmision = Carbon::parse($request->date_begin);
+        $fechaExpiracion = Carbon::parse($request->date_end);
+       
+        $fechaActual = Carbon::now(); 
+        $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+        $Diferenciadias = $fechaActual->diffInDays($fechaEmision);
+        $project->percentage=($Diferenciadias / $diasDiferencia)*100;
+        //$project->percentage=(12 / 30) * 100;
+        
         $project->save();
 
         return redirect('/projects');
