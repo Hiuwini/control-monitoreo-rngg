@@ -32,7 +32,6 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Nombre</th>
-                                        <th>Estatus</th>
                                         <th>Fecha de inicio</th>
                                         <th>Fecha final</th>
                                         <th>Coordinador</th>
@@ -44,7 +43,6 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{ $project->name}}</td>
-                                        <td>{{ $project->status}}</td>
                                         <td>{{ $project->date_begin}}</td>
                                         <td>{{ $project->date_end}}</td>
                                         <td>{{ $project->firstname}} {{ $project->lastname}}</td>

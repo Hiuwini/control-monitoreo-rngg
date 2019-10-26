@@ -45,7 +45,7 @@
             <li class="nav-item {{ request()->is('institucional/*') ? 'active' : '' }}" data-item="institucional">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Engineering"></i>
-                    <span class="nav-text">Desarrollo Institucional</span>
+                    <span class="nav-text">Unidad Ejecutora</span>
                 </a>
                 <div class="triangle"></div>
             </li>

@@ -86,16 +86,18 @@ Route::resource('beneficiarios','BeneficiariosController');
 Route::get('/indicators/create/{id}','IndicatorController@create');
 Route::post('/indicators/store','IndicatorController@store');
 Route::get('/indicators/{id}/edit','IndicatorController@edit')->name('indicator.edit');
+Route::get('/indicator/{id}','IndicatorController@custom');
+Route::put('/indicator/{id}','IndicatorController@refresh');
 Route::put('/indicators/{id}','IndicatorController@update');
 Route::delete('/indicators/{id}','IndicatorController@destroy');
 
 //2.4 Beneficios
 Route::get('/beneficios/{id}','BeneficioController@index');
 Route::get('/beneficios/create/{id}','BeneficioController@create');
-Route::post('/beneficios/store','BeneficioController@store');
+Route::get('/beneficios/store/{ids}','BeneficioController@store')->name('beneficio.store');
 Route::get('/beneficios/{id}/edit','BeneficioController@edit')->name('beneficio.edit');
 Route::put('/beneficios/{id}','BeneficioController@update');
-Route::delete('/beneficios/{id}','BeneficioController@destroy');
+Route::delete('/beneficios/{id}/{indicador}','BeneficioController@destroy');
 
 Route::view('colaboradores','colaboradores.index')->name('colaboradores');
 Route::view('colaboradores/create','colaboradores.create')->name('create');//si

@@ -46,9 +46,8 @@
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="status">Estatus</label>
                                         <select name="status" class="form-control form-control-rounded">
-                                            <option value="0" {{ ($p->status == 0 ) ? 'selected':'' }}>Propuesta</option>
-                                            <option value="1" {{ ($p->status == 1 ) ? 'selected':'' }}>En Ejecución</option>
-                                            <option value="2" {{ ($p->status == 2 ) ? 'selected':'' }}>Ejecutado</option>
+                                            <option value="0" {{ ($p->status == 0 ) ? 'selected':'' }}>En Ejecución</option>
+                                            <option value="1" {{ ($p->status == 1 ) ? 'selected':'' }}>Ejecutado</option>
                                         </select>
                                     </div>
                                     

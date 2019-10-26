@@ -44,12 +44,20 @@
                                             <div class="row">
                                                 <div class="col-md-6">                                    
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
-                                                    <h5>Fecha de inicio</h5> <p>{{ date("d / M / Y", strtotime( $p[0]->date_begin ) ) }}</p>
+                                                    <h5>Fecha de inicio</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
+                                                <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto  </h5>                                                    
+                                                    
+                                                <h6><b>Tiempo de ejecución</b>(en días) {{ $current }} transcurridos / {{ $diff }} totales</h6>
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" 
+                                                            style="width: {{ ($current/$diff)*100 }}%" aria-valuenow="{{ $current }}" aria-valuemin="0" 
+                                                    aria-valuemax="{{$diff}}">{{  number_format((int)(($current/$diff)*100) , 0, '.', '') }}%</div>
+                                                    </div>
+                                                    
                                                     @foreach($indicators as $i)
                                                         <h6>{{$i->name}}</h6>
                                                         <div class="progress mb-3">
@@ -57,7 +65,7 @@
                                                                 style="width: {{ number_format((int)$i->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$i->percentage , 0, '.', '') }}" aria-valuemin="0" 
                                                                     aria-valuemax="100">{{ number_format((int)$i->percentage , 0, '.', '') }}%</div>
                                                         </div>
-                                                        @endforeach<h5><b>Descripción</b></h5>
+                                                    @endforeach<h5><b>Descripción</b></h5>
                                                     
                                                     <p>{{$p[0]->description}}</p>                                                    
                                                     
@@ -77,6 +85,8 @@
                                                         <th>No.</th>
                                                         <th>Indicador</th>
                                                         <th>Tipo</th>
+                                                        <th>Fecha Limite</th>
+                                                        <th>Fecha de Alerta</th>
                                                         <th>Avance</th>
                                                         <th>Meta</th>
                                                         <th>% de Avance</th>
@@ -95,9 +105,11 @@
                                                         @else 
                                                             <td> Personalizado </td>
                                                         @endif
+                                                        <td>{{ $i->date_limit }}</td>
+                                                        <td style="background: {{ $i->date_alert < date("Y-m-d") ? '#fbff00':'#4472ab'}}">{{ $i->date_alert }}</td>
                                                         <td>{{ number_format((int)$i->accumulated , 0, '.', '') }}</td>
                                                         <td>{{ number_format((int)$i->goal , 0, '.', '') }}</td>
-                                                        <td>{{ number_format((int)$i->percentage , 0, '.', '') }} %</td>
+                                                        <td>{{ number_format((int)$i->percentage , 0, '.', '') }}%</td>
                                                         
                                                        <td>
                                                             <div class="btn-group">

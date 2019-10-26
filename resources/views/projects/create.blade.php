@@ -45,9 +45,8 @@
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="status">Estatus</label>
                                         <select name="status" class="form-control form-control-rounded">
-                                            <option value="0" selected>Propuesta</option>
-                                            <option value="1">En Ejecución</option>
-                                            <option value="2">Ejecutado</option>
+                                            <option value="0">En Ejecución</option>
+                                            <option value="1">Ejecutado</option>
                                         </select>
                                     </div>
                                     

@@ -96,8 +96,19 @@ class ProjectController extends Controller
         ->where('indicators.id_proyecto','=',$id)
         ->select('indicators.*')
         ->get();
+        
+        $date_begin = date_create($p[0]->date_begin);
+        $date_end = date_create($p[0]->date_end);
+        $diff = date_diff($date_begin,$date_end);
+        $diff = $diff->format("%a");
+
+        $date_current = date_create(date('Y-m-d'));
+        $current = date_diff($date_begin,$date_current);
+        $current = $current->format('%a');
+      
+
         //return view('projects.admin')->with('p',$projects,'metas',$metas);
-        return view('projects.admin',compact('p','metas','actividades','indicators'));
+        return view('projects.admin',compact('p','metas','actividades','indicators','diff','current'));
     }
 
     /**

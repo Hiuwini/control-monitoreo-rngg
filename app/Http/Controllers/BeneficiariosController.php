@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiarios;
 use App\Beneficio;
+use App\Indicador;
 use App\Generos;
 use App\Tipobeneficiarios;
 use Illuminate\Http\Request;
@@ -89,12 +90,26 @@ class BeneficiariosController extends Controller
         
         $beneficiarios->save();
  
-        $beneficio = new Beneficio;
-        
-        $beneficio->indicator_id = request('indicator_id');
-        $beneficio->beneficiario_id = $beneficiarios->id;
-        $beneficio->save();
-        $indicator_id = request('indicator_id');
+        if(request('type') == 'indicador'){
+            $beneficio = new Beneficio;
+            $beneficio->indicator_id = request('indicator_id');
+            $beneficio->beneficiario_id = $beneficiarios->id;
+            $beneficio->save();
+            
+            $indicator_id = request('indicator_id');
+            
+            $indicador = Indicador::find($indicator_id);
+            $indicador->accumulated = $indicador->accumulated + 1;
+
+            $indicador->percentage = ($indicador->accumulated / $indicador->goal)*100;
+
+            $indicador->update();
+        } else {
+            //Agregar el codigo para una participación
+            
+        }
+
+
         return redirect("/beneficios/$indicator_id");
 
     }
