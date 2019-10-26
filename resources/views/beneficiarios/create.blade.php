@@ -95,27 +95,39 @@
                                 <label>Ubicación</label>
                                 <select name="nombreubicacion" id="nombreubicacionId" class="form-control" >
                                     <option value="">-- Seleccione la ubicación --</option>
-                                    <option value="Urbana">Urbana</option>    
-                                    <option value="Rural">Rural</option>                                
+                                    <option value="Urbana">Urbana</option>
+                                    <option value="Rural">Rural</option>
                                 </select>
-                                <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
+                                <small id="passwordHelpBlock" class="ul-form__text form-text ">  
                                 Seleccione la ubicación del beneficiario.</small>
                             </div>
-
-                            <div class="col-md-6 form-group mb-3">
-                                <label for="status">Miembro de Grupo Gestor</label><br>
-                                <label class="switch switch-primary mr-3">
-                                        <span>Si / No</span>
-                                        <input type="checkbox" name="status" id="status" checked>
-                                        <span class="slider"></span>
-                                </label>
-                            </div>
+                            
 
                             <div class="col-md-6 form-group mb-3">
                                 <label>DPI / CUI</label>
                                 <input type="text" name="dpicui" class="form-control input-lg" value="{{ old('dpicui') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese el DPI / CUI del beneficiario.</small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="status">Miembro de Grupo Gestor</label><br>
+                                <label class="switch switch-primary mr-3">
+                                        <span>Si / No</span>
+                                        <input type="checkbox" name="status" id="status" >
+                                        <span class="slider"></span>
+                                </label>
+                            </div>
+
+
+                            <div class="col-md-6 form-group mb-3" id="typeGestor">
+                                <label for="gestor">Miembro de: </label>
+                                    <select name="gestor" class="form-control form-control-rounded">
+                                        <option selected disabled>-- Elegir el grupo Gestor --</option>
+                                        @foreach ($tiposgestores as $tipogestor)
+                                                <option value="{{ $tipogestor->id }}">{{ $tipogestor->nombre }} </option>
+                                            @endforeach
+                                    </select>
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
@@ -143,18 +155,10 @@
                                 </select>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Seleccione el tipo del beneficiario.</small>
-                            </div>
+                            </div>                          
                             
-                            <div class="custom-separator"></div>
-                                        <div class="card-title">Miembro de grupo gestores</div>
-                                        <label class="checkbox checkbox-primary">
-                                        <input type="checkbox" checked="" name="estado" />
-                                        <span>Habilitar</span>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                        
-                                    </div>
-                            </div>     
+
+                            
 
                              <div class="form-group text-left">
 
@@ -171,9 +175,20 @@
 @section('page-js')
 <script src="{{asset('assets/js/vendor/pickadate/picker.js')}}"></script>
 <script src="{{asset('assets/js/vendor/pickadate/picker.date.js')}}"></script>
+<script>
+$('#typeGestor').hide();
 
-
-
+$(document).ready(function() {
+   $('#status').change(function() {
+    if($('#status').is(":checked")) {
+            $('#typeGestor').show();
+        }
+        else {
+            $('#typeGestor').hide();        
+        }
+    });
+});
+</script>
 @endsection
 
 @section('bottom-js')

@@ -46,8 +46,14 @@
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
                                                     <h5>Fecha de inicio</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
+                                                    {{
+                                                        $diff= date("d - M - Y", strtotime( $p[0]->date_begin ) )->diffInDays( date("d - M - Y", strtotime( $p[0]->date_end ) ) )
+                                                    }}
+                                                    <h5>Dias totales del proyecto: </h5> <p></p>
+
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
+
                                                 <div class="col-md-6">
                                                 <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto  </h5>                                                    
                                                     
@@ -177,15 +183,29 @@
                             
                             
                             <td>
-                                <a href="{{ route('actividades.edit', $actividad->id)}}"> <button type="button" class="btn btn-success "> 
-                                <i class="nav-icon i-Pen-2 "></i>
-                            </button> </a>
-
-                            <button type="submit" class="btn btn-danger ">
-                                <i class="nav-icon i-Close-Window "></i>
-                            </button>
-                            </form>
-                            </td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                    <span class="_dot _inline-dot bg-primary"></span>
+                                                                </button>
+                                                                <div class="dropdown-menu" x-placement="bottom-start">
+                                                                    
+                                                                        <a class="dropdown-item" href="/beneficios/{{$actividad->id}}">Administrar</a>
+                                                                    
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                                        @csrf
+                                                                        @method('DELETE')   
+                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                                        
+                                                                    </form>
+                                                                
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </td>
                         </tr>
                         @endforeach                    
                                          </tbody>
