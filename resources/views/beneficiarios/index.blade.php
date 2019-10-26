@@ -24,7 +24,8 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Listado Beneficiario
-                                <a style="margin: 19px;" href="{{ url('/beneficiarios/create')}}" class="btn btn-primary">Nuevo Beneficiario</a>
+                                 <a style="margin: 19px;" href="{{ url('/roles/create')}}" class="btn btn-primary">Nuevo Rol</a>
+                            </div>
                                 <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Beneficiario</a>
                             </div>
                             
