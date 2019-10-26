@@ -76,9 +76,18 @@ Route::put('/projects/{id}','ProjectController@update');
 Route::delete('/projects/{id}','ProjectController@destroy');
 Route::get('/project/{id}','ProjectController@admin');
 
+//CRUD TIPOS GESTORES
+Route::get('/tipogestores','TipoGestorController@index')->name('tipogestores.index');
+Route::get('/tipogestores/create','TipoGestorController@create')->name('tipogestores.create');
+Route::post('/tipogestores/store','TipoGestorController@store');
+Route::put('/tipogestores/{id}','TipoGestorController@update');
+Route::get('/tipogestores/{id}/edit','TipoGestorController@edit')->name('tipogestores.edit');
+Route::delete('/tipogestores/{id}','TipoGestorController@destroy');
+
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
-Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
+//Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
+Route::get('beneficiarios/create/{id}','BeneficiariosController@create');
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 

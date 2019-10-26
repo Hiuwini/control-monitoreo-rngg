@@ -46,9 +46,31 @@
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
                                                     <h5>Fecha de inicio</h5> <p>{{ date("d / M / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
+                                                    {{
+                                                        $diff= date("d - M - Y", strtotime( $p[0]->date_begin ) )->diffInDays( date("d - M - Y", strtotime( $p[0]->date_end ) ) )
+                                                    }}
+                                                    <h5>Dias totales del proyecto: </h5> <p></p>
+
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
+
                                                 <div class="col-md-6">
+                                                <h5><b>Progreso por fecha</b></h5>
+                                                        <div class="progress mb-3">
+                                                        
+                                                        @if ($p[0]->percentage > 100)
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)100 , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)100 , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)100 , 0, '.', '') }}%</div>
+                                                        
+                                                        @else 
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
+                                                                style="width: {{ number_format((int)$p[0]->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$p[0]->percentage , 0, '.', '') }}" aria-valuemin="0" 
+                                                                    aria-valuemax="100">{{ number_format((int)$p[0]->percentage , 0, '.', '') }}%</div>
+                                                        @endif
+                                                            
+                                                        </div>
+
                                                     <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
                                                     @foreach($indicators as $i)
                                                         <h6>{{$i->name}}</h6>
@@ -57,7 +79,11 @@
                                                                 style="width: {{ number_format((int)$i->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$i->percentage , 0, '.', '') }}" aria-valuemin="0" 
                                                                     aria-valuemax="100">{{ number_format((int)$i->percentage , 0, '.', '') }}%</div>
                                                         </div>
-                                                        @endforeach<h5><b>Descripción</b></h5>
+                                                        @endforeach
+                                                        
+                                                        
+
+                                                        <h5><b>Descripción</b></h5>
                                                     
                                                     <p>{{$p[0]->description}}</p>                                                    
                                                     
