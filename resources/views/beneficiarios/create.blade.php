@@ -58,7 +58,7 @@
                             <input type="hidden" name="type" value="indicador">
                         @endif
 
-                        <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
+                        
                              <div class="col-md-6 form-group mb-3">
                              <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>

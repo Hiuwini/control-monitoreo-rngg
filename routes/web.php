@@ -84,6 +84,11 @@ Route::put('/tipogestores/{id}','TipoGestorController@update');
 Route::get('/tipogestores/{id}/edit','TipoGestorController@edit')->name('tipogestores.edit');
 Route::delete('/tipogestores/{id}','TipoGestorController@destroy');
 
+//PERMISOS
+Route::get('/permisos','PermisoController@index')->name('permisos.index');
+Route::get('/permisos/edit/{id}','PermisoController@edit')->name('permisos.edit');
+Route::put('/permisos/{id}','PermisoController@update');
+Route::post('/permisos/store','PermisoController@store');
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
 //Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si

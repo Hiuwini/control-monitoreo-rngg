@@ -46,10 +46,8 @@
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
                                                     <h5>Fecha de inicio</h5> <p>{{ date("d / M / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
-                                                    {{
-                                                        $diff= date("d - M - Y", strtotime( $p[0]->date_begin ) )->diffInDays( date("d - M - Y", strtotime( $p[0]->date_end ) ) )
-                                                    }}
-                                                    <h5>Dias totales del proyecto: </h5> <p></p>
+                                                    
+                                                    
 
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
