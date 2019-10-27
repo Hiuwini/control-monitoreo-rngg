@@ -7,6 +7,7 @@ use App\Beneficio;
 use App\TipoGestor;
 use App\Generos;
 use App\Tipobeneficiarios;
+use App\Indicator;
 
 use App\Participantes;
 use App\Actividades;
@@ -59,7 +60,6 @@ class BeneficiariosController extends Controller
         ['nombrebeneficiario' => 'required', 
         'apellidobeneficiario' => 'required',
         'genero'=> 'required',
-        'status'=> 'required',
         'rangoedad'=> 'required',
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
@@ -72,14 +72,18 @@ class BeneficiariosController extends Controller
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->estado = request('status') == 'checked' ? true:false;  
+        //$beneficiarios->estado = request('status') == 'checked' ? true:false;  
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
-        $beneficiarios->indicador = request('indicator_id');
-        $beneficiarios->id_tipogestor=request('gestor');
+        //$beneficiarios->indicador = request('indicator_id');
+        $beneficiarios->tipobeneficiario = request('tipobeneficiario');
+
+        if ( request('status') == 'checked' )
+            $beneficiarios->id_tipogestor=request('gestor');
+
         $beneficiarios->save();
  
         if(request('type') == 'indicador'){
@@ -90,12 +94,15 @@ class BeneficiariosController extends Controller
             
             $indicator_id = request('indicator_id');
             
-            $indicador = Indicador::find($indicator_id);
+            $indicador = Indicator::find($indicator_id);
             $indicador->accumulated = $indicador->accumulated + 1;
 
             $indicador->percentage = ($indicador->accumulated / $indicador->goal)*100;
 
             $indicador->update();
+    
+            return redirect("/beneficios/$indicator_id");
+
         } else {
             //Agregar el codigo para una participación
             $participante= new Participantes;
@@ -104,11 +111,11 @@ class BeneficiariosController extends Controller
             $participante->beneficiario_id = $beneficiarios->id;
             
             $participante->save();
-            $indicator_id = request('actividad_id');
+            $actividad_id = request('actividad_id');
+            return redirect("/participantes/$actividad_id");
+
         }
 
-
-        return redirect("/beneficios/$indicator_id");
 
     }
 
@@ -158,7 +165,6 @@ class BeneficiariosController extends Controller
                             'dpicui' => $request->dpicui,
                             'telefono' => $request->telefono,
                             'emailbeneficiario' => $request->emailbeneficiario,
-                            'indicador' => $request->indicador,
                             'tipobeneficiario' => $request->tipobeneficiario);
 
 

@@ -46,11 +46,7 @@
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
                                                     <h5>Fecha de inicio</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
-                                                    {{
-                                                        $diff= date("d - M - Y", strtotime( $p[0]->date_begin ) )->diffInDays( date("d - M - Y", strtotime( $p[0]->date_end ) ) )
-                                                    }}
-                                                    <h5>Dias totales del proyecto: </h5> <p></p>
-
+                                                   
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
 
@@ -128,7 +124,7 @@
                                                                     @if ($i->type == 3)                                                        
                                                                         <a class="dropdown-item" href="/indicator/{{$i->id}}">Administrar</a>
                                                                     @elseif($i->type == 2)
-                                                                        <a class="dropdown-item" href="#">Ver Eventos</a>
+                                                                        <a class="dropdown-item" href="/events/{{$i->id}}">Ver Eventos</a>
                                                                     @else
                                                                         <a class="dropdown-item" href="/beneficios/{{$i->id}}">Administrar</a>
                                                                     @endif
@@ -155,13 +151,13 @@
                                     </div>
                                     <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="contact-basic-tab">
                                         <!-- Aqui van el codigo de las actividades -->    
-                                        <a style="margin: 19px;" href="{{ route('actividades.create', $p[0]->id)}}" class="btn btn-primary">Nueva Actividad</a>
+                                        <!--<a style="margin: 19px;" href="{{ route('actividades.create', $p[0]->id)}}" class="btn btn-primary">Nueva Actividad</a>-->
                                         <div class="row">
 
                                      <table class="table table-light">
                                          <thead class="thead-light">
                                              <tr>
-                                                 <th>Id</th>
+                                                 <th>No.</th>
                                                  <th>Nombre</th>
                                                  <th>Descripción</th>
                                                  <th>Fecha</th>
@@ -172,41 +168,40 @@
                                          </thead>
                                          <tbody>
                                             
-                        @foreach($actividades as $actividad)
-                        <tr>
-                            <th scope="row"> {{ $loop->iteration }} </th>
-                            <td>{{ $actividad->nombre }}</td>
-                            <td>{{ $actividad->descripcion}} </td>
-                            <td>{{ $actividad->fecha }}</td>
-                            <td>{{ $actividad->cantidadProyectada }}</td>
-                            <td>{{ $actividad->duracion }}</td>
+                                        @foreach($actividades as $actividad)
+                                        <tr>
+                                            <th scope="row"> {{ $loop->iteration }} </th>
+                                            <td>{{ $actividad->nombre }}</td>
+                                            <td>{{ $actividad->descripcion}} </td>
+                                            <td>{{ $actividad->fecha }}</td>
+                                            <td>{{ $actividad->cantidadProyectada }}</td>
+                                            <td>{{ $actividad->duracion }}</td>
+                                            
                             
-                            
-                            <td>
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                </button>
-                                                                <div class="dropdown-menu" x-placement="bottom-start">
-                                                                    
-                                                                        <a class="dropdown-item" href="/beneficios/{{$actividad->id}}">Administrar</a>
-                                                                    
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
-                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
-                                                                        @csrf
-                                                                        @method('DELETE')   
-                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
-                                                                        
-                                                                    </form>
-                                                                
-                                                                </div>
-                                                            </div>
-                                                           
-                                                        </td>
-                        </tr>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start">
+                                                        
+                                                            <a class="dropdown-item" href="/participantes/{{$actividad->id}}">Administrar</a>
+                                                        
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                        <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                            @csrf
+                                                            @method('DELETE')   
+                                                            <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                            
+                                                        </form>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                         @endforeach                    
                                          </tbody>
                                         

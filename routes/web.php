@@ -136,9 +136,18 @@ Route::resource('metas', 'MetaController');
 
 //Actividades
 Route::view('actividades','actividades.index')->name('actividades');
-Route::view('actividades/create','actividades.create')->name('create');//si
 Route::view('actividades/edit','actividades.edit')->name('edit');
 Route::resource('actividades','ActividadesController');
+
+Route::put('/actividades/update/{id}','ActividadesController@update');
+
+Route::get('/actividades/create/{indicator}','ActividadesController@create');
+Route::get('/events/{indicator}','ActividadesController@events');
+
+//Participantes
+Route::get('/participantes/{id}','ParticipantesController@index');
+Route::get('/participantes/store/{ids}','ParticipantesController@store')->name('participantes.store');
+Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy');
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

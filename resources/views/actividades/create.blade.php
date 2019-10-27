@@ -74,26 +74,16 @@
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
                                 Ingrese la duracion de la actividad en horas</small>
                             </div>
-                          <div class="form-group col-md-12">
-                                                <label for="inputEmail4" class="ul-form__label">Producto: </label>
-                                                
-                                                <select name="id_proyecto" id="id_proyecto`" class="form-control" >
-                                                    <option value="">-- Escoja el proyecto --</option>
-                                                    @foreach ($projects as $project)
-                                                    <option value="{{ $project['id'] }}" >{{ $project['name']}}</option>
-                                                    @endforeach                                                                    
-                                                </select>
-                                                <small id="passwordHelpBlock" class="ul-form__text form-text ">
-                                                Seleccione el producto al que se asignara la meta.
-                                            </small>
-                                            </div>
+                            <input type="hidden" name="id_proyecto" value="{{$project->id}}">
+                            <input type="hidden" name="indicator_id" value="{{$indicator->id}}">
+                            
                             </div>     
 
                              <div class="form-group text-left">
 
                                 <button type="submit" class="btn btn-success m-1">Crear</button>
  
-                                        <a style="margin: 19px;" href="{{ url('actividades')}}" class="btn btn-danger m-1">Cancelar</a>
+                                        <a style="margin: 19px;" href="/events/{{$indicator->id}}" class="btn btn-danger m-1">Cancelar</a>
                                     </div> 
                                     </form>   
              </div>

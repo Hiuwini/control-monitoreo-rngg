@@ -15,9 +15,8 @@ class AddTGestorToBeneficiariosTable extends Migration
     {
         Schema::table('beneficiarios', function (Blueprint $table) {
             // Integrando el tipo de gestor(Grupo Gestor) al que pertenece el beneficiario. (si lo fuera)
-            $table->bigInteger('id_tipogestor')->unsigned();
-            $table->foreign('id_tipogestor')
-            ->references('id')->on('tipogestores');
+            $table->bigInteger('id_tipogestor')->unsigned()->nullable();
+            $table->foreign('id_tipogestor')->references('id')->on('tipogestores');
         });
     }
 

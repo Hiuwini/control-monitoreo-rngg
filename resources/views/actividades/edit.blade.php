@@ -25,11 +25,10 @@
                         <div class="card-body">
                             <div class="card-title mb-3">Editar Actividades</div>
 
-                            <form method="POST" action="{{ route( 'actividades.update', $actividades->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="/actividades/update/{{$actividades->id}}">
 
-                                
                                 @csrf
-                                @method('PATCH')
+                                @method('PUT')
                                 <div class="row">
                                    <div class="col-md-6 form-group mb-3">
                                     <label>Nombre</label>
@@ -81,12 +80,9 @@
                                 <div class="form-group text-left">
                                     <input type="submit" name="edit" class="btn btn-success m-1" value="Actualizar" />
 
-                                    <a style="margin: 19px;" href="{{ url('actividades')}}" class="btn btn-danger m-1">Cancelar</a>
+                                    <a style="margin: 19px;" href="/events/{{$actividades->indicator_id}}" class="btn btn-danger m-1">Cancelar</a>
                                     
                                 </div>
-
-                                  <div class="field">
-                                    </div>
 
                                
                              </form>  
