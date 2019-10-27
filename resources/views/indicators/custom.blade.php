@@ -24,7 +24,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Actualizar Indicador</div>
-                            <form class="needs-validation" novalidate method="POST" action="{{ url("/indicators/$i->id") }}">
+                            <form class="needs-validation" novalidate method="POST" action="{{ url("/indicator/$i->id") }}">
                                 {{ method_field('PUT') }}                            
                                 {{ csrf_field() }}
                                 <div class="row">
@@ -43,28 +43,27 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-6 form-group mb-3">
-                                        <label for="date_alert">Fecha alertiva</label>
-                                        <div class="input-group">
-                                        <input id="date_alert" name="date_alert" class="form-control form-control-rounded" placeholder="yyyy-mm-dd" value="{{ $i->date_alert }}" >
-                                            <div class="input-group-append">
-                                                <button class="btn btn-secondary btn-rounded"  type="button">
-                                                    <i class="icon-regular i-Calendar-4"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6 form-group mb-3" id="metrics">
+                                        <label for="metric">Métrica</label>
+                                        <select name="metric" class="form-control form-control-rounded">
+                                            <option selected disabled>-- Elegir métrica de medición --</option>
+                                            <option value="1" {{ ($i->metric == 1) ? 'selected':''  }}>Descriptiva</option>
+                                            <option value="2" {{ ($i->metric == 2) ? 'selected':''  }}>Porcentual</option>
+                                            <option value="3" {{ ($i->metric == 3) ? 'selected':''  }}>Monetaria</option>
+                                            <option value="4" {{ ($i->metric == 4) ? 'selected':''  }}>Númerica</option>
+                                        </select>
                                     </div>
 
                                     <div class="col-md-6 form-group mb-3">
-                                        <label for="date_limit">Fecha de entrega</label>
-                                        <div class="input-group">
-                                        <input id="date_limit" name="date_limit" class="form-control form-control-rounded" placeholder="yyyy-mm-dd" value="{{ $i->date_limit }}">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-secondary btn-rounded"  type="button">
-                                                    <i class="icon-regular i-Calendar-4"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <label for="accumulated">Avance Actual</label>
+                                        <input type="number" class="form-control form-control-rounded" 
+                                    name="accumulated" id="accumulated" placeholder="0.00" value="{{$i->accumulated}}">
+                                    </div>
+                                   
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="phone1">Meta</label>
+                                        <input type="number" class="form-control form-control-rounded" 
+                                            name="goal" id="goal" placeholder="0.00" value="{{$i->goal}}">
                                     </div>
                                     
                                     <div class="col-md-12">
@@ -82,14 +81,6 @@
 @section('page-js')
 <script src="{{asset('assets/js/vendor/pickadate/picker.js')}}"></script>
 <script src="{{asset('assets/js/vendor/pickadate/picker.date.js')}}"></script>
-
-<script>
-$('#date_limit, #date_alert').pickadate({
-    format: 'yyyy-mm-dd',
-    closeOnSelect: true,
-    closeOnClear: true,
-});
-</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 

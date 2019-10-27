@@ -100,16 +100,18 @@ Route::resource('beneficiarios','BeneficiariosController');
 Route::get('/indicators/create/{id}','IndicatorController@create');
 Route::post('/indicators/store','IndicatorController@store');
 Route::get('/indicators/{id}/edit','IndicatorController@edit')->name('indicator.edit');
+Route::get('/indicator/{id}','IndicatorController@custom');
+Route::put('/indicator/{id}','IndicatorController@refresh');
 Route::put('/indicators/{id}','IndicatorController@update');
 Route::delete('/indicators/{id}','IndicatorController@destroy');
 
 //2.4 Beneficios
 Route::get('/beneficios/{id}','BeneficioController@index');
 Route::get('/beneficios/create/{id}','BeneficioController@create');
-Route::post('/beneficios/store','BeneficioController@store');
+Route::get('/beneficios/store/{ids}','BeneficioController@store')->name('beneficio.store');
 Route::get('/beneficios/{id}/edit','BeneficioController@edit')->name('beneficio.edit');
 Route::put('/beneficios/{id}','BeneficioController@update');
-Route::delete('/beneficios/{id}','BeneficioController@destroy');
+Route::delete('/beneficios/{id}/{indicador}','BeneficioController@destroy');
 
 Route::view('colaboradores','colaboradores.index')->name('colaboradores');
 Route::view('colaboradores/create','colaboradores.create')->name('create');//si
@@ -139,9 +141,18 @@ Route::resource('metas', 'MetaController');
 
 //Actividades
 Route::view('actividades','actividades.index')->name('actividades');
-Route::view('actividades/create','actividades.create')->name('create');//si
 Route::view('actividades/edit','actividades.edit')->name('edit');
 Route::resource('actividades','ActividadesController');
+
+Route::put('/actividades/update/{id}','ActividadesController@update');
+
+Route::get('/actividades/create/{indicator}','ActividadesController@create');
+Route::get('/events/{indicator}','ActividadesController@events');
+
+//Participantes
+Route::get('/participantes/{id}','ParticipantesController@index');
+Route::get('/participantes/store/{ids}','ParticipantesController@store')->name('participantes.store');
+Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy');
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

@@ -20,9 +20,6 @@ class CreateProjectsTable extends Migration
             $table->smallInteger('status')->nullable();
             $table->date('date_begin')->nullable();
             $table->date('date_end')->nullable();
-
-            $table->decimal('percentage',10,2)->nullable();
-            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

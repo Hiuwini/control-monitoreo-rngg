@@ -21,7 +21,7 @@ class CInstitutionalSeeder extends Seeder
             ['id' => 2, 'name' => 'Clima de Negocios', 'status' => '1'],
             ['id' => 3, 'name' => 'Desarrollo Social', 'status' => '1'],
             ['id' => 4, 'name' => 'Ecosistema Interno', 'status' => '1'],
-            ['id' => 5, 'name' => 'Desarrollo Institucional', 'status' => '1'],
+            ['id' => 5, 'name' => 'Unidad Ejecutora', 'status' => '1'],
         ];
 
         DB::table('c_institutionals')->insert($ci);

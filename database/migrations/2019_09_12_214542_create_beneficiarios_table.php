@@ -24,8 +24,7 @@ class CreateBeneficiariosTable extends Migration
             $table->string('dpicui');
             $table->string('telefono');
             $table->string('emailbeneficiario');
-            $table->string('indicador');
-            //$table->string('tipobeneficiario');
+            $table->string('tipobeneficiario');
             $table->timestamps();
         });
     }

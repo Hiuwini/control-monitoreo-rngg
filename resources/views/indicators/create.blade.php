@@ -43,7 +43,31 @@
                                             <option value="0">Anulado</option>
                                         </select>
                                     </div>
-                                    
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="date_alert">Fecha alertiva</label>
+                                        <div class="input-group">
+                                            <input id="date_alert" name="date_alert" class="form-control form-control-rounded" placeholder="yyyy-mm-dd">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-secondary btn-rounded"  type="button">
+                                                    <i class="icon-regular i-Calendar-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="date_limit">Fecha de entrega</label>
+                                        <div class="input-group">
+                                            <input id="date_limit" name="date_limit" class="form-control form-control-rounded" placeholder="yyyy-mm-dd">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-secondary btn-rounded"  type="button">
+                                                    <i class="icon-regular i-Calendar-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="type">Tipo de indicador</label>
                                         <select name="type" id="type" class="form-control form-control-rounded" required>
@@ -93,16 +117,22 @@
 <script src="{{asset('assets/js/vendor/pickadate/picker.js')}}"></script>
 <script src="{{asset('assets/js/vendor/pickadate/picker.date.js')}}"></script>
 <script>
-
+$('#date_limit, #date_alert').pickadate({
+    format: 'yyyy-mm-dd',
+    closeOnSelect: true,
+    closeOnClear: true,
+});
 $('#metrics').hide();
-
+$('#accumulated').prop('disabled',true);
 $(document).ready(function() {
    $('#type').change(function() {
         if($('#type option:selected').val() == 3) {
             $('#metrics').show();
+            $('#accumulated').prop('disabled',false);
         }
         else {
-            $('#metrics').hide();        
+            $('#metrics').hide();
+            $('#accumulated').prop('disabled',true);
         }
     });
 });
