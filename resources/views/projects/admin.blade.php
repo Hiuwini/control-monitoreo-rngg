@@ -50,7 +50,7 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                <h5><b>Progreso por fecha</b></h5>
+                                                <h5><b>Tiempo transcurrido del proyecto</b></h5>
                                                         <div class="progress mb-3">
                                                         
                                                         @if ($p[0]->percentage > 100)
@@ -194,11 +194,11 @@
                                                                 </button>
                                                                 <div class="dropdown-menu" x-placement="bottom-start">
                                                                     
-                                                                        <a class="dropdown-item" href="/beneficios/{{$actividad->id}}">Administrar</a>
+                                                                        <a class="dropdown-item" href="/actividades/{{$actividad->id}}">Administrar</a>
                                                                     
                                                                     <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
-                                                                    <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                                    <a class="dropdown-item" href="{{ url("/actividades/$actividad->id/edit") }}">Actualizar</a>
+                                                                    <form action="/actividades/{{$actividad->id}}" method="POST">                                                    
                                                                         @csrf
                                                                         @method('DELETE')   
                                                                         <input class="dropdown-item" type="submit" value="Eliminar" />

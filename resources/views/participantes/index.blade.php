@@ -24,12 +24,12 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Listado de Beneficiarios
-                                <a style="margin: 19px;" href="{{ url("/beneficiarios/create/?id=$i->id".'&type=actividad') }}" class="btn btn-primary">Nuevo Beneficiario</a>
+                                <a style="margin: 19px;" href="{{ url("/beneficiarios/create/?id=$actividad->id") }}" class="btn btn-primary">Nuevo Beneficiario</a>
                                 <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Beneficiario</a>
                             </div>
                             
                                 <div class="row">
-                                <p>Los beneficiarios contribuyen al siguiente indicador: <b>{{$i->name}}</b></p>
+                                <p>Los beneficiarios contribuyen a la siguiente actividad: <b>{{$actividad->name}}</b></p>
                                      <table class="table table-light">
                                          <thead class="thead-light">
                                              <tr>

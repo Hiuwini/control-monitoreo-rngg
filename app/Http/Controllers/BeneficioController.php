@@ -7,7 +7,7 @@ use App\Indicator;
 use App\Project;
 use App\Beneficiarios;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class BeneficioController extends Controller
 {

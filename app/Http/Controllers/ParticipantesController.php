@@ -23,10 +23,10 @@ class ParticipantesController extends Controller
      */
     public function index($id)
     {
-        $i = Indicator::find($id);
+        $i = Actividades::find($id);
         $project = Project::find($i->id_proyecto);
         $beneficiarios = Participantes::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
-            ->where('indicator_id','=',$id)
+            ->where('actividades_id','=',$id)
             ->get();
         
         return view('beneficios.index')->with('i',$i)->with('project',$project)
