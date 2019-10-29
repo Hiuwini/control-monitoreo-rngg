@@ -15,9 +15,11 @@ class TipoGestorController extends Controller
     public function index()
     {
         //Listado de todos los tipos de Gestores
+        
         $tiposgestores=TipoGestor::all();
-        return view('tipogestores.index')->with('tipogestores',$tiposgestores);
+        return view('tipogestores.index')->with('tipogestores',$tiposgestores);   
     
+       
     }
 
     /**

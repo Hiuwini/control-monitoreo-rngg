@@ -51,8 +51,16 @@
                                             <div class="ul-widget4__actions">
                                             <a href="/permisos/edit/{{ $user->id }}">
                                                  <button  type="button" class="btn btn-outline-danger m-1">
-                                                    Gestionar Permisos
-                                                </button>
+                                                    Permisos
+                                                </button>                                                
+                                                </a>
+                                            </div>
+
+                                            <div class="ul-widget4__actions">
+                                            <a href="/permisosprojects/edit/{{ $user->id }}">
+                                                 <button  type="button" class="btn btn-outline-danger m-1">
+                                                    Proyectos
+                                                </button>                                                
                                                 </a>
                                             </div>
                                             
