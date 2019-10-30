@@ -51,25 +51,6 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-<<<<<<< HEAD
-                                                <h5><b>Tiempo transcurrido del proyecto</b></h5>
-                                                        <div class="progress mb-3">
-                                                        
-                                                        @if ($p[0]->percentage > 100)
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
-                                                                style="width: {{ number_format((int)100 , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)100 , 0, '.', '') }}" aria-valuemin="0" 
-                                                                    aria-valuemax="100">{{ number_format((int)100 , 0, '.', '') }}%</div>
-                                                        
-                                                        @else 
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" 
-                                                                style="width: {{ number_format((int)$p[0]->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$p[0]->percentage , 0, '.', '') }}" aria-valuemin="0" 
-                                                                    aria-valuemax="100">{{ number_format((int)$p[0]->percentage , 0, '.', '') }}%</div>
-                                                        @endif
-                                                            
-                                                        </div>
-
-                                                    <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
-=======
                                                 <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto  </h5>                                                    
                                                     
                                                 <h6><b>Tiempo de ejecución</b>(en días) {{ $current }} transcurridos / {{ $diff }} totales</h6>
@@ -79,7 +60,6 @@
                                                     aria-valuemax="{{$diff}}">{{  number_format((int)(($current/$diff)*100) , 0, '.', '') }}%</div>
                                                     </div>
                                                     
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                                                     @foreach($indicators as $i)
                                                         <h6>{{$i->name}}</h6>
                                                         <div class="progress mb-3">
@@ -198,33 +178,6 @@
                                             <td>{{ $actividad->duracion }}</td>
                                             
                             
-<<<<<<< HEAD
-                            <td>
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                    <span class="_dot _inline-dot bg-primary"></span>
-                                                                </button>
-                                                                <div class="dropdown-menu" x-placement="bottom-start">
-                                                                    
-                                                                        <a class="dropdown-item" href="/actividades/{{$actividad->id}}">Administrar</a>
-                                                                    
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="{{ url("/actividades/$actividad->id/edit") }}">Actualizar</a>
-                                                                    <form action="/actividades/{{$actividad->id}}" method="POST">                                                    
-                                                                        @csrf
-                                                                        @method('DELETE')   
-                                                                        <input class="dropdown-item" type="submit" value="Eliminar" />
-                                                                        
-                                                                    </form>
-                                                                
-                                                                </div>
-                                                            </div>
-                                                           
-                                                        </td>
-                        </tr>
-=======
                                             <td>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -249,7 +202,6 @@
                                                 </div>
                                             </td>
                                         </tr>
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                         @endforeach                    
                                          </tbody>
                                         
