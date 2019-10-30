@@ -22,11 +22,9 @@ class CreateBeneficiariosTable extends Migration
             $table->string('rangoedad');
             $table->string('nombreubicacion');
             $table->string('dpicui');
-            $table->bigInteger('telefono');
+            $table->string('telefono');
             $table->string('emailbeneficiario');
-            $table->string('indicador');
             $table->string('tipobeneficiario');
-
             $table->timestamps();
         });
     }

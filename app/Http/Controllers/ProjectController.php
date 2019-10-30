@@ -8,7 +8,6 @@ use App\CInstitutional;
 use App\Meta;
 use App\Actividades;
 use App\Indicator;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -48,7 +47,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
         //
         $project = new Project;
         $project->name = $request->name;
@@ -58,22 +56,6 @@ class ProjectController extends Controller
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;
         $project->c_institutional_id = $request->ci;
-        //operacion de avance por fecha
-        //ejemplo
-        //$indicator->percentage = ($request->accumulated / $request->goal) * 100;
-        $fechaEmision = Carbon::parse($request->date_begin);
-        $fechaExpiracion = Carbon::parse($request->date_end);
-        
-    
-        $fechaActual = Carbon::now(); 
-        $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
-        $Diferenciadias = $fechaActual->diffInDays($fechaEmision);
-        $project->percentage=($Diferenciadias / $diasDiferencia)*100;
-
-
-
-        //$project->percentage=(12 / 30) * 100;
-        
         $project->save();
 
         return redirect('/projects');
@@ -114,8 +96,19 @@ class ProjectController extends Controller
         ->where('indicators.id_proyecto','=',$id)
         ->select('indicators.*')
         ->get();
+        
+        $date_begin = date_create($p[0]->date_begin);
+        $date_end = date_create($p[0]->date_end);
+        $diff = date_diff($date_begin,$date_end);
+        $diff = $diff->format("%a");
+
+        $date_current = date_create(date('Y-m-d'));
+        $current = date_diff($date_begin,$date_current);
+        $current = $current->format('%a');
+      
+
         //return view('projects.admin')->with('p',$projects,'metas',$metas);
-        return view('projects.admin',compact('p','metas','actividades','indicators'));
+        return view('projects.admin',compact('p','metas','actividades','indicators','diff','current'));
     }
 
     /**
@@ -151,16 +144,7 @@ class ProjectController extends Controller
         $project->date_begin = date("Y-m-d", strtotime( $request->date_begin ) );
         $project->date_end = date("Y-m-d", strtotime( $request->date_end ) );
         $project->user_id = $request->user_id;  
-        $project->c_institutional_id = $request->ci;   
-        
-        $fechaEmision = Carbon::parse($request->date_begin);
-        $fechaExpiracion = Carbon::parse($request->date_end);
-        
-    
-        $fechaActual = Carbon::now(); 
-        $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
-        $Diferenciadias = $fechaActual->diffInDays($fechaEmision);
-        $project->percentage=($Diferenciadias / $diasDiferencia)*100;
+        $project->c_institutional_id = $request->ci;        
         $project->update();
 
         return redirect('/projects');

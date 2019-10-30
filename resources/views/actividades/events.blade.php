@@ -8,10 +8,10 @@
 
 @section('main-content')
    <div class="breadcrumb">
-                <h1>Proyectos</h1>
+                <h1>Eventos</h1>
                 <ul>
-                    <li>Proyectos</li>
-                    <li><a href="">Home</a></li>
+                    <li>Eventos</li>
+                    <li><a href="">{{$project->name}}</a></li>
                     
                 </ul>
             </div>
@@ -20,11 +20,11 @@
             
             <div class="col-md-12">
                 <div class="col-md-4">
-                <a href="{{ route('projects.create') }}"><button type="button" class="btn btn-primary btn-block m-1 mb-3" >
-                        <i class="nav-icon i-Administrator"></i> Nuevo Proyecto
-                    </button></a>
+                <a style="margin: 19px;" href="/actividades/create/{{$i->id}}" class="btn btn-primary">Nuevo Evento</a>
+                
                 </div>
                 <div class="card mb-4">
+                    <p>Los eventos contribuyen al siguiente indicador: <b>{{$i->name}}</b></p>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="zero_configuration_table" class="display table table-striped table-bordered" style="width:100%">
@@ -32,20 +32,21 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Nombre</th>
-                                        <th>Fecha de inicio</th>
-                                        <th>Fecha final</th>
-                                        <th>Coordinador</th>
-                                        <th>Acciones</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha</th>
+                                        <th>Cantidad proyectada</th>
+                                        <th>Duración en horas</th>
                                     </tr>
                                 </thead>    
                                 <tbody>
-                                    @foreach ($p as $key=>$project)
+                                    @foreach ($actividades as $key=>$actividad)
                                     <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{ $project->name}}</td>
-                                        <td>{{ $project->date_begin}}</td>
-                                        <td>{{ $project->date_end}}</td>
-                                        <td>{{ $project->firstname}} {{ $project->lastname}}</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $actividad->nombre}}</td>
+                                        <td>{{ $actividad->descripcion}}</td>
+                                        <td>{{ $actividad->fecha}}</td>
+                                        <td>{{ $actividad->cantidadProyectada}}</td>
+                                        <td>{{ $actividad->duracion}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,14 +55,14 @@
                                                     <span class="_dot _inline-dot bg-primary"></span>
                                                 </button>
                                                 <div class="dropdown-menu" x-placement="bottom-start">
-                                                    <a class="dropdown-item" href="{{ url("/projects/$project->id/edit") }}">Actualizar</a>
-                                                    <a class="dropdown-item" href="#">Administrar</a>
+                                                    <a class="dropdown-item" href="/participantes/{{$actividad->id}}">Ver Participantes</a>
+                                                    <a class="dropdown-item" href="{{ route('actividades.edit', $actividad->id)}}">Actualizar</a>
                                                     <div class="dropdown-divider"></div>
                                                     
-                                                    <form action="{{ url("/projects/$project->id") }}" method="post">
+                                                    <form action="{{ route('actividades.destroy', $actividad->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <input class="dropdown-item" type="submit" value="Eliminar" />
-                                                        <input type="hidden" name="_method" value="delete" />
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     </form>
                                                 
                                                 </div>

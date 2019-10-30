@@ -44,12 +44,14 @@
                                             <div class="row">
                                                 <div class="col-md-6">                                    
                                                     <h5>Nombre del proyecto</h5> <p>{{$p[0]->name}}</p>
-                                                    <h5>Fecha de inicio</h5> <p>{{ date("d / M / Y", strtotime( $p[0]->date_begin ) ) }}</p>
+                                                    <h5>Fecha de inicio</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_begin ) ) }}</p>
                                                     <h5>Fecha de finalización</h5> <p>{{ date("d / m / Y", strtotime( $p[0]->date_end ) ) }}</p>
+                                                   
                                                     <h5>Coodinador</h5> <p>{{$p[0]->firstname}} {{$p[0]->lastname}}</p>
                                                 </div>
 
                                                 <div class="col-md-6">
+<<<<<<< HEAD
                                                 <h5><b>Tiempo transcurrido del proyecto</b></h5>
                                                         <div class="progress mb-3">
                                                         
@@ -67,6 +69,17 @@
                                                         </div>
 
                                                     <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto </h5>                                                    
+=======
+                                                <h5><b>{{$p[0]->name}}</b> - Progreso de proyecto  </h5>                                                    
+                                                    
+                                                <h6><b>Tiempo de ejecución</b>(en días) {{ $current }} transcurridos / {{ $diff }} totales</h6>
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" 
+                                                            style="width: {{ ($current/$diff)*100 }}%" aria-valuenow="{{ $current }}" aria-valuemin="0" 
+                                                    aria-valuemax="{{$diff}}">{{  number_format((int)(($current/$diff)*100) , 0, '.', '') }}%</div>
+                                                    </div>
+                                                    
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                                                     @foreach($indicators as $i)
                                                         <h6>{{$i->name}}</h6>
                                                         <div class="progress mb-3">
@@ -74,11 +87,7 @@
                                                                 style="width: {{ number_format((int)$i->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$i->percentage , 0, '.', '') }}" aria-valuemin="0" 
                                                                     aria-valuemax="100">{{ number_format((int)$i->percentage , 0, '.', '') }}%</div>
                                                         </div>
-                                                        @endforeach
-                                                        
-                                                        
-
-                                                        <h5><b>Descripción</b></h5>
+                                                    @endforeach<h5><b>Descripción</b></h5>
                                                     
                                                     <p>{{$p[0]->description}}</p>                                                    
                                                     
@@ -98,6 +107,8 @@
                                                         <th>No.</th>
                                                         <th>Indicador</th>
                                                         <th>Tipo</th>
+                                                        <th>Fecha Limite</th>
+                                                        <th>Fecha de Alerta</th>
                                                         <th>Avance</th>
                                                         <th>Meta</th>
                                                         <th>% de Avance</th>
@@ -116,9 +127,11 @@
                                                         @else 
                                                             <td> Personalizado </td>
                                                         @endif
+                                                        <td>{{ $i->date_limit }}</td>
+                                                        <td style="background: {{ $i->date_alert < date("Y-m-d") ? '#fbff00':'#4472ab'}}">{{ $i->date_alert }}</td>
                                                         <td>{{ number_format((int)$i->accumulated , 0, '.', '') }}</td>
                                                         <td>{{ number_format((int)$i->goal , 0, '.', '') }}</td>
-                                                        <td>{{ number_format((int)$i->percentage , 0, '.', '') }} %</td>
+                                                        <td>{{ number_format((int)$i->percentage , 0, '.', '') }}%</td>
                                                         
                                                        <td>
                                                             <div class="btn-group">
@@ -131,7 +144,7 @@
                                                                     @if ($i->type == 3)                                                        
                                                                         <a class="dropdown-item" href="/indicator/{{$i->id}}">Administrar</a>
                                                                     @elseif($i->type == 2)
-                                                                        <a class="dropdown-item" href="#">Ver Eventos</a>
+                                                                        <a class="dropdown-item" href="/events/{{$i->id}}">Ver Eventos</a>
                                                                     @else
                                                                         <a class="dropdown-item" href="/beneficios/{{$i->id}}">Administrar</a>
                                                                     @endif
@@ -158,13 +171,13 @@
                                     </div>
                                     <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="contact-basic-tab">
                                         <!-- Aqui van el codigo de las actividades -->    
-                                        <a style="margin: 19px;" href="{{ route('actividades.create', $p[0]->id)}}" class="btn btn-primary">Nueva Actividad</a>
+                                        <!--<a style="margin: 19px;" href="{{ route('actividades.create', $p[0]->id)}}" class="btn btn-primary">Nueva Actividad</a>-->
                                         <div class="row">
 
                                      <table class="table table-light">
                                          <thead class="thead-light">
                                              <tr>
-                                                 <th>Id</th>
+                                                 <th>No.</th>
                                                  <th>Nombre</th>
                                                  <th>Descripción</th>
                                                  <th>Fecha</th>
@@ -175,16 +188,17 @@
                                          </thead>
                                          <tbody>
                                             
-                        @foreach($actividades as $actividad)
-                        <tr>
-                            <th scope="row"> {{ $loop->iteration }} </th>
-                            <td>{{ $actividad->nombre }}</td>
-                            <td>{{ $actividad->descripcion}} </td>
-                            <td>{{ $actividad->fecha }}</td>
-                            <td>{{ $actividad->cantidadProyectada }}</td>
-                            <td>{{ $actividad->duracion }}</td>
+                                        @foreach($actividades as $actividad)
+                                        <tr>
+                                            <th scope="row"> {{ $loop->iteration }} </th>
+                                            <td>{{ $actividad->nombre }}</td>
+                                            <td>{{ $actividad->descripcion}} </td>
+                                            <td>{{ $actividad->fecha }}</td>
+                                            <td>{{ $actividad->cantidadProyectada }}</td>
+                                            <td>{{ $actividad->duracion }}</td>
+                                            
                             
-                            
+<<<<<<< HEAD
                             <td>
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -210,6 +224,32 @@
                                                            
                                                         </td>
                         </tr>
+=======
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                        <span class="_dot _inline-dot bg-primary"></span>
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start">
+                                                        
+                                                            <a class="dropdown-item" href="/participantes/{{$actividad->id}}">Administrar</a>
+                                                        
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
+                                                        <form action="/indicators/{{$i->id}}" method="POST">                                                    
+                                                            @csrf
+                                                            @method('DELETE')   
+                                                            <input class="dropdown-item" type="submit" value="Eliminar" />
+                                                            
+                                                        </form>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                         @endforeach                    
                                          </tbody>
                                         

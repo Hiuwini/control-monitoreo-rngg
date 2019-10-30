@@ -11,7 +11,7 @@ use App\Beneficio;
 
 use App\Project;
 
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ParticipantesController extends Controller
@@ -23,14 +23,30 @@ class ParticipantesController extends Controller
      */
     public function index($id)
     {
+<<<<<<< HEAD
         $i = Actividades::find($id);
         $project = Project::find($i->id_proyecto);
         $beneficiarios = Participantes::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
             ->where('actividades_id','=',$id)
             ->get();
+=======
+        $actividad = Actividades::find($id);
+        $i = Indicator::find($actividad->indicator_id);
+        $project = Project::find($actividad->id_proyecto);
+        $beneficiarios = Participantes::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
+        ->where('actividad_id','=',$id)
+        ->select('participantes.id',DB::raw('beneficiarios.id as beneficiario_id'),'beneficiarios.nombrebeneficiario','beneficiarios.apellidobeneficiario','beneficiarios.genero','beneficiarios.rangoedad','beneficiarios.nombreubicacion')
+        ->get();
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
         
-        return view('beneficios.index')->with('i',$i)->with('project',$project)
-        ->with('beneficiarios',$beneficiarios);
+        $ids = array();
+            foreach($beneficiarios as $b){
+                array_push($ids, $b->beneficiario_id);
+            }
+        $all = Beneficiarios::whereNotIn('id',$ids)->get();
+
+        return view('participantes.index')->with('i',$i)->with('project',$project)
+        ->with('beneficiarios',$beneficiarios)->with('actividad',$actividad)->with('all',$all);
     }
 
     /**
@@ -49,10 +65,22 @@ class ParticipantesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $ids)
     {
+        $ids = json_decode($ids);
 
-        //
+        $actividad_id = $ids[0];
+        
+        
+        for ($i = 1; $i<=( count($ids) -1 ); $i++){
+            $participante = new Participantes;
+            $participante->actividad_id = $actividad_id;
+            $participante->beneficiario_id = $ids[$i];
+            $participante->save();
+         
+        }
+
+        return "LISTO";
     }
 
     /**
@@ -95,8 +123,12 @@ class ParticipantesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actividades $actividades)
+    public function destroy(Actividades $actividades, $id, $actividad)
     {
         //
+        $participante = Participantes::find($id);
+        $participante->delete();
+
+        return redirect("/participantes/$actividad");
     }
 }

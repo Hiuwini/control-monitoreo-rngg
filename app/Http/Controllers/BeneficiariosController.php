@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Beneficiarios;
 use App\Beneficio;
+use App\TipoGestor;
 use App\Generos;
 use App\Tipobeneficiarios;
+use App\Indicator;
 
 use App\Participantes;
 use App\Actividades;
@@ -22,18 +24,8 @@ class BeneficiariosController extends Controller
     {
         //$beneficiarios = Beneficiarios::all();
         $beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(10);
-        return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);
-
-        
-       
-        //$generos = Generos::all();
-
-
-        //$beneficiarios = Beneficiarios::orderBy('id','ASC')->paginate(100);
-        //return view('beneficiarios.index', compact('beneficiarios'))->with('i',(request()->input('page',1) - 1) *100);
-
-        //$roles = Roles::all();
-        //return view('roles.index')->with('roles', $roles);
+        return view('beneficiarios/index', compact('beneficiarios'))->with('i',(request()->input('page', 1) - 1) *10);       
+           
 
     }
 
@@ -44,10 +36,17 @@ class BeneficiariosController extends Controller
      */
     public function create()
     {
+
+        $tiposgestores= TipoGestor::all();     
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
          
+<<<<<<< HEAD
        return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios') );
+=======
+      
+       return view('beneficiarios.create',compact('tiposgestores') );
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
        
     }
 
@@ -64,25 +63,30 @@ class BeneficiariosController extends Controller
         ['nombrebeneficiario' => 'required', 
         'apellidobeneficiario' => 'required',
         'genero'=> 'required',
-        'estado'=> 'required',
         'rangoedad'=> 'required',
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
         'telefono' => 'required|numeric',
+<<<<<<< HEAD
         'emailbeneficiario'=> 'required', 
         'tipobeneficiario'=> 'required']);
+=======
+        'emailbeneficiario'=> 'required'
+        ]);
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
         
         $beneficiarios = new Beneficiarios();
  
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        $beneficiarios->estado = ( $request->estado == 'on') ? true:false;
+        //$beneficiarios->estado = request('status') == 'checked' ? true:false;  
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
+<<<<<<< HEAD
         $beneficiarios->indicador ='nada';
         $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
                
@@ -106,6 +110,46 @@ class BeneficiariosController extends Controller
     
     
         return redirect("/beneficios/$indicator_id");
+=======
+        //$beneficiarios->indicador = request('indicator_id');
+        $beneficiarios->tipobeneficiario = request('tipobeneficiario');
+
+        if ( request('status') == 'checked' )
+            $beneficiarios->id_tipogestor=request('gestor');
+
+        $beneficiarios->save();
+ 
+        if(request('type') == 'indicador'){
+            $beneficio = new Beneficio;
+            $beneficio->indicator_id = request('indicator_id');
+            $beneficio->beneficiario_id = $beneficiarios->id;
+            $beneficio->save();
+            
+            $indicator_id = request('indicator_id');
+            
+            $indicador = Indicator::find($indicator_id);
+            $indicador->accumulated = $indicador->accumulated + 1;
+
+            $indicador->percentage = ($indicador->accumulated / $indicador->goal)*100;
+
+            $indicador->update();
+    
+            return redirect("/beneficios/$indicator_id");
+
+        } else {
+            //Agregar el codigo para una participación
+            $participante= new Participantes;
+
+            $participante->actividad_id=request('actividad_id');
+            $participante->beneficiario_id = $beneficiarios->id;
+            
+            $participante->save();
+            $actividad_id = request('actividad_id');
+            return redirect("/participantes/$actividad_id");
+
+        }
+
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
 
     }
 
@@ -155,7 +199,6 @@ class BeneficiariosController extends Controller
                             'dpicui' => $request->dpicui,
                             'telefono' => $request->telefono,
                             'emailbeneficiario' => $request->emailbeneficiario,
-                            'indicador' => $request->indicador,
                             'tipobeneficiario' => $request->tipobeneficiario);
 
 

@@ -8,10 +8,10 @@
 
 @section('main-content')
    <div class="breadcrumb">
-                <h1>Proyectos</h1>
+                <h1>Tipos Gestores</h1>
                 <ul>
-                    <li>Proyectos</li>
-                    <li><a href="">Home</a></li>
+                    <li>Tipos Gestores</li>
+                    <li><a href="">Inicio</a></li>
                     
                 </ul>
             </div>
@@ -20,8 +20,8 @@
             
             <div class="col-md-12">
                 <div class="col-md-4">
-                <a href="{{ route('projects.create') }}"><button type="button" class="btn btn-primary btn-block m-1 mb-3" >
-                        <i class="nav-icon i-Administrator"></i> Nuevo Proyecto
+                <a href="{{ route('tipogestores.create') }}"><button type="button" class="btn btn-primary btn-block m-1 mb-3" >
+                        <i class="nav-icon i-Administrator"></i> Nuevo Tipo 
                     </button></a>
                 </div>
                 <div class="card mb-4">
@@ -31,21 +31,16 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Nombre</th>
-                                        <th>Fecha de inicio</th>
-                                        <th>Fecha final</th>
-                                        <th>Coordinador</th>
-                                        <th>Acciones</th>
+                                        <th>Descripcion</th>
+                                        <th>Opciones</th>
+                                        
                                     </tr>
                                 </thead>    
                                 <tbody>
-                                    @foreach ($p as $key=>$project)
+                                    @foreach ($tipogestores as $tipogestor)
                                     <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{ $project->name}}</td>
-                                        <td>{{ $project->date_begin}}</td>
-                                        <td>{{ $project->date_end}}</td>
-                                        <td>{{ $project->firstname}} {{ $project->lastname}}</td>
+                                        <td>{{ $tipogestor->id}}</td>
+                                        <td>{{ $tipogestor->nombre}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn bg-white _r_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,11 +49,10 @@
                                                     <span class="_dot _inline-dot bg-primary"></span>
                                                 </button>
                                                 <div class="dropdown-menu" x-placement="bottom-start">
-                                                    <a class="dropdown-item" href="{{ url("/projects/$project->id/edit") }}">Actualizar</a>
-                                                    <a class="dropdown-item" href="#">Administrar</a>
+                                                    <a class="dropdown-item" href="{{ url("/tipogestores/$tipogestor->id/edit") }}">Actualizar</a>                                                    
                                                     <div class="dropdown-divider"></div>
                                                     
-                                                    <form action="{{ url("/projects/$project->id") }}" method="post">
+                                                    <form action="{{ url("/tipogestores/$tipogestor->id") }}" method="post">
                                                         <input class="dropdown-item" type="submit" value="Eliminar" />
                                                         <input type="hidden" name="_method" value="delete" />
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

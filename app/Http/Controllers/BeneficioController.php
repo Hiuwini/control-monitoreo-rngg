@@ -7,7 +7,13 @@ use App\Indicator;
 use App\Project;
 use App\Beneficiarios;
 
+<<<<<<< HEAD
 use Illuminate\Http\Request; 
+=======
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Http\Request;
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
 
 class BeneficioController extends Controller
 {
@@ -23,10 +29,17 @@ class BeneficioController extends Controller
         $project = Project::find($i->id_proyecto);
         $beneficiarios = Beneficio::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
             ->where('indicator_id','=',$id)
+            ->select('beneficios.id',DB::raw('beneficiarios.id as beneficiario_id'),'beneficiarios.nombrebeneficiario','beneficiarios.apellidobeneficiario','beneficiarios.genero','beneficiarios.rangoedad','beneficiarios.nombreubicacion')
             ->get();
-        
+
+        $ids = array();
+            foreach($beneficiarios as $b){
+                array_push($ids, $b->beneficiario_id);
+            }
+        $all = Beneficiarios::whereNotIn('id',$ids)->get();
+
         return view('beneficios.index')->with('i',$i)->with('project',$project)
-        ->with('beneficiarios',$beneficiarios);
+        ->with('beneficiarios',$beneficiarios)->with('all',$all);
     }
 
     /**
@@ -45,9 +58,31 @@ class BeneficioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $ids)
     {
         //
+        $ids = json_decode($ids);
+
+        $indicator_id = $ids[0];
+        
+        $indicator = Indicator::find($indicator_id);
+        
+        for ($i = 1; $i<=( count($ids) -1 ); $i++){
+            $beneficio = new Beneficio;
+            $beneficio->indicator_id = $indicator_id;
+            $beneficio->beneficiario_id = $ids[$i];
+            $beneficio->save();
+        
+            $indicator->accumulated = $indicator->accumulated + 1;
+        
+        }
+
+        
+        $indicator->percentage = ($indicator->accumulated / $indicator->goal)*100;
+
+        $indicator->update();
+
+        return "LISTO";
     }
 
     /**
@@ -90,8 +125,20 @@ class BeneficioController extends Controller
      * @param  \App\Beneficio  $beneficio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Beneficio $beneficio)
+    public function destroy(Beneficio $beneficio, $id, $indicador)
     {
         //
+        $beneficio = Beneficio::find($id);
+        $beneficio->delete();
+
+        
+        $i = Indicator::find($indicador);
+        $i->accumulated = $i->accumulated - 1;
+
+        $i->percentage = ($i->accumulated / $i->goal)*100;
+
+        $i->update();
+
+        return redirect("/beneficios/$indicador");
     }
 }

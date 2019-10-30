@@ -21,6 +21,7 @@ Route::get('large-compact-sidebar/dashboard/dashboard1', function () {
     return view('dashboard.dashboardv1');
 })->name('compact');
 
+
 Route::get('large-sidebar/dashboard/dashboard1', function () {
     // set layout sesion(key)
     session(['layout' => 'normal']);
@@ -39,7 +40,16 @@ Route::view('dashboard/dashboard2', 'dashboard.dashboardv2')->name('dashboard_ve
 Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_version_3');
 Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
 
+
+
 //1 Administracion
+
+//LOGIN
+Route::get('/signIn', function(){
+    return view('/sesion/signin');
+});
+
+Route::post('/signIn/authenticate','SesionController@authenticate');
 
 //1.1 Usuarios
 Route::get('/admin/users','UserController@index')->name('users.index');
@@ -76,9 +86,31 @@ Route::put('/projects/{id}','ProjectController@update');
 Route::delete('/projects/{id}','ProjectController@destroy');
 Route::get('/project/{id}','ProjectController@admin');
 
+//CRUD TIPOS GESTORES
+Route::get('/tipogestores','TipoGestorController@index')->name('tipogestores.index');
+Route::get('/tipogestores/create','TipoGestorController@create')->name('tipogestores.create');
+Route::post('/tipogestores/store','TipoGestorController@store');
+Route::put('/tipogestores/{id}','TipoGestorController@update');
+Route::get('/tipogestores/{id}/edit','TipoGestorController@edit')->name('tipogestores.edit');
+Route::delete('/tipogestores/{id}','TipoGestorController@destroy');
+
+//PERMISOS
+Route::get('/permisos','PermisoController@index')->name('permisos.index');
+Route::get('/permisos/edit/{id}','PermisoController@edit')->name('permisos.edit');
+Route::put('/permisos/{id}','PermisoController@update');
+Route::post('/permisos/store','PermisoController@store');
+
+//Permisos Proyectos
+Route::get('/permisosprojects/edit/{id}','PermisoProjectController@edit')->name('permisosprojects.edit');
+Route::post('/permisosprojects/store','PermisoProjectController@store');
+Route::put('/permisosprojects/{id}','PermisoProjectController@update');
+
+
+
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
-Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
+//Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
+Route::get('beneficiarios/create/{id}','BeneficiariosController@create');
 Route::view('beneficiarios/edit','beneficiarios.edit')->name('edit');
 Route::resource('beneficiarios','BeneficiariosController');
 
@@ -86,16 +118,18 @@ Route::resource('beneficiarios','BeneficiariosController');
 Route::get('/indicators/create/{id}','IndicatorController@create');
 Route::post('/indicators/store','IndicatorController@store');
 Route::get('/indicators/{id}/edit','IndicatorController@edit')->name('indicator.edit');
+Route::get('/indicator/{id}','IndicatorController@custom');
+Route::put('/indicator/{id}','IndicatorController@refresh');
 Route::put('/indicators/{id}','IndicatorController@update');
 Route::delete('/indicators/{id}','IndicatorController@destroy');
 
 //2.4 Beneficios
 Route::get('/beneficios/{id}','BeneficioController@index');
 Route::get('/beneficios/create/{id}','BeneficioController@create');
-Route::post('/beneficios/store','BeneficioController@store');
+Route::get('/beneficios/store/{ids}','BeneficioController@store')->name('beneficio.store');
 Route::get('/beneficios/{id}/edit','BeneficioController@edit')->name('beneficio.edit');
 Route::put('/beneficios/{id}','BeneficioController@update');
-Route::delete('/beneficios/{id}','BeneficioController@destroy');
+Route::delete('/beneficios/{id}/{indicador}','BeneficioController@destroy');
 
 Route::view('colaboradores','colaboradores.index')->name('colaboradores');
 Route::view('colaboradores/create','colaboradores.create')->name('create');//si
@@ -125,9 +159,18 @@ Route::resource('metas', 'MetaController');
 
 //Actividades
 Route::view('actividades','actividades.index')->name('actividades');
-Route::view('actividades/create','actividades.create')->name('create');//si
 Route::view('actividades/edit','actividades.edit')->name('edit');
 Route::resource('actividades','ActividadesController');
+
+Route::put('/actividades/update/{id}','ActividadesController@update');
+
+Route::get('/actividades/create/{indicator}','ActividadesController@create');
+Route::get('/events/{indicator}','ActividadesController@events');
+
+//Participantes
+Route::get('/participantes/{id}','ParticipantesController@index');
+Route::get('/participantes/store/{ids}','ParticipantesController@store')->name('participantes.store');
+Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy');
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

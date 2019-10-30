@@ -51,6 +51,9 @@ class IndicatorController extends Controller
         $indicator->percentage = ($request->accumulated / $request->goal) * 100;
         $indicator->id_proyecto = $request->id_project;
 
+        $indicator->date_alert = $request->date_alert;
+        $indicator->date_limit = $request->date_limit;
+
         $indicator->save();
         
         return redirect("project/$request->id_project");
@@ -95,7 +98,35 @@ class IndicatorController extends Controller
         $indicator = Indicator::find($request->id);
         $indicator->name = $request->name;
         $indicator->status = $request->status;
+
+        $indicator->date_alert = $request->date_alert;
+        $indicator->date_limit = $request->date_limit;
+        
         $indicator->update();
+        return redirect("/project/$indicator->id_proyecto");
+    }
+
+    public function custom($id){
+        $i = Indicator::find($id);
+
+        return view('indicators.custom')->with('i',$i);
+    }
+
+    public function refresh(Request $request, Indicator $indicator)
+    {
+        //
+        $indicator = Indicator::find($request->id);
+        $indicator->name = $request->name;
+        $indicator->status = $request->status;
+
+        $indicator->metric = $request->metric;
+
+        $indicator->accumulated = $request->accumulated;
+        $indicator->goal = $request->goal;
+        $indicator->percentage = ($request->accumulated / $request->goal) * 100;
+
+        $indicator->update();
+
         return redirect("/project/$indicator->id_proyecto");
     }
 
