@@ -7,9 +7,13 @@ use App\Indicator;
 use App\Project;
 use App\Beneficiarios;
 
+<<<<<<< HEAD
+use Illuminate\Http\Request; 
+=======
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
 
 class BeneficioController extends Controller
 {

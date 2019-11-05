@@ -21,6 +21,7 @@ Route::get('large-compact-sidebar/dashboard/dashboard1', function () {
     return view('dashboard.dashboardv1');
 })->name('compact');
 
+
 Route::get('large-sidebar/dashboard/dashboard1', function () {
     // set layout sesion(key)
     session(['layout' => 'normal']);
@@ -39,7 +40,16 @@ Route::view('dashboard/dashboard2', 'dashboard.dashboardv2')->name('dashboard_ve
 Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_version_3');
 Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
 
+
+
 //1 Administracion
+
+//LOGIN
+Route::get('/signIn', function(){
+    return view('/sesion/signin');
+});
+
+Route::post('/signIn/authenticate','SesionController@authenticate');
 
 //1.1 Usuarios
 Route::get('/admin/users','UserController@index')->name('users.index');
@@ -83,6 +93,19 @@ Route::post('/tipogestores/store','TipoGestorController@store');
 Route::put('/tipogestores/{id}','TipoGestorController@update');
 Route::get('/tipogestores/{id}/edit','TipoGestorController@edit')->name('tipogestores.edit');
 Route::delete('/tipogestores/{id}','TipoGestorController@destroy');
+
+//PERMISOS
+Route::get('/permisos','PermisoController@index')->name('permisos.index');
+Route::get('/permisos/edit/{id}','PermisoController@edit')->name('permisos.edit');
+Route::put('/permisos/{id}','PermisoController@update');
+Route::post('/permisos/store','PermisoController@store');
+
+//Permisos Proyectos
+Route::get('/permisosprojects/edit/{id}','PermisoProjectController@edit')->name('permisosprojects.edit');
+Route::post('/permisosprojects/store','PermisoProjectController@store');
+Route::put('/permisosprojects/{id}','PermisoProjectController@update');
+
+
 
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');

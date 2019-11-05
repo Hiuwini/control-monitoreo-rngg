@@ -30,12 +30,21 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Listado de Beneficiarios
+<<<<<<< HEAD
+                                <a style="margin: 19px;" href="{{ url("/beneficiarios/create/?id=$actividad->id") }}" class="btn btn-primary">Nuevo Beneficiario</a>
+                                <a style="margin: 19px;" href="" class="btn btn-primary">Buscar Beneficiario</a>
+                            </div>
+                            
+                                <div class="row">
+                                <p>Los beneficiarios contribuyen a la siguiente actividad: <b>{{$actividad->name}}</b></p>
+=======
                                 <a style="margin: 19px;" href="{{ url("/beneficiarios/create/?id=$actividad->id".'&type=actividades') }}" class="btn btn-primary">Nuevo Beneficiario</a>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".beneficiary">Buscar Beneficiario</button>
                             </div>
                             
                                 <div class="row">
                                 <p>Los beneficiarios participaron en el evento: <b>{{$actividad->nombre}}</b></p>
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                                      <table class="table table-light">
                                          <thead class="thead-light">
                                              <tr>

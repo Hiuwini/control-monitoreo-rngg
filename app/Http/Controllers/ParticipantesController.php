@@ -23,6 +23,13 @@ class ParticipantesController extends Controller
      */
     public function index($id)
     {
+<<<<<<< HEAD
+        $i = Actividades::find($id);
+        $project = Project::find($i->id_proyecto);
+        $beneficiarios = Participantes::join('beneficiarios','beneficiarios.id','=','beneficiario_id')
+            ->where('actividades_id','=',$id)
+            ->get();
+=======
         $actividad = Actividades::find($id);
         $i = Indicator::find($actividad->indicator_id);
         $project = Project::find($actividad->id_proyecto);
@@ -30,6 +37,7 @@ class ParticipantesController extends Controller
         ->where('actividad_id','=',$id)
         ->select('participantes.id',DB::raw('beneficiarios.id as beneficiario_id'),'beneficiarios.nombrebeneficiario','beneficiarios.apellidobeneficiario','beneficiarios.genero','beneficiarios.rangoedad','beneficiarios.nombreubicacion')
         ->get();
+>>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
         
         $ids = array();
             foreach($beneficiarios as $b){

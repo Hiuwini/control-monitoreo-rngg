@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TipoGestor;
 
-class TipoGestorController extends Controller
+use App\User;
+
+class SesionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,26 @@ class TipoGestorController extends Controller
      */
     public function index()
     {
-        //Listado de todos los tipos de Gestores
-        
-        $tiposgestores=TipoGestor::all();
-        return view('tipogestores.index')->with('tipogestores',$tiposgestores);   
-    
-       
+        //
+    }
+
+    public function authenticate(Request $request){
+        $username = $request->username;
+        $password = bcrypt($request->password);
+        $userdata= User::where([['username','=',$username],
+        ['password','=',$password],
+        ])->get();
+        if($userdata->password==$password)
+        {
+            return redirect('roles');
+
+        }
+        else{
+            return redirect('admin/users');
+        }
+
+        //VErificando que el usuario exista en la base de datos
+
     }
 
     /**
@@ -30,7 +45,6 @@ class TipoGestorController extends Controller
     public function create()
     {
         //
-        return view('tipogestores.create');
     }
 
     /**
@@ -42,11 +56,6 @@ class TipoGestorController extends Controller
     public function store(Request $request)
     {
         //
-        $tipoGestor = new TipoGestor;
-        $tipoGestor->nombre = $request->nombre;
-        $tipoGestor->save();
-
-        return redirect('/tipogestores');
     }
 
     /**
@@ -58,8 +67,6 @@ class TipoGestorController extends Controller
     public function show($id)
     {
         //
-        $tiposgestores=TipoGestor::find($id);
-        return  view('tipogestor.index',compact('tiposgestores'));
     }
 
     /**
@@ -71,8 +78,6 @@ class TipoGestorController extends Controller
     public function edit($id)
     {
         //
-        $tipogestor = tipoGestor::find($id);
-        return view('tipogestores.update')->with('tipogestor',$tipogestor)->with('id',$id);
     }
 
     /**
@@ -85,12 +90,6 @@ class TipoGestorController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tiposgestores = tipoGestor::find($request->id);
-
-        $tiposgestores->nombre = $request->nombre;
-        $tiposgestores->update();
-
-        return redirect('/tipogestores');
     }
 
     /**
@@ -102,8 +101,5 @@ class TipoGestorController extends Controller
     public function destroy($id)
     {
         //
-        $tipogestor = tipoGestor::find($id);
-        $tipogestor->delete();
-        return redirect('/tipogestores');
     }
 }
