@@ -57,7 +57,7 @@ class BeneficioController extends Controller
     public function store(Request $request, $ids)
     {
         //
-        $ids = json_decode($ids);
+        $ids = json_decode($ids, true);
 
         $indicator_id = $ids[0];
         
