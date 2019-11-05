@@ -20,6 +20,10 @@ class BeneficiariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //$beneficiarios = Beneficiarios::all();
@@ -41,12 +45,8 @@ class BeneficiariosController extends Controller
         $generos = Generos::all();
         $tipobeneficiarios = Tipobeneficiarios::all();
          
-<<<<<<< HEAD
-       return view('beneficiarios.create', compact('generos'), compact('tipobeneficiarios') );
-=======
       
        return view('beneficiarios.create',compact('tiposgestores') );
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
        
     }
 
@@ -67,13 +67,8 @@ class BeneficiariosController extends Controller
         'nombreubicacion'=> 'required',
         'dpicui'=> 'required',
         'telefono' => 'required|numeric',
-<<<<<<< HEAD
-        'emailbeneficiario'=> 'required', 
-        'tipobeneficiario'=> 'required']);
-=======
         'emailbeneficiario'=> 'required'
         ]);
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
         
         $beneficiarios = new Beneficiarios();
  
@@ -86,31 +81,6 @@ class BeneficiariosController extends Controller
         $beneficiarios->dpicui = request('dpicui');
         $beneficiarios->telefono = request('telefono');
         $beneficiarios->emailbeneficiario = request('emailbeneficiario');
-<<<<<<< HEAD
-        $beneficiarios->indicador ='nada';
-        $beneficiarios->tipobeneficiario = request('nombrebeneficiario');
-               
-        $beneficiarios->save();
-
-       //Beneficiarios
-        $beneficio = new Beneficio;
-        
-        $beneficio->indicator_id = request('indicator_id');
-        $beneficio->beneficiario_id = $beneficiarios->id;
-        $beneficio->save();
-        $indicator_id = request('indicator_id');    
-   
-        //para los participantes
-        $participante= new Participantes;
-
-        $participante->actividad_id=request('actividad_id');
-        $participante->beneficiario_id = $beneficiarios->id;
-        $participante->save();
-        $indicator_id = request('actividad_id');
-    
-    
-        return redirect("/beneficios/$indicator_id");
-=======
         //$beneficiarios->indicador = request('indicator_id');
         $beneficiarios->tipobeneficiario = request('tipobeneficiario');
 
@@ -149,7 +119,6 @@ class BeneficiariosController extends Controller
 
         }
 
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
 
     }
 

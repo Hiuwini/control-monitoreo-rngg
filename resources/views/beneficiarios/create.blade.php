@@ -49,26 +49,14 @@
 
                                 
                             </div>
-<<<<<<< HEAD
-                        {{--
-                        condicion para enviar id de actividad o indicador
-                        @if($_GET['type'] == 'actividad')
-=======
                          
                         @if($_GET['type'] == 'actividades')
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                             <input type="hidden" name="actividad_id" value="{{ $_GET['id'] }}">
                             <input type="hidden" name="type" value="actividad">
                         @else
                             <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
                             <input type="hidden" name="type" value="indicador">
                         @endif
-<<<<<<< HEAD
-                        --}}
-
-                        <input type="hidden" name="indicator_id" value="{{ $_GET['id'] }}">
-=======
->>>>>>> 67331c98d1d16dfd7c8a0c5ccbbcc0157f2cc99c
                              <div class="col-md-6 form-group mb-3">
                              <label>Apellido</label>
                                 <input type="text" name="apellidobeneficiario" class="form-control input-lg" value="{{ old('apellidobeneficiario') }}"/>

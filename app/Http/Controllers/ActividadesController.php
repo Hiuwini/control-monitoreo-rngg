@@ -14,6 +14,10 @@ class ActividadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $actividades = Actividades::orderBy('id','ASC')->paginate(10);
