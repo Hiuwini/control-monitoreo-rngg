@@ -10,7 +10,7 @@
    <div class="breadcrumb">
                 <h1>Nuevo</h1>
                 <ul>
-                    <li>Actividades</li>
+                    <li>Evento</li>
                     <li><a href="">Administración</a></li>
                     
                 </ul>
@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Crear Nueva Actividad</div>
+                            <div class="card-title mb-3">Crear Nuevo Evento</div>
                             <form method="POST" action="/actividades" >
                                 {{ csrf_field() }}
 
@@ -44,35 +44,35 @@
                                 <label>Nombre</label>
                                 <input type="text" name="nombre" class="form-control input-lg" value="{{ old('nombre') }}" />
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese el nombre de la actividad.</small>
+                                Ingrese el nombre del evento.</small>
                             </div>
 
                              <div class="col-md-6 form-group mb-3">
                              <label>Descripción</label>
                                 <input type="text" name="descripcion" class="form-control input-lg" value="{{ old('descripcion') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese la descripción de la actividad</small>
+                                Ingrese la descripción del evento</small>
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                              <label>Fecha</label>
                                 <input type="date" name="fecha" class="form-control input-lg" value="{{ old('fecha') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese la fecha de la actividad</small>
+                                Ingrese la fecha del evento</small>
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                              <label>Cantidad de proyectada</label>
                                 <input type="text" name="cantidadProyectada" class="form-control input-lg" value="{{ old('cantidadProyectada') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese la cantidad proyectada de la actividad</small>
+                                Ingrese la cantidad proyectada del evento</small>
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                              <label>Duración en horas</label>
                                 <input type="text" name="duracion" class="form-control input-lg" value="{{ old('duracion') }}"/>
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">                                                
-                                Ingrese la duracion de la actividad en horas</small>
+                                Ingrese la duracion del evento en horas</small>
                             </div>
                             <input type="hidden" name="id_proyecto" value="{{$project->id}}">
                             <input type="hidden" name="indicator_id" value="{{$indicator->id}}">

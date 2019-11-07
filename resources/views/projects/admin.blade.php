@@ -32,7 +32,7 @@
                                         <a class="nav-link" id="profile-basic-tab" data-toggle="tab" href="#indicators" role="tab" aria-controls="indicators" aria-selected="false">Indicadores</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Actividades</a>
+                                        <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Eventos</a>
                                     </li>
                                     <!--<li class="nav-item">
                                         <a class="nav-link" id="contact-basic-tab" data-toggle="tab" href="#goals" role="tab" aria-controls="goals" aria-selected="false">Metas</a>
@@ -77,9 +77,11 @@
                                     </div>
                                     <div class="tab-pane fade" id="indicators" role="tabpanel" aria-labelledby="profile-basic-tab">
                                         <!-- Aqui van el codigo de los indicadores -->    
+                                        @if( (\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 3)
                                         <a style="margin: 19px;" href="/indicators/create/{{ $p[0]->id }}" class="btn btn-primary">
                                             Nuevo Indicador
                                         </a>
+                                        @endif
                                         <div class="row">
                                         <table id="zero_configuration_table" class="display table table-striped table-bordered" style="width:100%">
                                                 <thead>
@@ -128,6 +130,7 @@
                                                                     @else
                                                                         <a class="dropdown-item" href="/beneficios/{{$i->id}}">Administrar</a>
                                                                     @endif
+                                                                    @if( (\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 3)
                                                                     <div class="dropdown-divider"></div>
                                                                     <a class="dropdown-item" href="{{ url("/indicators/$i->id/edit") }}">Actualizar</a>
                                                                     <form action="/indicators/{{$i->id}}" method="POST">                                                    
@@ -136,6 +139,7 @@
                                                                         <input class="dropdown-item" type="submit" value="Eliminar" />
                                                                         
                                                                     </form>
+                                                                    @endif
                                                                 
                                                                 </div>
                                                             </div>

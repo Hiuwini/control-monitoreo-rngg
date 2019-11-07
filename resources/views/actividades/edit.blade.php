@@ -10,7 +10,7 @@
    <div class="breadcrumb">
                 <h1>Editar</h1>
                 <ul>
-                    <li>Actividades</li>
+                    <li>Evento</li>
                     <li><a href="">Administración</a></li>
                     
                 </ul>
@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Editar Actividades</div>
+                            <div class="card-title mb-3">Editar Evento</div>
 
                         <form method="POST" action="/actividades/update/{{$actividades->id}}">
 
