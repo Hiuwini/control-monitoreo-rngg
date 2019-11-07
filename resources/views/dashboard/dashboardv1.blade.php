@@ -65,6 +65,7 @@
                                 </label>
                             </div>
 
+                    <!-- TABLA DE RESUMEN -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card o-hidden mb-4">
@@ -144,7 +145,7 @@
 
                         </div>
                     </div>
-
+                    <!-- Fin Tabla Resumen -->
 
                 </div>
 
@@ -211,9 +212,14 @@
                                         <b> Indicadores: </b><br><br>
                                         @foreach( (\App\Indicator::select('name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
                                         <small>{{$loop->iteration }}.- {{$indicator->name}} </small>
+                                            
                                             <div class="progress mt-3">                                            
                                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$indicator->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$indicator->accumulated , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$indicator->percentage , 0, '.', '') }} %</div>
+                                                
                                             </div>
+                                              
+                                            
+                                            
                                             <br>
                                         @endforeach
 
