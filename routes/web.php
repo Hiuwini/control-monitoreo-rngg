@@ -145,6 +145,7 @@ Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy
 //Graficas
 Route::get('/graficas/generototal','GenerosController@index')->name('genero');
 Route::get('/graficas/indicador/{indicador}','GenerosController@indicador');
+Route::get('/graficas/actividad/{actividad}','GenerosController@actividad');
 
 //Reportes
 //Route::get('ReporteUsuario','ReporteUsuarioController@generar');//si

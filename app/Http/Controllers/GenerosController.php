@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Generos;
 use App\Beneficiarios;
 use App\Beneficio;
+use App\Participantes;
 
 use Illuminate\Http\Request;
 
@@ -54,8 +55,7 @@ class GenerosController extends Controller
         $rangoCuatro=Beneficio::join('beneficiarios','beneficiarios.id',"=",'beneficios.beneficiario_id')
         ->whereRaw("beneficiarios.rangoedad = '50 - 60' and beneficios.indicator_id = ".$indicador)->count();
 
-        $rangoCinco=Beneficio::join('beneficiarios','beneficiarios.id',"=",'beneficios.beneficiario_id')
-        ->whereRaw("beneficiarios.rangoedad = 'Mayor de 60' and beneficios.indicator_id = ".$indicador)->count();
+       
 
 
         $maxGenero=max($cantMasculino,$cantFemenina);
@@ -71,14 +71,42 @@ class GenerosController extends Controller
         ->with('rangoCinco',$rangoCinco)
         ->with('maximo',$maximo);
     }
-/*
-    public function indexDos($indicador)
-    {
-        $cantMasculinoDos=Beneficiarios::select('genero')->whereRaw("genero = 'Masculino' and id_Indicador ="$indicador)->count();
 
-        return view('graficas.genero')
-        ->with('cantMasculinoDos',$cantMasculinoDos);
-    }
-*/
     
+
+public function actividad($actividad)
+    {
+        $cantMasculino=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.genero = 'Masculino' and participantes.actividad_id = ".$actividad)->count();
+        $cantFemenina=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.genero = 'Femenino' and participantes.actividad_id = ".$actividad)->count();
+        $rangoUno=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.rangoedad = 'Menor de 18' and participantes.actividad_id = ".$actividad)->count();
+
+        $rangoDos=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.rangoedad = '18 - 30' and participantes.actividad_id = ".$actividad)->count();
+
+        $rangoTres=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.rangoedad = '31 - 49' and participantes.actividad_id = ".$actividad)->count();
+
+        $rangoCuatro=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.rangoedad = '50 - 60' and participantes.actividad_id = ".$actividad)->count();
+
+        $rangoCinco=Participantes::join('beneficiarios','beneficiarios.id',"=",'participantes.beneficiario_id')
+        ->whereRaw("beneficiarios.rangoedad = 'Mayor de 60' and participantes.actividad_id = ".$actividad)->count();
+
+
+        $maxGenero=max($cantMasculino,$cantFemenina);
+        $maximo=max($rangoUno,$rangoDos,$rangoTres,$rangoCuatro,$rangoCinco);
+        return view('graficas.graficas')
+        ->with('cantFemenina',$cantFemenina)
+        ->with('cantMasculino',$cantMasculino)
+        ->with('maxGenero',$maxGenero)
+        ->with('rangoUno',$rangoUno)
+        ->with('rangoDos',$rangoDos)
+        ->with('rangoTres',$rangoTres)
+        ->with('rangoCuatro',$rangoCuatro)
+        ->with('rangoCinco',$rangoCinco)
+        ->with('maximo',$maximo);
+    }
 }

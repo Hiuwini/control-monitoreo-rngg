@@ -70,12 +70,12 @@ cantM={{$cantMasculino}};
 maxGenero={{$maxGenero}};
 deCuanto=maxGenero/4;
 //------------------------------------------variables para rango de edad
-uno=1;
-dos=2;
-tres=3;
-cuatro=4;
-cinco=5;
-maxedad=8;
+uno={{$rangoUno}};
+dos={{$rangoDos}};
+tres={{$rangoTres}};
+cuatro={{$rangoCuatro}};
+cinco={{$rangoCinco}};
+maxedad={{$maximo}};
 cuantoedad=maxedad/4;
 
 $(document).ready(function () {

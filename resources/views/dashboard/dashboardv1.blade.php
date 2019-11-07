@@ -233,13 +233,10 @@
                                             <div class="progress mt-3">                                            
                                             <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$porcentaje , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$activity->cantidadProyectada , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$porcentaje , 0, '.', '') }} %</div>
                                             </div>
-                                            <div class="card mb-4">
-                                                    <div class="card-body">
-                                                        <div class="card-title">Gráfica de pie de Genero2</div>  
-                                                        <div id="echartPieGenero" style="height: 300px; width: 800px;"></div>
-                                                    </div>
-                                                </div>
-                                            
+                                            <br>
+                                                <a href="/graficas/actividad/{{$activity->id}}" class="btn btn-primary">Gráfica</a>
+                                            <br>
+                                            <br>
                                         @endforeach
 
 
