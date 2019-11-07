@@ -91,7 +91,7 @@
                                    
                                     <div class="col-md-12">
                                          <button class="btn btn-success" type="submit">Crear usuario</button>
-                                    <a href="{{ route('dashboard_version_1') }}"><button class="btn btn-danger">Cancelar</button></a>
+                                    <a href="{{ url('admin/users') }}"><button class="btn btn-danger">Cancelar</button></a>
                                     </div>
                                 </div>
                             </form>

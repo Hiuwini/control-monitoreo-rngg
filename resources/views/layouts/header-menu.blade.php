@@ -1,4 +1,4 @@
-    <div class="main-header">
+<div class="main-header">
             <div class="logo">
                 <img src="{{asset('assets/images/logo.jpg')}}" alt="">
             </div>

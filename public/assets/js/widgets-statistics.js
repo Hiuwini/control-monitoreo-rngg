@@ -848,11 +848,11 @@ $(document).ready(function() {
                 stops: [0, 100]
             }
         },
-        series: [75],
+        series: [40],
         stroke: {
             lineCap: 'round'
         },
-        labels: ['Choice'],
+        labels: ['avance'],
 
     }
 
