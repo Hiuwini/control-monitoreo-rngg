@@ -53,6 +53,19 @@
                     </div>
                 </div>
 
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-File-Download"></i>
+                            <div class="content">
+                            Reporte de PDF General
+                            </div>
+                            <a style="height:40px" href="{{ url('reportes')}}" class="btn btn-primary">
+                            Reporte</a>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
 
