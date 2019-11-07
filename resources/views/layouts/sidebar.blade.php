@@ -50,6 +50,23 @@
                 <div class="triangle"></div>
             </li>
 
+             {{--<li class="nav-item {{ request()->is('admin2/*') ? 'active' : '' }}" data-item="admin2">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Receipt-4"></i>
+                    <span class="nav-text">Reportes Original</span>
+                </a>
+                <div class="triangle"></div>
+            </li>--}}
+
+
+                <li class="nav-item">
+                <a class="nav-item-hold" href="{{route('reportes')}}">
+                    <i class="nav-icon i-Receipt-4"></i>
+                    <span class="nav-text">Reporte</span>
+                </a>
+                <div class="triangle"></div>
+                 </li>
+
            
 
             <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }}" data-item="admin">
@@ -374,6 +391,26 @@
                 </a>
             </li>
         </ul>
+
+         <ul class="childNav" data-parent="admin2">
+          <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('ReporteUsuario')}}"> 
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">Usuario</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="childNav" data-parent="admin2">
+          <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('ReporteProyectosAct')}}"> 
+                    <i class="nav-icon i-Clock-4"></i>
+                    <span class="item-name">Proyectos</span>
+                </a>
+            </li>
+        </ul>
+
+
         <!--
         <ul class="childNav" data-parent="forms">
 
