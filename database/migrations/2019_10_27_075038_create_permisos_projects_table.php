@@ -14,6 +14,8 @@ class CreatePermisosProjectsTable extends Migration
     public function up()
     {
         Schema::create('permisos_projects', function (Blueprint $table) {
+            $table->bigIncrements('id');            
+            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

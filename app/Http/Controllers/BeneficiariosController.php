@@ -20,6 +20,10 @@ class BeneficiariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //$beneficiarios = Beneficiarios::all();
@@ -44,7 +48,6 @@ class BeneficiariosController extends Controller
       
        return view('beneficiarios.create',compact('tiposgestores') );
        
-
     }
 
     /**
@@ -72,7 +75,7 @@ class BeneficiariosController extends Controller
         $beneficiarios->nombrebeneficiario = request('nombrebeneficiario');
         $beneficiarios->apellidobeneficiario = request('apellidobeneficiario');
         $beneficiarios->genero = request('genero');
-        //$beneficiarios->estado = request('status') == 'checked' ? true:false;  
+        $beneficiarios->estado = request('enable') == 'on' ? true:false;  
         $beneficiarios->rangoedad = request('rangoedad');
         $beneficiarios->nombreubicacion = request('nombreubicacion');
         $beneficiarios->dpicui = request('dpicui');
@@ -81,8 +84,8 @@ class BeneficiariosController extends Controller
         //$beneficiarios->indicador = request('indicator_id');
         $beneficiarios->tipobeneficiario = request('tipobeneficiario');
 
-        if ( request('status') == 'checked' )
-            $beneficiarios->id_tipogestor=request('gestor');
+        if ( request('status') == 'on' )
+          {  $beneficiarios->id_tipogestor=request('gestor');}
 
         $beneficiarios->save();
  

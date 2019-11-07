@@ -119,6 +119,15 @@
                                 </label>
                             </div>
 
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="enable">Habilitar </label><br>
+                                <label class="switch switch-primary mr-3">
+                                        <span>Si / No</span>
+                                        <input type="checkbox" name="enable" id="enable" >
+                                        <span class="slider"></span>
+                                </label>
+                            </div>
+
 
                             <div class="col-md-6 form-group mb-3" id="typeGestor">
                                 <label for="gestor">Miembro de: </label>
