@@ -78,8 +78,6 @@ Route::get('/permisosprojects/edit/{id}','PermisoProjectController@edit')->name(
 Route::post('/permisosprojects/store','PermisoProjectController@store');
 Route::put('/permisosprojects/{id}','PermisoProjectController@update');
 
-
-
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
 //Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
@@ -146,7 +144,7 @@ Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy
 
 //Graficas
 Route::get('/graficas/generototal','GenerosController@index')->name('genero');
-
+Route::get('/graficas/indicador/{indicador}','GenerosController@indicador');
 
 //Reportes
 //Route::get('ReporteUsuario','ReporteUsuarioController@generar');//si
