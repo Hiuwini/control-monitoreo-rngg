@@ -50,7 +50,7 @@
                 <div class="triangle"></div>
             </li>
 
-            @if( (\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id == 1)
+            @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id == 1) || ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id == 2))
 
             <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }}" data-item="admin">
                 <a class="nav-item-hold" href="#">
@@ -147,6 +147,7 @@
 
     <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
         
+        @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 2) )
         <ul class="childNav" data-parent="component1">
             <li class="nav-item" style="background: #eee">
             <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/1">
@@ -155,8 +156,8 @@
                 </a>
             </li>
         </ul>
-        
-        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',1)->get()) as $projects)
+        @endif
+        @foreach( (\App\PermisoProject::join('projects','projects.id','=','project_id')->select('projects.*')->whereRaw("c_institutional_id=1 and permisos_projects.user_id=".Auth::id())->get()) as $projects)
         <ul class="childNav" data-parent="component1">
             <li class="nav-item" >
             <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
@@ -165,7 +166,7 @@
             </li>
         </ul>
         @endforeach
-    
+        @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 2) )
         <ul class="childNav" data-parent="component2">
             <li class="nav-item" style="background: #eee">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/2">
@@ -175,8 +176,8 @@
                 </a>
             </li>
         </ul>
-
-        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',2)->get()) as $projects)
+        @endif
+        @foreach( (\App\PermisoProject::join('projects','projects.id','=','project_id')->select('projects.*')->whereRaw("c_institutional_id=2 and permisos_projects.user_id=".Auth::id())->get()) as $projects)
         <ul class="childNav" data-parent="component2">
             <li class="nav-item" >
                 <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
@@ -185,7 +186,7 @@
             </li>
         </ul>
         @endforeach
-
+        @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 2) )
         <ul class="childNav" data-parent="component3">
             <li class="nav-item" style="background: #eee">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/3">
@@ -195,8 +196,8 @@
                 </a>
             </li>
         </ul>
-
-        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',3)->get()) as $projects)
+        @endif
+        @foreach( (\App\PermisoProject::join('projects','projects.id','=','project_id')->select('projects.*')->whereRaw("c_institutional_id=3 and permisos_projects.user_id=".Auth::id())->get()) as $projects)
         <ul class="childNav" data-parent="component3">
             <li class="nav-item" >
                 <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
@@ -205,7 +206,7 @@
             </li>
         </ul>
         @endforeach
-
+        @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 2) )
         <ul class="childNav" data-parent="component4">
             <li class="nav-item" style="background: #eee">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/4">
@@ -215,8 +216,8 @@
                 </a>
             </li>
         </ul>
-
-        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',4)->get()) as $projects)
+        @endif
+        @foreach( (\App\PermisoProject::join('projects','projects.id','=','project_id')->select('projects.*')->whereRaw("c_institutional_id=4 and permisos_projects.user_id=".Auth::id())->get()) as $projects)
         <ul class="childNav" data-parent="component4">
             <li class="nav-item" >
                 <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
@@ -225,7 +226,7 @@
             </li>
         </ul>
         @endforeach
-
+        @if( ((\App\Permiso::where('user_id','=',Auth::id())->get())[0]->rol_id <= 2) )
         <ul class="childNav" data-parent="institucional">
             <li class="nav-item" style="background: #eee">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="/projects/ci/5">
@@ -235,8 +236,8 @@
                 </a>
             </li>
         </ul>
-
-        @foreach( (\App\Project::select('id','name')->where('c_institutional_id','=',5)->get()) as $projects)
+        @endif
+        @foreach( (\App\PermisoProject::join('projects','projects.id','=','project_id')->select('projects.*')->whereRaw("c_institutional_id=5 and permisos_projects.user_id=".Auth::id())->get()) as $projects)
         <ul class="childNav" data-parent="institucional">
             <li class="nav-item" >
                 <a class="{{ Route::currentRouteName()=='project' ? 'open' : '' }}" href="/project/{{$projects->id}}">
@@ -276,14 +277,6 @@
             </li>
         </ul>
 
-         <ul class="childNav" data-parent="admin">
-          <li class="nav-item">
-                <a class="{{ Route::currentRouteName()=='users_list' ? 'open' : '' }}" href="{{ url('beneficiarios')}}">
-                    <i class="nav-icon i-Clock-4"></i>
-                    <span class="item-name">Beneficiarios</span>
-                </a>
-            </li>
-        </ul>
         <ul class="childNav" data-parent="admin">
             <li class="nav-item">
                 <a class="{{ Route::currentRouteName()=='projects' ? 'open' : '' }}" href="{{route('projects.index')}}">
@@ -301,6 +294,16 @@
                 </a>
             </li>
         </ul>
+        
+        <ul class="childNav" data-parent="admin">
+            <li class="nav-item">
+                <a class="{{ Route::currentRouteName()=='ci' ? 'open' : '' }}" href="{{route('tipogestores.index')}}">
+                    <i class="nav-icon i-Book"></i>
+                    <span class="item-name">Grupos Gestores</span>
+                </a>
+            </li>
+        </ul>
+        
         @endif
     </div>
     <div class="sidebar-overlay"></div>

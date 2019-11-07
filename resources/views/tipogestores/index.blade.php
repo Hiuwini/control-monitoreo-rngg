@@ -31,7 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Descripcion</th>
+                                        <th>Nombre</th>
                                         <th>Opciones</th>
                                         
                                     </tr>

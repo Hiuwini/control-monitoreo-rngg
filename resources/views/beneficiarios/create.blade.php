@@ -135,7 +135,7 @@
                                         <option selected disabled>-- Elegir el grupo Gestor --</option>
                                         @foreach ($tiposgestores as $tipogestor)
                                                 <option value="{{ $tipogestor->id }}">{{ $tipogestor->nombre }} </option>
-                                            @endforeach
+                                        @endforeach
                                     </select>
                             </div>
 
@@ -155,10 +155,10 @@
 
                             
                             <div class="col-md-6 form-group mb-3">
-                                <label>Tipo de Beneficiario</label>
+                                <label>Sector del Beneficiario</label>
                                 <select name="tipobeneficiario" id="tipobeneficiarioId" class="form-control" >
-                                    <option value="">-- Seleccione el tipo de beneficiario --</option>
-                                    <option value="Emprendedor">Emprendedor</option>
+                                    <option value="">-- Seleccione el sector del beneficiario --</option>
+                                    <option value="Emprendedor">Sociedad Civil</option>
                                     <option value="Publico">Publico</option>
                                     <option value="Privado">Privado</option>                               
                                 </select>
