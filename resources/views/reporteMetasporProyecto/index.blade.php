@@ -22,7 +22,7 @@
                     </style>
                 </head>
                 <body>
-                <h2>Reporte de Metas por Proyecto</h2>
+                <h2>Reporte de Indicadores por Proyecto</h2>
                 <table>
                     <tr>
                         <th>Proyecto</th>

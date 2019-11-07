@@ -10,7 +10,7 @@ class reporteController extends Controller
     public function generar()
     {
         $users = \DB::table('users')
-        -> select(['id','firstname','lastname','username','email','phone','status','job'])
+        -> select(['id','firstname','lastname','username'])
             ->get();
             $view = \View::make('ReporteUsuario.index', compact('users'))->render();
             $ReporteUsuario = \App::make('dompdf.wrapper');

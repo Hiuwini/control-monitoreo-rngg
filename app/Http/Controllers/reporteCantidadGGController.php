@@ -11,13 +11,6 @@ class reporteCantidadGGController extends Controller
       public function generar()
 	{
 
-		/*$beneficiarios = \DB::table('beneficiarios')
-		-> join('tipogestores', 'tipogestores.id' , '=' , 'beneficiarios.id')
-		->join('participantes', 'participantes.id', '=', 'beneficiarios.id')
-		->join('actividades', 'actividades.id', '=', 'participantes.id')
-		->select ('tipogestores.nombre')
-		->select ('beneficiarios.nombrebeneficiario','beneficiarios.genero','tipogestores.nombre','actividades.nombre')
-		->where('beneficiarios.id_tipogestor', '<>', 'null')->count();*/
 
 		$beneficiarios = \DB::table('beneficiarios')
 		-> join('tipogestores', 'tipogestores.id' , '=' , 'beneficiarios.id')
