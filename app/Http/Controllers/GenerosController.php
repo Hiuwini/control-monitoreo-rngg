@@ -21,6 +21,8 @@ class GenerosController extends Controller
         $rangoTres=Beneficiarios::select('rangoedad')->where('rangoedad','=','31 - 49')->count();
         $rangoCuatro=Beneficiarios::select('rangoedad')->where('rangoedad','=','50 - 60')->count();
         $rangoCinco=Beneficiarios::select('rangoedad')->where('rangoedad','=','Mayor de 60')->count();
+        $maxGenero=max($cantMasculino,$cantFemenina);
+        $maximo=max($rangoUno,$rangoDos,$rangoTres,$rangoCuatro,$rangoCinco);
 
         return view('graficas.genero')
         ->with('cantFemenina',$cantFemenina)
@@ -29,7 +31,9 @@ class GenerosController extends Controller
         ->with('rangoDos',$rangoDos)
         ->with('rangoTres',$rangoTres)
         ->with('rangoCuatro',$rangoCuatro)
-        ->with('rangoCinco',$rangoCinco);
+        ->with('rangoCinco',$rangoCinco)
+        ->with('maximo',$maximo)
+        ->with('maxGenero',$maxGenero);
     }
 /*
     public function indexDos($indicador)

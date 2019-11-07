@@ -8,10 +8,10 @@
 @section('main-content')
 
            <div class="breadcrumb">
-                <h1>GRAFICAS</h1>
+                <h1>GRÁFICA</h1>
                 <ul>
-                    <li><a href="">Generales</a></li>
-                    <li>Totales</li>
+                    <li><a href="">Beneficiarios de</a></li>
+                    <li>Red Nacional Grupo Gestores</li>
                 </ul>
             </div>
  
@@ -19,7 +19,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="card mb-4">
                         <div class="card- body">
-                            <div class="card-title">Grafica de barras de Genero</div>
+                            <div class="card-title">Gráfica de Género</div>
                             <div id="echartBarGenero" style="height: 300px;"></div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="col-lg-4 col-sm-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title">Grafica de pie de Genero</div>  
+                            <div class="card-title">Gráfica de Género</div>  
                             <div id="echartPieGenero" style="height: 300px;"></div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title">Grafica de barras de Edad</div>
+                            <div class="card-title">Gráfica de Edad</div>
                             <div id="echartBarEdad" style="height: 300px;"></div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="col-lg-4 col-sm-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title">Grafica de pie de Edad</div> 
+                            <div class="card-title">Gráfica de Edad</div> 
                             <div id="echartPieEdad" style="height: 300px;"></div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ var cantF,cantM,maxGenero,deCuanto,uno,dos,tres,cuatro,cinco,maxedad,cuantoedad;
 //-------------------------------------------variables para genero
 cantF={{$cantFemenina}};
 cantM={{$cantMasculino}};
-maxGenero=cantM+cantF;
+maxGenero={{$maxGenero}};
 deCuanto=maxGenero/4;
 //------------------------------------------variables para rango de edad
 uno={{$rangoUno}};
@@ -75,7 +75,7 @@ dos={{$rangoDos}};
 tres={{$rangoTres}};
 cuatro={{$rangoCuatro}};
 cinco={{$rangoCinco}};
-maxedad=uno+dos+tres+cuatro+cinco;
+maxedad={{$maximo}};
 cuantoedad=maxedad/4;
 
 $(document).ready(function () {
@@ -91,7 +91,7 @@ if (echartElemPie) {
             backgroundColor: 'rgba(0, 0, 0, .8)'
         },
         series: [{
-            name: 'Genero',//descripción flotante de los valores
+            name: 'Género',//descripción flotante de los valores
             type: 'pie',
             radius: '60%',
             center: ['50%', '50%'],
@@ -165,7 +165,7 @@ if (echartElemBar) {
         }],
 
         series: [{
-            name: 'Genero',
+            name: 'Género',
             data: [cantM,cantF],//ingreso de valores
             label: { show: false, color: '#0168c1' },
             type: 'bar',
@@ -247,7 +247,7 @@ if (echartElemBar) {
         },
         xAxis: [{
             type: 'category',
-            data: ['Menor de 18','18 - 30','31 - 49','50 - 60','Mayor de 60','Total'], //subtitulos para cada barra ['M', 'F']
+            data: ['Menor de 18','18 - 30','31 - 49','50 - 60','Mayor de 60'], //subtitulos para cada barra ['M', 'F']
             axisTick: {
                 alignWithLabel: true
             },
@@ -277,7 +277,7 @@ if (echartElemBar) {
 
         series: [{
             name: 'Edad',
-            data: [uno,dos,tres,cuatro,cinco,maxedad],//ingreso de valores
+            data: [uno,dos,tres,cuatro,cinco],//ingreso de valores
             label: { show: false, color: '#0168c1' },
             type: 'bar',
             barGap: 0,

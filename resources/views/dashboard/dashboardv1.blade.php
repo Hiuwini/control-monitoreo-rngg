@@ -40,23 +40,19 @@
                     </div>
                 </div>
 
-
-
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <div class="card-body text-center">
-                            <i class="i-Money-2"></i>
+                            <i class="i-Bar-Chart-5"></i>
                             <div class="content">
-                                <p class="text-muted mt-2 mb-0">Expense</p>
-                                <p class="text-primary text-24 line-height-1 mb-2">$1200</p>
+                            Gráfica General
                             </div>
+                            <a style="height:40px" href="{{ url('/graficas/generototal')}}" class="btn btn-primary">
+                            Gráfica</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="card-title mb-3">Prueba de graficas
-                    <a style="margin: 19px;" href="{{ url('/graficas/generototal')}}" class="btn btn-primary">Grafica de Genero</a>
-                </div>
 
             </div>
 
