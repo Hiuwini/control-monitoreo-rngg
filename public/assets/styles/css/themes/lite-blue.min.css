@@ -21317,7 +21317,7 @@ a.typo_link.text-gray-900:after {
 }
 
 .main-header .header-part-right .user img {
-  width: 36px;
+  width: 48px;
   height: 36px;
   border-radius: 50%;
 }
@@ -21866,7 +21866,7 @@ a.typo_link.text-gray-900:after {
 }
 
 .layout-sidebar-large .main-header .header-part-right .user img {
-  width: 36px;
+  width: 48px;
   height: 36px;
   border-radius: 50%;
 }
@@ -22417,7 +22417,7 @@ a.typo_link.text-gray-900:after {
 }
 
 .layout-horizontal-bar .main-header .header-part-right .user img {
-  width: 36px;
+  width: 48px;
   height: 36px;
   border-radius: 50%;
 }
@@ -30174,7 +30174,7 @@ span.fa.fa-chevron-right:before {
 }
 
 .main-header .header-part-right .user img {
-  width: 36px;
+  width: 48px;
   height: 36px;
   border-radius: 50%;
   cursor: pointer;

@@ -11,36 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.dashboardv1');
-});
-// Route::view('/', 'starter')->name('starter');
-Route::get('large-compact-sidebar/dashboard/dashboard1', function () {
-    // set layout sesion(key)
-    session(['layout' => 'compact']);
-    return view('dashboard.dashboardv1');
-})->name('compact');
-
-
-Route::get('large-sidebar/dashboard/dashboard1', function () {
-    // set layout sesion(key)
-    session(['layout' => 'normal']);
-    return view('dashboard.dashboardv1');
-})->name('normal');
-
-Route::get('horizontal-bar/dashboard/dashboard1', function () {
-    // set layout sesion(key)
-    session(['layout' => 'horizontal']);
-    return view('dashboard.dashboardv1');
-})->name('horizontal');
-
-
-Route::view('dashboard/dashboard1', 'dashboard.dashboardv1')->name('dashboard_version_1');
-Route::view('dashboard/dashboard2', 'dashboard.dashboardv2')->name('dashboard_version_2');
-Route::view('dashboard/dashboard3', 'dashboard.dashboardv3')->name('dashboard_version_3');
-Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_version_4');
-
-
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@logout')->name('logout');
 
 
 //1 Administracion
@@ -276,3 +248,7 @@ Route::view('others/starter', 'starter')->name('starter');
 Route::view('others/faq', 'others.faq')->name('faq');
 Route::view('others/pricing-table', 'others.pricing-table')->name('pricing-table');
 Route::view('others/search-result', 'others.search-result')->name('search-result');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
