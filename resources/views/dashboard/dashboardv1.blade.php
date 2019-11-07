@@ -40,19 +40,34 @@
                     </div>
                 </div>
 
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-Bar-Chart-5"></i>
+                            <div class="content">
 
+                            Gráfica General
+                            </div>
+                            <a style="height:40px" href="{{ url('/graficas/generototal')}}" class="btn btn-primary">
+                            Gráfica</a>
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <div class="card-body text-center">
-                            <i class="i-Money-2"></i>
+                            <i class="i-File-Download"></i>
                             <div class="content">
-                                <p class="text-muted mt-2 mb-0">Expense</p>
-                                <p class="text-primary text-24 line-height-1 mb-2">$1200</p>
+                            Reporte de PDF General
                             </div>
+                            <a style="height:40px" href="{{ url('reportes')}}" class="btn btn-primary">
+                            Reporte</a>
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
@@ -154,24 +169,10 @@
                 <section class="ul-widget-stat-s3" id="detailprojects">
 
                 <div class="row" >
-                <div class="col-lg-5 col-sm-12">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Grafica de pie de Genero</div>  
-                            <div id="echartPieGenero" style="height: 300px; width: 800px;"></div>
-                        </div>
-                    </div>
-                </div>
+                
 
-                <div class="col-lg-4 col-md-12">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title">Grafica de barras de Edad</div>
-                            <div id="echartBarEdad" style="height: 300px; width:300px;"></div>
-                        </div>
-                    </div>
-                </div>
-
+                
+                
 
                 </div>
                                             
@@ -210,7 +211,7 @@
                                         </div>
                                         <div class="col-12">
                                         <b> Indicadores: </b><br><br>
-                                        @foreach( (\App\Indicator::select('name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
+                                        @foreach( (\App\Indicator::select('id','name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
                                         <small>{{$loop->iteration }}.- {{$indicator->name}} </small>
                                             
                                             <div class="progress mt-3">                                            
@@ -221,6 +222,9 @@
                                             
                                             
                                             <br>
+                                            <a href="/graficas/indicador/{{$indicator->id}}" class="btn btn-primary">Gráfica</a>
+                                             <br> 
+                                             <br>  
                                         @endforeach
 
                                         <br>
@@ -235,6 +239,13 @@
                                             <div class="progress mt-3">                                            
                                             <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$porcentaje , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$activity->cantidadProyectada , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$porcentaje , 0, '.', '') }} %</div>
                                             </div>
+                                            <div class="card mb-4">
+                                                    <div class="card-body">
+                                                        <div class="card-title">Gráfica de pie de Genero2</div>  
+                                                        <div id="echartPieGenero" style="height: 300px; width: 800px;"></div>
+                                                    </div>
+                                                </div>
+                                            
                                         @endforeach
 
 
@@ -322,8 +333,8 @@ if (echartElemPie) {
         series: [{
             name: 'Genero',//descripción flotante de los valores
             type: 'pie',
-            radius: '60%',
-            center: ['25%', '50%'],
+            radius: '30%',
+            center: ['10%', '40%'],
             //ingresar los valores y etiquetas para cada lado
             
             data: [{ value: cantM, name: 'Masculino ' }, { value: cantF, name: 'Femenino' }],

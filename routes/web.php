@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
+
 //1 Administracion
 
 //LOGIN
@@ -77,8 +78,6 @@ Route::get('/permisosprojects/edit/{id}','PermisoProjectController@edit')->name(
 Route::post('/permisosprojects/store','PermisoProjectController@store');
 Route::put('/permisosprojects/{id}','PermisoProjectController@update');
 
-
-
 //2.2 Beneficiarios
 Route::view('beneficiarios','beneficiarios.index')->name('beneficiarios');
 //Route::view('beneficiarios/create','beneficiarios.create')->name('create');//si
@@ -118,7 +117,6 @@ Route::delete('/admin/users/{id}','UserController@destroy');
 
 
 //Productos
-
 Route::view('producto','producto.index')->name('producto');//si
 Route::view('producto/create','producto.create')->name('create');//si
 Route::resource('producto', 'ProductoController');
@@ -143,6 +141,30 @@ Route::get('/events/{indicator}','ActividadesController@events');
 Route::get('/participantes/{id}','ParticipantesController@index');
 Route::get('/participantes/store/{ids}','ParticipantesController@store')->name('participantes.store');
 Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy');
+
+//Graficas
+Route::get('/graficas/generototal','GenerosController@index')->name('genero');
+Route::get('/graficas/indicador/{indicador}','GenerosController@indicador');
+
+//Reportes
+//Route::get('ReporteUsuario','ReporteUsuarioController@generar');//si
+Route::get('reporte','reporteController@generar');
+Route::get('ReporteProyectosAct','ReporteProyectosActController@generar');
+Route::get('reporteProyectoNoAct','reporteProyectoNoActController@generar');
+Route::get('reporteActiporProyecto','reporteActiporProyectoController@generar');
+Route::get('reporteMetasporProyecto','reporteMetasporProyectoController@generar');
+Route::get('reporteParticipantes','reporteParticipantesController@generar');
+Route::get('reporteBeneficiario','reporteBeneficiarioController@generar');
+Route::get('reporteCantidadGG','reporteCantidadGGController@generar');
+Route::get('reporteEstadoIndi','reporteEstadoIndiController@generar');
+Route::get('reporteMenorEdad','reporteMenorEdadController@generar');
+Route::get('reporteMayorEdad','reporteMayorEdadController@generar');
+Route::get('reporteNombreActividad','reporteNombreActividadController@generar');
+Route::get('reporteResponsableActividad','reporteResponsableActividadController@generar');
+Route::get('reporteParticipantesEvento','reporteParticipantesEventoController@generar');
+
+
+Route::view('reportes', 'reportes.listado_reportes')->name('reportes');
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

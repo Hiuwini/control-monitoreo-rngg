@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     // Chart in Dashboard version 1
+    //echartBar
     let echartElemBar = document.getElementById('echartBar');
     if (echartElemBar) {
         let echartBar = echarts.init(echartElemBar);
@@ -23,7 +24,7 @@ $(document).ready(function() {
             },
             xAxis: [{
                 type: 'category',
-                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+                data: ['Enero', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 axisTick: {
                     alignWithLabel: true
                 },
@@ -96,6 +97,7 @@ $(document).ready(function() {
         });
     }
 
+    
     // Chart in Dashboard version 1
     let echartElemPie = document.getElementById('echartPie');
     if (echartElemPie) {
@@ -108,13 +110,13 @@ $(document).ready(function() {
             },
 
             series: [{
-                    name: 'Sales by Country',
+                    name: 'Genero',
                     type: 'pie',
                     radius: '60%',
                     center: ['50%', '50%'],
                     data: [
-                        { value: 535, name: 'USA' },
-                        { value: 310, name: 'Brazil' },
+                        { value: 535, name: 'Masculino' },
+                        { value: 310, name: 'Femenino' },
                         { value: 234, name: 'France' },
                         { value: 155, name: 'BD' },
                         { value: 130, name: 'UK' },
@@ -237,3 +239,7 @@ $(document).ready(function() {
     }
 
 });
+
+function newFunction() {
+    return 'GraficaGeneroTotal';
+}
