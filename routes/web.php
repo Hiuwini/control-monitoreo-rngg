@@ -42,6 +42,7 @@ Route::view('dashboard/dashboard4', 'dashboard.dashboardv4')->name('dashboard_ve
 
 
 
+
 //1 Administracion
 
 //LOGIN
@@ -171,6 +172,10 @@ Route::get('/events/{indicator}','ActividadesController@events');
 Route::get('/participantes/{id}','ParticipantesController@index');
 Route::get('/participantes/store/{ids}','ParticipantesController@store')->name('participantes.store');
 Route::delete('/participantes/{id}/{actividad}','ParticipantesController@destroy');
+
+//Graficas
+Route::get('/graficas/generototal','GenerosController@index')->name('genero');
+
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

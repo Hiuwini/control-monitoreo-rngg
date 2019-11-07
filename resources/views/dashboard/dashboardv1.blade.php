@@ -60,6 +60,10 @@
                     </div>
                 </div>
 
+                <div class="card-title mb-3">Prueba de graficas
+                    <a style="margin: 19px;" href="{{ url('/graficas/generototal')}}" class="btn btn-primary">Grafica de Genero</a>
+                </div>
+
             </div>
 
             <div class="row">

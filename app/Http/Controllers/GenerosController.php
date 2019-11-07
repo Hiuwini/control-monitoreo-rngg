@@ -9,13 +9,36 @@ use Illuminate\Http\Request;
 
 class GenerosController extends Controller
 {
-	    public function create()
+	    public function index()
     {
         $generos = Generos::all();
         $beneficiarios = Beneficiarios::all();
-       
-        //return view('beneficiarios/index', compact('beneficiarios'));
 
+        $cantMasculino=Beneficiarios::select('genero')->where('genero','=','Masculino')->count();
+        $cantFemenina=Beneficiarios::select('genero')->where('genero','=','Femenino')->count();
+        $rangoUno=Beneficiarios::select('rangoedad')->where('rangoedad','=','Menor de 18')->count();
+        $rangoDos=Beneficiarios::select('rangoedad')->where('rangoedad','=','18 - 30')->count();
+        $rangoTres=Beneficiarios::select('rangoedad')->where('rangoedad','=','31 - 49')->count();
+        $rangoCuatro=Beneficiarios::select('rangoedad')->where('rangoedad','=','50 - 60')->count();
+        $rangoCinco=Beneficiarios::select('rangoedad')->where('rangoedad','=','Mayor de 60')->count();
+
+        return view('graficas.genero')
+        ->with('cantFemenina',$cantFemenina)
+        ->with('cantMasculino',$cantMasculino)
+        ->with('rangoUno',$rangoUno)
+        ->with('rangoDos',$rangoDos)
+        ->with('rangoTres',$rangoTres)
+        ->with('rangoCuatro',$rangoCuatro)
+        ->with('rangoCinco',$rangoCinco);
     }
+/*
+    public function indexDos($indicador)
+    {
+        $cantMasculinoDos=Beneficiarios::select('genero')->whereRaw("genero = 'Masculino' and id_Indicador ="$indicador)->count();
+
+        return view('graficas.genero')
+        ->with('cantMasculinoDos',$cantMasculinoDos);
+    }
+*/
     
 }
