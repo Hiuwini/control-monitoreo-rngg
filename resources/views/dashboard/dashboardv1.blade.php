@@ -40,19 +40,34 @@
                     </div>
                 </div>
 
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-Bar-Chart-5"></i>
+                            <div class="content">
 
+                            Gráfica General
+                            </div>
+                            <a style="height:40px" href="{{ url('/graficas/generototal')}}" class="btn btn-primary">
+                            Gráfica</a>
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <div class="card-body text-center">
-                            <i class="i-Money-2"></i>
+                            <i class="i-File-Download"></i>
                             <div class="content">
-                                <p class="text-muted mt-2 mb-0">Expense</p>
-                                <p class="text-primary text-24 line-height-1 mb-2">$1200</p>
+                            Reporte de PDF General
                             </div>
+                            <a style="height:40px" href="{{ url('reportes')}}" class="btn btn-primary">
+                            Reporte</a>
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
@@ -65,6 +80,7 @@
                                 </label>
                             </div>
 
+                    <!-- TABLA DE RESUMEN -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card o-hidden mb-4">
@@ -144,12 +160,21 @@
 
                         </div>
                     </div>
+                    <!-- Fin Tabla Resumen -->
 
                 </div>
 
 
                 <!-- section 4 -->
                 <section class="ul-widget-stat-s3" id="detailprojects">
+
+                <div class="row" >
+                
+
+                
+                
+
+                </div>
                                             
                     
                     
@@ -186,12 +211,20 @@
                                         </div>
                                         <div class="col-12">
                                         <b> Indicadores: </b><br><br>
-                                        @foreach( (\App\Indicator::select('name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
+                                        @foreach( (\App\Indicator::select('id','name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
                                         <small>{{$loop->iteration }}.- {{$indicator->name}} </small>
+                                            
                                             <div class="progress mt-3">                                            
                                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$indicator->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$indicator->accumulated , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$indicator->percentage , 0, '.', '') }} %</div>
+                                                
                                             </div>
+                                              
+                                            
+                                            
                                             <br>
+                                            <a href="/graficas/indicador/{{$indicator->id}}" class="btn btn-primary">Gráfica</a>
+                                             <br> 
+                                             <br>  
                                         @endforeach
 
                                         <br>
@@ -206,6 +239,13 @@
                                             <div class="progress mt-3">                                            
                                             <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$porcentaje , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$activity->cantidadProyectada , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$porcentaje , 0, '.', '') }} %</div>
                                             </div>
+                                            <div class="card mb-4">
+                                                    <div class="card-body">
+                                                        <div class="card-title">Gráfica de pie de Genero2</div>  
+                                                        <div id="echartPieGenero" style="height: 300px; width: 800px;"></div>
+                                                    </div>
+                                                </div>
+                                            
                                         @endforeach
 
 
@@ -238,24 +278,163 @@
 @section('page-js')
      <script src="{{asset('assets/js/vendor/echarts.min.js')}}"></script>
      <script src="{{asset('assets/js/es5/echart.options.min.js')}}"></script>
-     <script src="{{asset('assets/js/es5/dashboard.v1.script.js')}}"></script>
 
-     <script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
-     <script src="{{asset('assets/js/es5/card.metrics.script.min.js')}}"></script>
-     <script src="{{asset('assets/js/es5/widgets-statistics.min.js')}}"></script>
+
      <script>
-$('#detailprojects').hide();
+        $('#detailprojects').hide();
 
-$(document).ready(function() {
-   $('#chkdetail').change(function() {
-    if($('#chkdetail').is(":checked")) {
-            $('#detailprojects').show();
-        }
-        else {
-            $('#detailprojects').hide();        
-        }
-    });
-});
+            $(document).ready(function() {
+            $('#chkdetail').change(function() {
+                    if($('#chkdetail').is(":checked")) {
+                            $('#detailprojects').show();
+                                                        }
+                    else {
+                            $('#detailprojects').hide();        
+                            }
+                                }); 
+                                });
+
+                                
 </script>
 
+<script >
+     //PARA GRAFICAR
+
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var cantF,cantM,maxGenero,deCuanto,uno,dos,tres,cuatro,cinco,maxedad,cuantoedad;
+//-------------------------------------------variables para genero
+cantF={{$cantMujeres}};
+cantM={{$cantHombres}};
+maxGenero=cantM+cantF;
+deCuanto=maxGenero/4;
+//------------------------------------------variables para rango de edad
+uno={{$rangouno}};
+dos={{$rangodos}};
+tres={{$rangotres}};
+cuatro={{$rangocuatro}};
+cinco={{$rangocinco}};
+maxedad={{$mayor}};
+cuantoedad=maxedad/4;
+
+$(document).ready(function () {
+//------------------------------------------------inicio genero
+    //PARA GRAFICAS PIE
+var echartElemPie = document.getElementById('echartPieGenero');
+if (echartElemPie) {
+    var echartPie = echarts.init(echartElemPie);
+    echartPie.setOption({
+        color: ['#62549c', '#7566b5', '#7d6cbb', '#8877bd', '#9181bd', '#6957af'],
+        tooltip: {
+            show: true,
+            backgroundColor: 'rgba(0, 0, 0, .8)'
+        },
+        series: [{
+            name: 'Genero',//descripción flotante de los valores
+            type: 'pie',
+            radius: '30%',
+            center: ['10%', '40%'],
+            //ingresar los valores y etiquetas para cada lado
+            
+            data: [{ value: cantM, name: 'Masculino ' }, { value: cantF, name: 'Femenino' }],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    });
+    $(window).on('resize', function () {
+        setTimeout(function () {
+            echartPie.resize();
+        }, 500);
+    });
+}
+//PARA GRAFICAS DE BARRA
+var echartElemBar = document.getElementById('echartBarEdad');
+if (echartElemBar) {
+    var echartBar = echarts.init(echartElemBar);
+    echartBar.setOption({
+        legend: {
+            borderRadius: 0,
+            orient: 'horizontal',
+            x: 'right',
+            data: ['']//identificador externo para la barra
+        },
+        grid: {
+            left: '8px',
+            right: '8px',
+            bottom: '0',
+            containLabel: true
+        },
+        tooltip: {
+            show: true,
+            backgroundColor: 'rgba(0, 0, 0, .8)'
+        },
+        xAxis: [{
+            type: 'category',
+            data: ['Menor de 18','18 - 30','31 - 49','50 - 60','Mayor de 60'], //subtitulos para cada barra ['M', 'F']
+            axisTick: {
+                alignWithLabel: true
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                show: true
+            }
+        }],
+        yAxis: [{
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}'
+            },
+            min: 0,
+            max: maxedad,//valor maximo
+            interval: cuantoedad,//intevalos que se desea la grafica.
+            axisLine: {
+                show: false
+            },
+            splitLine: {
+                show: true,
+                interval: 'auto'
+            }
+        }],
+
+        series: [{
+            name: 'Edad',
+            data: [uno,dos,tres,cuatro,cinco],//ingreso de valores
+            label: { show: false, color: '#0168c1' },
+            type: 'bar',
+            barGap: 0,
+            color: '#bcbbdd',
+            smooth: true,
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowOffsetY: -2,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)'
+                }
+            }
+        }]
+    });
+    $(window).on('resize', function () {
+        setTimeout(function () {
+            echartBar.resize();
+        }, 500);
+    });
+}
+//---------------------------------------------------------------fin rango de edad
+
+
+});
+     </script>
+
+
 @endsection
+
+
