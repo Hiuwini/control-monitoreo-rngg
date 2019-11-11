@@ -3,125 +3,180 @@
  <link rel="stylesheet" href="{{asset('assets/styles/vendor/pickadate/classic.css')}}">
  <link rel="stylesheet" href="{{asset('assets/styles/vendor/pickadate/classic.date.css')}}">
 
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+
+ <style>thead input {
+    width: 100%;
+}</style>
+
 
 @endsection
 
 @section('main-content')
-
-<h3  align="center" class="box-title"><b>REPORTES DEL SISTEMA</b></h3>
-         <div class="row">
-            <div class="col-md-12">
-              <div class="box box-info">
-                <div class="box-header">
-                  
-                  <div class="box-tools">
-                    <div class="input-group" style="width: 150px;">
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                 
-                  <table class="table table-hover">
-                   
-                    <thead ><tr>
-                      <th ><b>ID</b></th>
-                      <th><b>Nombre</b></th>
-                      <th><b>Ver</b></th>
-                    </tr></thead>
-                    <tbody>
+{{ csrf_field() }}
+@method('POST')                                  
                     
-                    <tr>
-                      <td>1</td>
-                      <td>Listado de Usuarios</td>
-                      <td><a href="{{ url('reporte')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>2</td>
-                      <td>Listado de Proyectos que estan activos</td>
-                      <td><a href="{{ url('ReporteProyectosAct')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-                   
-                     <tr>
-                      <td>3</td>
-                      <td>Listado de Proyectos anteriores</td>
-                      <td><a href="{{ url('reporteProyectoNoAct')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                      <tr>
-                      <td>4</td>
-                      <td>Nombre de actividades por proyecto</td>
-                      <td><a href="{{ url('reporteActiporProyecto')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                      <tr>
-                      <td>5</td>
-                      <td>Listado de Indicadores por proyecto</td>
-                      <td><a href="{{ url('reporteMetasporProyecto')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                      <tr>
-                      <td>6</td>
-                      <td>Listado de Participantes separados por nombre, apellido, género, rango de edad</td>
-                      <td><a href="{{ url('reporteParticipantes')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                      <tr>
-                      <td>7</td>
-                      <td>Conocer la cantidad de miembros que pertenecen a grupos gestores en cada actividad</td>
-                      <td><a href="{{ url('reporteCantidadGG')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>8</td>
-                      <td>Conocer el número de participantes en los eventos</td>
-                      <td><a href="{{ url('reporteParticipantesEvento')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>9</td>
-                      <td>Reporte sobre el estado de los indicadores</td>
-                      <td><a href="{{ url('reporteEstadoIndi')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>10</td>
-                      <td>Conocer cuantos beneficiario son menores de edad</td>
-                      <td><a href="{{ url('reporteMenorEdad')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>11</td>
-                      <td>Conocer cuantos beneficiario son mayores de edad</td>
-                      <td><a href="{{ url('reporteMayorEdad')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>12</td>
-                      <td>Nombre de cada actividad</td>
-                      <td><a href="{{ url('reporteNombreActividad')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                      <td>13</td>
-                      <td>Conocer responsables de cada actividad</td>
-                      <td><a href="{{ url('reporteResponsableActividad')}}" target="_blank" ><button class="btn btn-primary">Archivo PDF</button></a></td>
-                    </tr>
-
-                    <tr>
-                  </tbody></table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+<div class="breadcrumb">
+                <h1>REPORTES</h1>
+                
             </div>
- </div>
+
+            <div class="separator-breadcrumb border-top"></div>
+            <div class="2-columns-form-layout">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-12">                        
+                         
+                                <!--begin::form-->
+                                <form action="">
+                                    <div class="card-body">
 
 
+
+                         
+                                <!-- start card 3 Columns Horizontal Form Layout-->
+                                <div class="card ul-card__margin-25">
+                                    <div class="card-header bg-transparent">
+                                        <h3 class="card-title"> Generar reporte de Beneficiarios</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="idproject" class="ul-form__label ul-form--margin col-lg-1   col-form-label ">Proyecto: </label>
+                                            <div class="col-lg-3 ">
+                                            <!-- apartado para cargar todos los proyectos que el usuario puede ver. -->
+                                            <select class="form-control" name="idproject" id="idproject">
+                                            @foreach($projects as $project)
+                                            <option value="{{$project->id}}">{{$project->name}}</option>
+                                            @endforeach
+                                            </select>
+                                            </div>
+
+                            
+                            <table id="example" class="display table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>DPI/CUI</th>
+                                        <th>Teléfono</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($beneficiarios as $beneficiary)
+                                    <tr>
+                                        <td>{{ $beneficiary->nombrebeneficiario }}</td>
+                                        <td>{{ $beneficiary->apellidobeneficiario }}</td>
+                                        <td>{{ $beneficiary->dpicui }}</td>
+                                        <td>{{ $beneficiary->telefono }}</td>
+                                        <td>{{ $beneficiary->emailbeneficiario }}</td>
+                                        
+                                    </tr>
+                                    @endforeach
+                                    
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>DPI/CUI</th>
+                                        <th>Teléfono</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                    
+               
+
+
+                                          
+
+                                            
+                         </div>
+
+
+
+                                        <div class="custom-separator"></div>
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="mc-footer">
+                                            <div class="row text-center">
+                                                <div class="col-lg-12 ">
+                                                
+                                                <a href=""> <button class="btn btn-info m-1">Generar PDF</button> </a>
+
+                                            </form>
+                                                    <button type="button" class="btn btn-outline-secondary m-1">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card 3 Columns Horizontal Form Layout-->
+                            </form>
+                            <!-- end::form 3-->
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- end of main row -->
+                </div>
+            </div>
+                                        
 @endsection
 
 @section('page-js')
 <script src="{{asset('assets/js/vendor/pickadate/picker.js')}}"></script>
 <script src="{{asset('assets/js/vendor/pickadate/picker.date.js')}}"></script>
 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
 
+<script>
+$(document).ready(function() {
+    $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+    });
+    // Setup - add a text input to each footer cell
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+    $('#example thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+    var table = $('#example').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+    
+        
+      
+    });
+} );
+</script>
 
 @endsection
 

@@ -149,7 +149,7 @@ Route::get('/graficas/actividad/{actividad}','GenerosController@actividad');
 
 //Reportes
 //Route::get('ReporteUsuario','ReporteUsuarioController@generar');//si
-Route::get('reporte','reporteController@generar');
+//Route::get('reporte','reporteController@generar');
 Route::get('ReporteProyectosAct','ReporteProyectosActController@generar');
 Route::get('reporteProyectoNoAct','reporteProyectoNoActController@generar');
 Route::get('reporteActiporProyecto','reporteActiporProyectoController@generar');
@@ -165,7 +165,11 @@ Route::get('reporteResponsableActividad','reporteResponsableActividadController@
 Route::get('reporteParticipantesEvento','reporteParticipantesEventoController@generar');
 
 
-Route::view('reportes', 'reportes.listado_reportes')->name('reportes');
+
+Route::post('/reportes','reporteController@index')->name('reportes.index');
+Route::get('/reportes/generar/{$id}','reporteController@generar')->name('reportes.generar');
+
+
 
 // uiKits
 Route::view('uikits/alerts', 'uiKits.alerts')->name('alerts');

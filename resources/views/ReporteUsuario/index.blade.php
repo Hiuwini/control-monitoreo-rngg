@@ -30,12 +30,12 @@
                         <th>Apellido</th>
                         <th>Nombre Usuario</th>
                     </tr>
-                   @foreach($users AS $user)
+                   @foreach($beneficiarios AS $beneficiario)
                     <tr>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->firstname }}</td>
-                        <td>{{ $user->lastname }}</td>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $beneficiario->nombrebeneficiario }}</td>
+                        <td>{{ $beneficiario->apellidobeneficiario }}</td>
+                        <td>{{ $beneficiario->dpicui }}</td>
+                        <td>{{ $beneficiario->telefono }}</td>
                     </tr>
                     @endforeach
                 </table>

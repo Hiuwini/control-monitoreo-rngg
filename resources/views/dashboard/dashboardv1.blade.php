@@ -91,9 +91,8 @@
                                             <i class="nav-icon i-Gear-2"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="#">Add new user</a>
-                                            <a class="dropdown-item" href="#">View All users</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="{{url ('reportes')}}">Generar reporte por beneficiarios</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +211,16 @@
                                         <div class="col-12">
                                         <b> Indicadores: </b><br><br>
                                         @foreach( (\App\Indicator::select('id','name','goal','accumulated','percentage')->where('id_proyecto','=',$project->id)->get()) as $indicator)
-                                        <small>{{$loop->iteration }}.- {{$indicator->name}} </small>
+                                        <small>{{$loop->iteration }}.- {{$indicator->name}} 
+                                        
+                                        <form action="reportes" method="POST">                                        
+                                        {{ csrf_field() }}
+                                             <button type="submit" class="btn btn-info m-1">Ver Beneficiarios</button>
+                                             <input name="idproject" id="idindicator" type="hidden"  value="{{$project->id}}" >
+                                             <input name="idindicator" id="idindicator" type="hidden" value="{{$indicator->id}}">
+
+                                            </form>
+                                        </small>
                                             
                                             <div class="progress mt-3">                                            
                                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ number_format((int)$indicator->percentage , 0, '.', '') }}%" aria-valuenow="{{ number_format((int)$indicator->accumulated , 0, '.', '') }}" aria-valuemin="0" aria-valuemax="100">{{ number_format((int)$indicator->percentage , 0, '.', '') }} %</div>

@@ -542,9 +542,95 @@
                         </div>
 
                     </div>
+
+
+                    <!-- TABLA DE RESUMEN -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card o-hidden mb-4">
+                                <div class="card-header d-flex align-items-center border-0">
+                                    <h3 class="w-50 float-left card-title m-0">Resumen de Proyectos: </h3>
+                                    <div class="dropdown dropleft text-right w-50 float-right">
+                                        <button class="btn bg-gray-100" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="nav-icon i-Gear-2"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <a class="dropdown-item" href="#">Add new user</a>
+                                            <a class="dropdown-item" href="#">View All users</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table id="user_table" class="table  text-center">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Proyecto</th>
+                                                    <th scope="col">Fecha Inicio</th>
+                                                    <th scope="col">Fecha Final</th>
+                                                    <th scope="col">Coordinador</th>
+                                                    <th scope="col">Avance (en dias) </th>
+                                                    <th scope="col">Estado </th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- AGREGAR EL FOREACH PARA RECORRER LOS PROYECTOS -->
+                                            @foreach($projects as $project)
+                                                <tr>
+                                                    <th scope="row">{{$loop->iteration}}</th>
+                                                    <td>{{$project->name}}</td>
+                                                    
+                                                    <td>{{$project->date_begin}}</td>
+
+                                                    <td> {{$project->date_end}} </td>
+                                                    <?php 
+                                                    $data=\App\User::select('firstname','lastname')->where('id','=', $project->user_id)->get()
+                                                    ?>
+                                                    <td> {{$data[0]->firstname}}, {{$data[0]->lastname}}  </td>
+                                                    <td> 
+                                                    <?php 
+                                                    $date_current = date_create(date('Y-m-d'));
+                                                    $datebegin=date_create($project->date_begin);
+                                                    $dateend=date_create($project->date_end);
+                                                    $current = date_diff($datebegin,$date_current);
+                                                    $current = $current->format('%a');
+                                                    $diff=date_diff($datebegin,$dateend);
+                                                    $diff=$diff->format('%a');
+                                                    echo $current . '/' . $diff;
+                                                    ?> Dias
+                                                    </td>
+                                                    <td>
+                                                    @if($project->status== 0)
+                                                    <span class="badge badge-success"> En ejecucion</span>
+                                                    @else
+                                                    <span class="badge badge-info"> Concluido</span>
+                                                    @endif
+
+                                                    </td>
+      
+
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- Fin Tabla Resumen -->
                     <!-- end of main row -->
                 </div>
             </div>
+
+
+
 
 @endsection
 
